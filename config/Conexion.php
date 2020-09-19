@@ -26,9 +26,12 @@
         
    }
 
-      public static function ejecutarConsulta($sql)
+      
+   
+   public static function ejecutarConsulta($sql)
       {
          $conexion = new Conexion(); 
+    
          $consulta = $conexion ->prepare ($sql);
          $consulta->execute();
          $conexion = "";	
@@ -70,7 +73,26 @@
 		$data = htmlspecialchars($data);
 		$data = htmlentities(addslashes($data));
 		return $data;
-	  }
+     }
+     
+     public function listarMatriz($sql){
+      $conexion = new Conexion(); 
+      $consulta = $conexion ->prepare ($sql);
+      $consulta->execute();
+
+      foreach ($consulta as $row){
+         $lista[] =$row;
+      }
+      return $lista;
+    }
+
+    public function listarMatriz2($sql){
+      $conexion = new Conexion(); 
+      $consulta = $conexion ->prepare ($sql);
+      $consulta->execute();
+      $row = $consulta->fetch();
+      return $row;
+    }
 	
      
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-78.5214811563492%2C-0.2404915185307332%2C-78.51737201213838%2C-0.23743382684799924&amp;layer=mapnik&amp;marker=-0.2389626727744397%2C-78.51942658424377"
+    style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=-0.23896&amp;mlon=-78.51943#map=18/-0.23896/-78.51943">Ver mapa más grande</a></small>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.783613838032!2d-78.52161668555108!3d-0.23898289982563434!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d599a017772405%3A0xc3706fdf6ab84b0f!2sRicardo%20Jaramillo%20%26%20Ugarte%2C%20Quito%20170111!5e0!3m2!1ses!2sec!4v1596388492224!5m2!1ses!2sec"
+    width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+<style>
+    /*Añadiendo el estilo de nuestro mapa*/
+    
+    #map {
+        width: 100%;
+        height: 600px;
+    }
+</style>
+
+<body>
+
+    <p>Click the button to get your coordinates.</p>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <p id="demo"></p>
+
+    <!-- <div id="map" class=map> -->
+    <div id="map">
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+
+        function showPosition(position) {
+            /*x.innerHTML = "Latitude: " + position.coords.latitude +
+            //
+                  "<br>Longitude: " + position.coords.longitude;
+           
+            x.innerHTML = "Coordenads " + position.coords.latitude + " " + position.coords.longitude;
+            // lat = position.coords.latitude; //obtenemos la latitud
+            // lon = position.coords.longitude; //obtenemos la longitud*/
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+
+            lat = position.coords.latitude; //obtenemos la latitud
+            lon = position.coords.longitude; //obtenemos la longitud
+
+
+            lat = -0.2389626727744397;
+            long = -78.51942658424377;
+
+            // geo:-0.23896,-78.51943?z=18
+            latlon = lat + "," + lon; //dato latitud,longitud para pasar a Google Maps.
+            //acceso a la url del mapa de google maps:
+            // var img_url="http://maps.googleapis.com/maps/api/staticmap?center="
+            //    +latlon+"&zoom=14&size=400x300&sensor=false";
+            //mostrar el mapa en un elemento:
+            //document.getElementById("mapholder").innerHTML="<img src='"+img_url+"'>"; 
+
+            /* var map = L.map('map').setView([51.505, -0.09], 13);
+
+             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+             }).addTo(map);
+
+             L.marker([51.5, -0.09]).addTo(map)
+                 .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+                 .openPopup();*/
+
+            var map = L.map('map').
+            setView([lat, lon],
+                15); //[38.6202, -0.5731] es la latitud y longitud de la zona que queremos mostrar, en nuestro caso Ibi 
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+                maxZoom: 18
+            }).addTo(map);
+
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+                .openPopup();
+
+
+
+
+
+
+        }
+    </script>
+
+    <!--
+    
+    <script type="text/javascript">
+        //Cargando nuestro mapa
+        var mapsipe = L.map('map').
+        setView([38.6202, -0.5731],
+            15); //[38.6202, -0.5731] es la latitud y longitud de la zona que queremos mostrar, en nuestro caso Ibi 
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            maxZoom: 18
+        }).addTo(mapsipe);
+    </script>
+-->
+
+    <!--https://sipeinformatica.com/como-crear-un-mapa-con-leaflet/-->
+
+
+</body>
+
+</html>

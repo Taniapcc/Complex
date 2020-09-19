@@ -1,21 +1,35 @@
 <?php
-session_start();
-require_once "../modelos/Usuario.php";
+ob_start();
+if (strlen(session_id()) < 1){
+    session_start();//Validamos si existe o no la sesión
+}
+    if (!isset($_SESSION["nombre"]))
+    {
+        header("Location: ../vistas/login.html");//Validamos el acceso solo a los usuarios logueados al sistema.
+    }
+    else
+    {
+        //Validamos el acceso solo al usuario logueado y autorizado.
+        if ($_SESSION['admin']==1)
+    {
 
-$usuario=new Usuario();
 
-$idusuario=isset($_POST["idusuario"])? $usuario->limpiarCadena($_POST["idusuario"]):"";
-$idtienda=isset($_POST["idtienda"])? $usuario->limpiarCadena($_POST["idtienda"]):"";
-$nombre=isset($_POST["nombre"])? $usuario->limpiarCadena($_POST["nombre"]):"";
-$tipo_documento=isset($_POST["tipo_documento"])?$usuario-> limpiarCadena($_POST["tipo_documento"]):"";
-$num_documento=isset($_POST["num_documento"])? $usuario-> limpiarCadena($_POST["num_documento"]):"";
-$direccion=isset($_POST["direccion"])? $usuario->limpiarCadena($_POST["direccion"]):"";
-$telefono=isset($_POST["telefono"])? $usuario->limpiarCadena($_POST["telefono"]):"";
-$email=isset($_POST["email"])? $usuario->limpiarCadena($_POST["email"]):"";
-$cargo=isset($_POST["cargo"])? $usuario->limpiarCadena($_POST["cargo"]):"";
-$login=isset($_POST["login"])? $usuario->limpiarCadena($_POST["login"]):"";
-$clave=isset($_POST["clave"])? $usuario->limpiarCadena($_POST["clave"]):"";
-$imagen=isset($_POST["imagen"])? $usuario->limpiarCadena($_POST["imagen"]):"";
+require_once "../modelos/Cliente.php";
+
+$cliente=new Cliente();
+
+$idusuario=isset($_POST["idusuario"])? $cliente->limpiarCadena($_POST["idusuario"]):"";
+$idtienda=isset($_POST["idtienda"])? $cliente->limpiarCadena($_POST["idtienda"]):"";
+$nombre=isset($_POST["nombre"])? $cliente->limpiarCadena($_POST["nombre"]):"";
+$tipo_documento=isset($_POST["tipo_documento"])?$cliente-> limpiarCadena($_POST["tipo_documento"]):"";
+$num_documento=isset($_POST["num_documento"])? $cliente-> limpiarCadena($_POST["num_documento"]):"";
+$direccion=isset($_POST["direccion"])? $cliente->limpiarCadena($_POST["direccion"]):"";
+$telefono=isset($_POST["telefono"])? $cliente->limpiarCadena($_POST["telefono"]):"";
+$email=isset($_POST["email"])? $cliente->limpiarCadena($_POST["email"]):"";
+$cargo=isset($_POST["cargo"])? $cliente->limpiarCadena($_POST["cargo"]):"";
+$login=isset($_POST["login"])? $cliente->limpiarCadena($_POST["login"]):"";
+$clave=isset($_POST["clave"])? $cliente->limpiarCadena($_POST["clave"]):"";
+$imagen=isset($_POST["imagen"])? $cliente->limpiarCadena($_POST["imagen"]):"";
 
 
 switch ($_GET["op"]) {
@@ -33,35 +47,35 @@ switch ($_GET["op"]) {
          //Hash SHA256 en la contraseña     
         $clavehash=hash("SHA256", $clave);
         if (empty($idusuario)) {
-            $rspta=$usuario->insertar($idtienda, $nombre, $tipo_documento, $num_documento, $direccion, $telefono, $email, $cargo, $login, $clavehash, $imagen, $_POST['permiso']);
+            $rspta=$cliente->insertar($idtienda, $nombre, $tipo_documento, $num_documento, $direccion, $telefono, $email, $cargo, $login, $clavehash, $imagen, $_POST['permiso']);
             echo $rspta ? "Usuario registrado" : "No se pudieron registrar todos los datos del usuario";
         } else {
             // preguntar 
 
-            $rspta=$usuario->editar($idusuario, $idtienda, $nombre, $tipo_documento, $num_documento, $direccion, $telefono, $email, $cargo, $login, $clavehash, $imagen, $_POST['permiso']);
+            $rspta=$cliente->editar($idusuario, $idtienda, $nombre, $tipo_documento, $num_documento, $direccion, $telefono, $email, $cargo, $login, $clavehash, $imagen, $_POST['permiso']);
             echo $rspta ? "Usuario actualizado" : "Usuario no se pudo actualizar";
         }
     
     break;
 
     case 'desactivar':
-        $rspta=$usuario->desactivar($idusuario);
+        $rspta=$cliente->desactivar($idusuario);
         echo $rspta ? "Usuario Desactivado" : "Usuario no se puede desactivar";
     break;
 
     case 'activar':
-        $rspta=$usuario->activar($idusuario);
+        $rspta=$cliente->activar($idusuario);
         echo $rspta ? "Usuario activado" : "Usuario no se puede activar";
     break;
 
     case 'mostrar':
-        $rspta=$usuario->mostrar($idusuario);
+        $rspta=$cliente->mostrar($idusuario);
         //Codificar el resultado utilizando json
         echo json_encode($rspta);
     break;
 
     case 'listar':
-        $rspta=$usuario->listar();
+        $rspta=$cliente->listar();
         //Vamos a declarar un array
         $data= array();
 
@@ -101,7 +115,7 @@ switch ($_GET["op"]) {
         //Obtener los permisos asignados al usuario
         $id=$_GET['id'];
 
-        $marcados = $usuario->listarmarcados($id);
+        $marcados = $cliente->listarmarcados($id);
         //Declaramos el array para almacenar todos los permisos marcados
         $valores=array();
 
@@ -130,13 +144,13 @@ switch ($_GET["op"]) {
     break;
 
     case 'verificar':
-        $logina=isset($_POST["logina"])? $usuario->limpiarCadena($_POST["logina"]):"";
-        $clavea=isset($_POST["clavea"])? $usuario->limpiarCadena($_POST["clavea"]):"";
+        $logina=isset($_POST["logina"])? $cliente->limpiarCadena($_POST["logina"]):"";
+        $clavea=isset($_POST["clavea"])? $cliente->limpiarCadena($_POST["clavea"]):"";
 
         //Encripto clave ingresada
         $clavehash = hash("SHA256", $clavea);
     
-        $fetch = $usuario->verificar($logina, $clavehash);
+        $fetch = $cliente->verificar($logina, $clavehash);
 
         if (is_object($fetch)) {
             
@@ -156,7 +170,7 @@ switch ($_GET["op"]) {
             $_SESSION['tienda'] = $fetch->tienda;
 
             //Obtenemos los permisos del usuario
-            $marcados = $usuario->listarmarcados($fetch->idusuario);
+            $marcados = $cliente->listarmarcados($fetch->idusuario);
             //Declaramos el array para almacenar todos los permisos marcados
             $valores=array();
 
@@ -193,8 +207,17 @@ switch ($_GET["op"]) {
         header("Location: ../index.php");
 
 	break;
-
-
-    
     
 }
+
+// fin valida
+}
+else
+{
+  require 'noacceso.php';
+}
+}
+ob_end_flush();
+
+
+?>

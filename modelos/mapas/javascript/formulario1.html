@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <h1 class="text-center">Hello World</h1>
+    <form action="" name="formulario" id="formulario">
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+        <input type="radio" id="hombre" name="sexo">
+        <label for="hombre">Hombre</label>
+        <input type="radio" id="mujer" name="sexo">
+        <label for="mujer">Mujer</label>
+
+        <input type="checkbox" id="terminos" name="terminos" id="terminos">
+        <label for="terminos">Terminos</label>
+
+        <input type="submit" value="Enviar">
+
+
+    </form>
+
+    <script>
+        //var formulario = document.getElementsByName('formulario')[0];
+        var formulario = document.getElementById('formulario');
+        var nombre = formulario.nombre;
+        var sexo = formulario.sexo;
+        var terminos = formulario.terminos;
+
+        function validar(e) {
+            if (nombre.value > 18) {
+                alert("Maximo de caracteres");
+            } else if (nombre.value == "") {
+                alert("Nombre es requerido");
+            }
+
+            //validar radion button
+
+            if (sexo[0].checked == false && sexo[1].checked == false) {
+                alert("Sexo es requerido");
+            }
+
+            if (terminos.checked == false) {
+                alert("Términos requeridos");
+            }
+
+
+            //https://developer.cdn.mozilla.net/it/docs/Web/Events
+
+
+            e.preventDefault();
+        }
+
+        formulario.addEventListener('submit', validar);
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

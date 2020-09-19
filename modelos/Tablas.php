@@ -86,7 +86,8 @@ Class Tablas
 	
 	public function listar($ltablas)
 	{
-		$sql = "SELECT * from auxiliares where idtabla = '$ltablas' AND idsubtabla <> 0";
+		$sql = "SELECT * from auxiliares 
+		where idtabla = '$ltablas' AND idsubtabla <> 0";
 		return Conexion::ejecutarConsulta($sql);				
 	}
 

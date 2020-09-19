@@ -29,4 +29,6 @@ define("DB_MOTORBASE","mysql");
 
 //Definimos una constante como nombre del proyecto
 define("PRO_NOMBRE","ECVentas");
+
+define("TIENDA",6);
 ?>

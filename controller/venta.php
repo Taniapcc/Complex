@@ -15,25 +15,24 @@ if ($_SESSION['ventas']==1)
 require_once "../modelos/Venta.php";
 
 $venta=new Venta();
-
-$idventa=isset($_POST["idventa"])? limpiarCadena($_POST["idventa"]):"";
-$idcliente=isset($_POST["idcliente"])? limpiarCadena($_POST["idcliente"]):"";
-$idusuario=$_SESSION["idusuario"];
-$tipo_comprobante=isset($_POST["tipo_comprobante"])? limpiarCadena($_POST["tipo_comprobante"]):"";
-$serie_comprobante=isset($_POST["serie_comprobante"])? limpiarCadena($_POST["serie_comprobante"]):"";
-$num_comprobante=isset($_POST["num_comprobante"])? limpiarCadena($_POST["num_comprobante"]):"";
-$fecha_hora=isset($_POST["fecha_hora"])? limpiarCadena($_POST["fecha_hora"]):"";
-$impuesto=isset($_POST["impuesto"])? limpiarCadena($_POST["impuesto"]):"";
-$total_venta=isset($_POST["total_venta"])? limpiarCadena($_POST["total_venta"]):"";
+$idusuario = $_SESSION["idusuario"];
+$ltienda = $_SESSION["idtienda"];
+$idventa=isset($_POST["idventa"])? $venta->limpiarCadena($_POST["idventa"]):"";
+$idcliente=isset($_POST["idcliente"])? $venta->limpiarCadena($_POST["idcliente"]):"";
+$tipo_comprobante=isset($_POST["tipo_comprobante"])? $venta->limpiarCadena($_POST["tipo_comprobante"]):"";
+$serie_comprobante=isset($_POST["serie_comprobante"])? $venta->limpiarCadena($_POST["serie_comprobante"]):"";
+$num_comprobante=isset($_POST["num_comprobante"])? $venta->limpiarCadena($_POST["num_comprobante"]):"";
+$fecha_hora=isset($_POST["fecha_hora"])? $venta->limpiarCadena($_POST["fecha_hora"]):"";
+$impuesto=isset($_POST["impuesto"])? $venta->limpiarCadena($_POST["impuesto"]):"";
+$total_venta=isset($_POST["total_venta"])? $venta->limpiarCadena($_POST["total_venta"]):"";
 
 switch ($_GET["op"]){
 	case 'guardaryeditar':
 		if (empty($idventa)){
-			$rspta=$venta->insertar($idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$impuesto,$total_venta,$_POST["idarticulo"],$_POST["cantidad"],$_POST["precio_venta"],$_POST["descuento"]);
+			$rspta=$venta->insertar($ltienda,$idcliente,$idusuario,$tipo_comprobante,$serie_comprobante,$num_comprobante,$fecha_hora,$impuesto,$total_venta,$_POST["idproducto"],$_POST["cantidad"],$_POST["precio_venta"],$_POST["descuento"]);
 			echo $rspta ? "Venta registrada" : "No se pudieron registrar todos los datos de la venta";
 		}
-		else {
-		}
+		
 	break;
 
 	case 'anular':
@@ -55,14 +54,14 @@ switch ($_GET["op"]){
 		$total=0;
 		echo '<thead style="background-color:#A9D0F5">
                                     <th>Opciones</th>
-                                    <th>Artículo</th>
+                                    <th>Producto</th>
                                     <th>Cantidad</th>
                                     <th>Precio Venta</th>
                                     <th>Descuento</th>
                                     <th>Subtotal</th>
                                 </thead>';
 
-		while ($reg = $rspta->fetch_object())
+		while ($reg = $rspta->fetch(PDO::FETCH_OBJ))
 				{
 					echo '<tr class="filas"><td></td><td>'.$reg->nombre.'</td><td>'.$reg->cantidad.'</td><td>'.$reg->precio_venta.'</td><td>'.$reg->descuento.'</td><td>'.$reg->subtotal.'</td></tr>';
 					$total=$total+($reg->precio_venta*$reg->cantidad-$reg->descuento);
@@ -82,7 +81,7 @@ switch ($_GET["op"]){
  		//Vamos a declarar un array
  		$data= Array();
 
- 		while ($reg=$rspta->fetch_object()){
+ 		while ($reg=$rspta->fetch(PDO::FETCH_OBJ)){
  			if($reg->tipo_comprobante=='Ticket'){
  				$url='../reportes/exTicket.php?id=';
  			}
@@ -115,34 +114,35 @@ switch ($_GET["op"]){
 	break;
 
 	case 'selectCliente':
-		require_once "../modelos/Persona.php";
-		$persona = new Persona();
+		require_once "../modelos/Cliente.php";
+		$cliente = new Cliente();
 
-		$rspta = $persona->listarC();
+		$rspta = $cliente->listarcv();
 
-		while ($reg = $rspta->fetch_object())
+		while ($reg = $rspta->fetch(PDO::FETCH_OBJ))
 				{
-				echo '<option value=' . $reg->idpersona . '>' . $reg->nombre . '</option>';
+				echo '<option value=' . $reg->idcliente . '>' . $reg->nombre . '</option>';
 				}
 	break;
 
-	case 'listarArticulosVenta':
-		require_once "../modelos/Articulo.php";
-		$articulo=new Articulo();
+	case 'listarProductosVenta':
+		require_once "../modelos/Producto.php";
+		$ltienda = $_SESSION["idtienda"];
+		$producto=new Producto();
 
-		$rspta=$articulo->listarActivosVenta();
+		$rspta=$producto->listarActivosVenta($ltienda);
  		//Vamos a declarar un array
  		$data= Array();
 
- 		while ($reg=$rspta->fetch_object()){
+ 		while ($reg=$rspta->fetch(PDO::FETCH_OBJ)){
  			$data[]=array(
- 				"0"=>'<button class="btn btn-warning" onclick="agregarDetalle('.$reg->idarticulo.',\''.$reg->nombre.'\',\''.$reg->precio_venta.'\')"><span class="fa fa-plus"></span></button>',
+ 				"0"=>'<button class="btn btn-warning" onclick="agregarDetalle('.$reg->idproducto.',\''.$reg->nombre.'\',\''.$reg->precio_venta.'\')"><span class="fa fa-plus"></span></button>',
  				"1"=>$reg->nombre,
  				"2"=>$reg->categoria,
  				"3"=>$reg->codigo,
  				"4"=>$reg->stock,
  				"5"=>$reg->precio_venta,
- 				"6"=>"<img src='../files/articulos/".$reg->imagen."' height='50px' width='50px' >"
+ 				"6"=>"<img src='../files/productos/".$reg->imagen."' height='50px' width='50px' >"
  				);
  		}
  		$results = array(

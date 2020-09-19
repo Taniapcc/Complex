@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+<!-- Make sure you put this AFTER Leaflet's CSS -->
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+<link rel="stylesheet" href="leaflet-routing-machine-3.2.5/dist/leaflet-routing-machine.css" />
+<style>
+    /*Añadiendo el estilo de nuestro mapa*/
+    
+    #map {
+        width: 100%;
+        height: 600px;
+    }
+</style>
+
+<body>
+
+    <p>Click the button to get your coordinates.</p>
+
+    <button onclick="getLocation()">Try It</button>
+
+    <p id="demo"></p>
+
+    <!-- <div id="map" class=map> -->
+    <div id="map">
+
+
+    </div>
+
+
+
+
+
+
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
+
+            lat = position.coords.latitude; //obtenemos la latitud
+            lon = position.coords.longitude; //obtenemos la longitud
+
+            lat = -0.2389626727744397;
+            long = -78.51942658424377;
+            latlon = lat + "," + lon; //dato latitud,longitud para pasar a Google Maps.
+            var map = L.map('map').
+            setView([lat, lon],
+                15); //[38.6202, -0.5731] es la latitud y longitud de la zona que queremos mostrar, en nuestro caso Ibi 
+            L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+                maxZoom: 18
+            }).addTo(map);
+
+            L.marker([lat, lon]).addTo(map)
+                .bindPopup('Ubicación.')
+                .openPopup();
+
+            //   -0.1905204,-78.4891989
+            /*   L.Routing.control({
+                   waypoints: [
+                       L.latLng(lat, long),
+                       L.latLng(-0.1905204, -78.4891989)
+                   ]
+               }).addTo(map);*/
+
+
+
+        }
+    </script>
+
+    <!--
+    
+    <script type="text/javascript">
+        //Cargando nuestro mapa
+        var mapsipe = L.map('map').
+        setView([38.6202, -0.5731],
+            15); //[38.6202, -0.5731] es la latitud y longitud de la zona que queremos mostrar, en nuestro caso Ibi 
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            maxZoom: 18
+        }).addTo(mapsipe);
+    </script>
+-->
+
+    <!--https://sipeinformatica.com/como-crear-un-mapa-con-leaflet/-->
+
+
+</body>
+
+</html>

@@ -51,8 +51,8 @@ if ($_SESSION['admin']==1) {
                     </div>
                  
                     <div class="panel-body" style="height: 400px;" id="formularioregistros">
-                    <!--<form action="insertar.php" method="GET" onsubmit="return validaCampos();"> -->   
-                        <form name="formulario" data-toggle="validator" id="formulario" method="POST" onsubmit="return validar();" >
+                                      
+                    <form name="formulario" data-toggle="validator" id="formulario" method="POST"> 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Nombre(*):</label>
                             <input type="hidden" name="idtienda" id="idtienda" >
@@ -61,7 +61,8 @@ if ($_SESSION['admin']==1) {
                             data-error = "Solo Mayúsculas"
                             title="Provincia debe contener  Letras Mayúsculas. Ej. TIENDA"
                             required >                           
-                           <div id="mensaje1" class = "errores" > </div>
+                           <div id="e-nombre" class = "errores" > </div>
+                           <span class= "help-block"> </span>
                           </div>
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -91,7 +92,7 @@ if ($_SESSION['admin']==1) {
                           </div>
 
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
+                            <button class="btn btn-primary" type="submit" id="btnGuardar"   ><i class="fa fa-save"></i> Guardar</button>
 
                             <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                           </div>
@@ -113,8 +114,17 @@ else {
 require 'footer.php';
 ?>
 <script type="text/javascript" src="scripts/tienda.js"></script>
-<script type="text/javascript" src="scripts/validacion.js"></script>
+<!--<script type="text/javascript" src="scripts/validacion.js"></script> -->
 <!--https://es.stackoverflow.com/questions/148434/validar-datos-y-mostrar-alertas-bootstrap/148446> -->
+<script type="text/javascript"> 
+$(document).ready(function(){
+	$("#formulario").submit(function () {
+		if($("#nombre").val().length < 4) {
+			alert("El nombre debe tener más de 3 caracteres");
+			return false;
+    }
+ </script   
+
 
 <?php
 }

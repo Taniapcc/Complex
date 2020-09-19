@@ -93,7 +93,7 @@ function guardaryeditar(e) {
 function mostrar(idcategoria) {
 
     $.post("../controller/categoria.php?op=mostrar", { idcategoria: idcategoria }, function(data, status) {
-        bootbox.alert("mostrar");
+        //bootbox.alert("mostrar");
         data = JSON.parse(data);
         mostrarform(true);
 
@@ -126,6 +126,20 @@ function activar(idcategoria) {
             });
         }
     })
+}
+
+function validarForm(e) {
+    var x = document.forms["formulario"]["nombre"].value;
+    if (x == "") {
+        alert("Nombre Requerido");
+        error.innerHTML += '<li>Por favor completa el nombre</li>';
+        '<div id="e-nombre" class = "errores" > Nombre requerido </div>';
+        return false;
+    }
+
+    e.preventDefault();
+    formulario.addEventListener('submit', validarForm);
+
 }
 
 

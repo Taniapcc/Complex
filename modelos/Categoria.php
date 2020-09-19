@@ -1,5 +1,7 @@
 <?php 
 //Incluímos inicialmente la conexión a la base de datos
+//session_start();
+
 
 require_once '../config/Conexion.php';
 define("TABLA", "categoria");

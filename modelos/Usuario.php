@@ -93,7 +93,7 @@ Class Usuario
 	
 	public function listar()
 	{		
-		//$sql="SELECT * FROM usuario";
+		
 		$sql = "SELECT a.*,b.nombre as tienda FROM usuario a
 				INNER JOIN tienda b on a.idtienda = b.idtienda
 				WHERE trim(tipo_usuario) = 'EMPLEADO'";
@@ -105,7 +105,6 @@ Class Usuario
 	
 	public function listarc()
 	{		
-		//$sql="SELECT * FROM usuario";
 		$sql = "SELECT a.*,b.nombre as tienda FROM usuario a
 				INNER JOIN tienda b on a.idtienda = b.idtienda
 				WHERE tipo_usuario = 'CLIENTE'";
@@ -139,7 +138,7 @@ Class Usuario
 		$rspta= Conexion::ejecutarConsulta($sql);
 		$reg = $rspta->fetch(PDO::FETCH_OBJ);
 		$id = $reg-> id;
-		return id;	
+		return $id;	
 	}
 
 
@@ -149,6 +148,7 @@ Class Usuario
 		return $data;
 	  }
 	
+
 
 
 	

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Registro</title>
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <form action="" class="formulario" id="formulario" name="formulario">
+            <div class="contenedor-inputs">
+                <input type="text" name="nombre" placeholder="Nombre">
+                <input type="email" name="correo" placeholder="Correo">
+
+                <div class="sexo">
+                    <input type="radio" name="sexo" id="hombre" value="hombre">
+                    <label for="hombre" class="label-radio hombre">Hombre</label>
+
+                    <input type="radio" name="sexo" id="mujer" value="mujer">
+                    <label for="mujer" class="label-radio mujer">Mujer</label>
+                </div>
+
+                <div class="terminos">
+                    <input type="checkbox" name="terminos" id="terminos">
+                    <label for="terminos">Acepto Terminos y Condiciones</label>
+                </div>
+                <ul class="error" id="error"></ul>
+            </div>
+            <input type="submit" class="btn" value="Registrarse">
+        </form>
+    </div>
+
+    <div class="map">
+        <!--   <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-78.71498107910158%2C-0.33851426593220085%2C-78.3318328857422%2C-0.14282211771737158&amp;layer=mapnik&amp;marker=-0.2406672580450439%2C-78.52349029999999"
+            style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/?mlat=-0.2407&amp;mlon=-78.5235#map=12/-0.2407/-78.5234">Ver mapa más grande</a></small> -->
+
+        <!--"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31918.307480244242!2d-78.52244980236695!3d-0.22176358964462084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a0d59db4311%3A0x108cda9be0f21c00!2sAv.%20Crist%C3%B3bal%20Col%C3%B3n%20%26%20Av.%206%20de%20Diciembre%2C%20Quito%20170109!5e0!3m2!1ses-419!2sec!4v1596160206515!5m2!1ses-419!2sec" -->
+        <!--  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31918.307480244242!2d-78.5242197,17!3d0.23973718964462084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d59a0d59db4311%3A0x108cda9be0f21c00!2sAv.%20Crist%C3%B3bal%20Col%C3%B3n%20%26%20Av.%206%20de%20Diciembre%2C%20Quito%20170109!5e0!3m2!1ses-419!2sec!4v1596160206515!5m2!1ses-419!2sec"
+            width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+      -->
+        <!-- -0.2397371,-78.5242197,17 -->
+
+    </div>
+
+
+
+    <script>
+        //var formulario = document.getElementsByName('formulario')[0];
+        var formulario = document.getElementById('formulario');
+        var nombre = formulario.nombre;
+        var sexo = formulario.sexo;
+        var terminos = formulario.terminos;
+
+        function validar(e) {
+            if (nombre.value > 18) {
+                alert("Maximo de caracteres");
+            } else if (nombre.value == "") {
+                alert("Nombre es requerido");
+            }
+
+            //validar radion button
+
+            if (sexo[0].checked == false && sexo[1].checked == false) {
+                alert("Sexo es requerido");
+            }
+
+            if (terminos.checked == false) {
+                alert("Términos requeridos");
+            }
+            //https://developer.cdn.mozilla.net/it/docs/Web/Events
+            e.preventDefault();
+        }
+
+        formulario.addEventListener('submit', validar);
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="formulario.js"></script>
+</body>
+
+</html>

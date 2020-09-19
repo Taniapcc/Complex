@@ -10,7 +10,7 @@
 		else
 		{
 			//Validamos el acceso solo al usuario logueado y autorizado.
-			if ($_SESSION['administrador']==1)
+			if ($_SESSION['ventas']==1)
 		{
 
 
@@ -79,7 +79,7 @@ switch ($_GET["op"])
 	case 'listar':
 	//default:
 		$lcategoria = $_REQUEST["lcategoria"]; // nuevo para filtrar
-		$rspta=$producto->listar($lcategoria);
+		$rspta=$producto->listarb($lcategoria,$_SESSION["idtienda"]);
  		//Vamos a declarar un array
 		 $data= Array();
 				
@@ -108,7 +108,8 @@ switch ($_GET["op"])
 	break;
 
 	case 'selectCategoria':
-		require_once "../modelos/Categoria.php";
+		//require_once "../modelos/Categoria.php";
+		require "../modelos/Categoria.php";
 		$categoria = new Categoria();
 		$rspta = $categoria->select();
 		while($reg = $rspta->fetch(PDO::FETCH_OBJ)) {

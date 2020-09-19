@@ -6,6 +6,8 @@ function init() {
     listar();
 
     $("#formulario").on("submit", function(e) {
+
+
         guardaryeditar(e);
     })
 }
