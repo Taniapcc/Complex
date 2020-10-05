@@ -1,10 +1,11 @@
 <?php
 
-//Tienda Virtual en PHP, MySql, POO, PDO, MVC (Enviar datos al Controlador)
-//Abel OS
-//https://www.youtube.com/watch?v=O2By5jlvVVs
-
     require_once('config/dirs.php');
+    require_once('helpers/Helpers.php');
+
+
+
+
     $url = !empty($_GET['url']) ? $_GET['url']:'home/home' ;
     //convertir a array Abel os
     $arrurl = explode("/",$url);

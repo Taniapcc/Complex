@@ -29,15 +29,15 @@
           <div class="carousel-inner">
               <div class="carousel-item active">
                <!-- <img class="d-block w-100" src="https://placehold.it/900x250/39CCCC/ffffff&text=Slide1" alt="First slide"> -->
-               <img  class="d-block w-100" src="../public//dist/img/Slides/Slide1.jpg"    alt="Primer Slide" style="width:100%;">
+               <img  class="d-block w-100" src="public//dist/img/Slides/Slide1.jpg"    alt="Primer Slide" style="width:100%;">
               </div>
               <div class="carousel-item">
                <!-- <img class="d-block w-100" src="https://placehold.it/900x250/3c8dbc/ffffff&text=Slide2" alt="Second slide"> -->
-               <img  class="d-block w-100" src="../public//dist/img/Slides/slide2.jpg"    alt="Segundo Slide" style="width:100%;">
+               <img  class="d-block w-100" src="public//dist/img/Slides/slide2.jpg"    alt="Segundo Slide" style="width:100%;">
 
               </div>
               <div class="carousel-item">
-              <img  class="d-block w-100" src="../public//dist/img/Slides/slide3.jpg"    alt="Tercer Slide" style="width:100%;">
+              <img  class="d-block w-100" src="public//dist/img/Slides/slide3.jpg"    alt="Tercer Slide" style="width:100%;">
 
                <!-- <img class="d-block w-100" src="https://placehold.it/900x250/f39c12/ffffff&text=Slide3" alt="Third slide"> -->
               </div>
@@ -163,5 +163,6 @@
   <!-- /.content-wrapper -->
        
 <?php
+    echo $base_url();
     require ("layout/footer.php");
 ?>
