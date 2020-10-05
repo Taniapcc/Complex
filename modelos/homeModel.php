@@ -5,7 +5,7 @@
         {
             parent::__construct();
         }
-
+/*
         public function setUser(string $nombre, int $edad)
         {
            $sql = "INSERT INTO usuarios(nombre,edad) VALUES (?,?)";
@@ -44,7 +44,7 @@
             return $request;
         }
 
-
+*/
 
         
 

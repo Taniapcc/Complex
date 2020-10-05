@@ -18,7 +18,7 @@ class Home extends Controllers{
         
         $this->views->getViews($this,"home",$data);
     }
-
+/*
     public function insertar(){
       
         $data = $this->model->setUser("Carlos",18);
@@ -47,7 +47,7 @@ class Home extends Controllers{
         $data = $this->model->borradoLogico($id);
         print_r($data);
    }
-
+*/
 
 }
 
