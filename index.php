@@ -35,10 +35,7 @@
 
     }
     }
-
     // realizar la auto carga
-
     require_once("libs/core/Autoload.php");
     require_once("libs/core/Load.php");
-
 ?>

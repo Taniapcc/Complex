@@ -1,6 +1,5 @@
 <?php
 
-
 class Home extends Controllers{
     public function __construct()
     {
@@ -22,22 +21,37 @@ class Home extends Controllers{
     }
 
     public function insertar(){
-       
+      
         $data = $this->model->setUser("Carlos",18);
          print_r($data);
     }
 
-    /*
-    public function datos($params){
-        echo "Dato recibido ".$params;
+    public function verUsuario($id){
+         $data = $this->model->getUser($id);
+         print_r($data);
     }
 
-    public function carrito($params){
-        //enviar la variable
-        $carrito = $this->model->getCarrito($params);
-        echo $carrito;
+    public function actualizar(){
+       
+        $data = $this->model->updateUser(1,"Roberto",10);
+         print_r($data);
     }
-*/
+
+    public function verUsuarioAll(){
+       
+        $data = $this->model->getUserAll();
+         print_r($data);
+    }
+
+
+    public function deleteUser($id){
+         $data = $this->model->deleteUser($id);
+         print_r($data);
+    }
+
+
+
+
 }
 
 ?>

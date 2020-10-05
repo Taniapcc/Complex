@@ -9,10 +9,12 @@
             $controller ->{$method}($params);
         } else{
             require_once("controller/Error.php");
+            echo ("no existe metodo");
         }
 
     }else{
             require_once("controller/Error.php");
+            echo ("no archivo controller");
     }
 
 ?>

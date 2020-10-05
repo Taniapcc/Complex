@@ -2,9 +2,10 @@
  require_once "config/global.php";
 
  class Conexion  { 
+    private $conexion;
    
-   public static function conect(){
-      
+   public function __construct(){
+         
     $motor = DB_MOTORBASE;
     $host = DB_HOST;
     $dbname = DB_NAME;
@@ -18,14 +19,21 @@
       $conexion -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $conexion -> exec("SET CHARACTER SET $charset");
       $conexion = new PDO('mysql:host=localhost;dbname=dbtienda','root','');
-      
       //echo "conexion realizada";
     } catch (Exception $e) {
-      die("Error".$e->getMessage());
+      //die("Error".$e->getMessage());
      echo "Linea de error". $e->getLine();
     } 
-    return $conexion;
+
+    $this->conexion = $conexion;
+   // return $this->$conexion;
   }
+
+  public function conexion(){
+    return $this->conexion;
+  }
+
+
        
    }
 
