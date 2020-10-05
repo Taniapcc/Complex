@@ -3,9 +3,6 @@
     require_once('config/dirs.php');
     require_once('helpers/Helpers.php');
 
-
-
-
     $url = !empty($_GET['url']) ? $_GET['url']:'home/home' ;
     //convertir a array Abel os
     $arrurl = explode("/",$url);
@@ -37,6 +34,7 @@
     }
     }
     // realizar la auto carga
+   
     require_once("libs/core/Autoload.php");
     require_once("libs/core/Load.php");
 ?>

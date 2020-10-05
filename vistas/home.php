@@ -1,6 +1,7 @@
 <?php
     require ("layout/header.php");
     require ("layout/nav.php"); 
+    //echo dep($data);
 ?>
   <!-- Content Wrapper. Contains page content -->
           <!-- Main content -->
@@ -146,6 +147,8 @@
       </div>
       <!-- /.container-fluid -->
     </section>
+
+   
     <!-- /.content -->
 
 
@@ -163,6 +166,8 @@
   <!-- /.content-wrapper -->
        
 <?php
-    echo $base_url();
+     //echo base_url()."<br>";
+     //echo passGenerador();
+     echo formatMoney(23240);
     require ("layout/footer.php");
 ?>

@@ -3,8 +3,7 @@
 class Home extends Controllers{
     public function __construct()
     {
-        parent::__construct();
-    
+        parent::__construct();    
     }
     public function home(){
         //llamar al metodo de la clase View
@@ -30,26 +29,24 @@ class Home extends Controllers{
          $data = $this->model->getUser($id);
          print_r($data);
     }
-
     public function actualizar(){
-       
-        $data = $this->model->updateUser(1,"Roberto",10);
+         $data = $this->model->updateUser(1,"Roberto",10);
          print_r($data);
     }
-
+   
     public function verUsuarioAll(){
-       
-        $data = $this->model->getUserAll();
+         $data = $this->model->getUserAll();
          print_r($data);
     }
-
-
     public function deleteUser($id){
          $data = $this->model->deleteUser($id);
          print_r($data);
     }
 
-
+    public function borradoLogicoUser($id){
+        $data = $this->model->borradoLogico($id);
+        print_r($data);
+   }
 
 
 }
