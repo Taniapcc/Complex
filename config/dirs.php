@@ -5,6 +5,7 @@
     const VIEWS = "vistas/";
     //zona horaria
     date_default_timezone_set('America/Guayaquil');
+    
     //FORMATO DE NUMEROS
     const SPD = ".";
     const SPM = ",";
