@@ -19,5 +19,13 @@ class Productos extends Controllers
         
         $this->views->getViews($this, "productos", $data);
     }
+
+    public function verUsuarioAll(){
+        $data = $this->model->getUserAll();
+        print_r($data);
+   }
+
+
+
 }
 ?>

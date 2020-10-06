@@ -1,5 +1,5 @@
 <?php 
- require_once "config/global.php";
+ require_once "Config/config.php";
 
  class Conexion  { 
     private $conexion;

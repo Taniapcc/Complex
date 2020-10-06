@@ -1,10 +1,22 @@
 <?php
 
-    require_once('config/dirs.php');
-    require_once('helpers/Helpers.php');
+    require_once('Config/dirs.php');
+    require_once('Config/config.php');
+    require_once('Helpers/helpers.php');
 
-    $url = !empty($_GET['url']) ? $_GET['url']:'home/home' ;
-    //convertir a array Abel os
+    if (isset($_GET['url'])){
+       // eliminar caracteres al final
+        $url = rtrim($_GET['url'],"/") ;
+        $url = rtrim($_GET['url'],"\\") ;
+        //QUITAR CARACTERES NO PROPIOS URL
+        $url = filter_var($url,FILTER_SANITIZE_URL);
+    }
+    
+    //$url = !empty($_GET['url']) ? $_GET['url']:'home/home' ;
+
+    $url = !empty($url)?$url:'home/home' ;
+
+    //convertir a array 
     $arrurl = explode("/",$url);
     $controller = $arrurl[0];
     $method = $arrurl[0];
@@ -35,6 +47,6 @@
     }
     // realizar la auto carga
    
-    require_once("libs/core/Autoload.php");
-    require_once("libs/core/Load.php");
+    require_once(LIBS."/core/Autoload.php");
+    require_once(LIBS."/core/Load.php");
 ?>

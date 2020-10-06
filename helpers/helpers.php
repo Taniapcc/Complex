@@ -4,7 +4,7 @@
     }
 
     function media(){
-        return BASE_URL."Assets";
+        return BASE_URL."/Assets";
     }
 
     function dep($data){

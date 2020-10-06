@@ -1,7 +1,8 @@
 
 <?php
     require ("vistas/layout/headerHome.php");
-    require ("vistas/layout/navHome.php");       
+    require ("vistas/layout/navHome.php"); 
+    //echo dep($data);      
 ?>
 <section>
 
@@ -10,7 +11,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Usuarios</h3>
+                <h3 class="card-title">Productos</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">

@@ -1,8 +1,8 @@
 <?php
 
     spl_autoload_register (function($class){
-        if (file_exists("libs/".'core/'.$class.'.php')){
-            require_once("libs/".'core/'.$class.'.php');
+        if (file_exists(LIBS.'core/'.$class.'.php')){
+            require_once(LIBS.'core/'.$class.'.php');
         }
     });
 
