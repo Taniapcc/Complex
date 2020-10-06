@@ -25,12 +25,12 @@
                     aria-expanded="false" class="nav-link dropdown-toggle">Categorias</a>
                     <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                         <li><a href="#" class="dropdown-item">Leche </a></li>
-                        <li><a href="#" class="dropdown-item">Yogur</a></li>
+                        <li><a href="#" class="dropdown-item">Queso</a></li>
                         <li><a href="#" class="dropdown-item">Manjar</a></li>
-                        
-                        
+                        <li><a href="#" class="dropdown-item">Yogur</a></li>                        
                     </ul>
                 </li>
+                
                 <li class="nav-item">
                     <a href="vista/contacto.php" class="nav-link">Contacto</a>
                 </li>
