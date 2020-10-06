@@ -15,7 +15,7 @@
                 Anything you want
             </div>
             <!-- Default to the left -->
-            <strong>Copyright &copy; 2020-20 <a href="https://adminlte.io">Ecolac.com</a>.</strong> All rights reserved.
+            <strong>Copyright &copy; 2020-2020 <a href="https://adminlte.io">Ecolac.com</a>.</strong> All rights reserved.
         </footer>
     </div>
     <!-- ./wrapper -->
@@ -32,7 +32,7 @@
 <script src="public/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="public/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
     <!-- AdminLTE App -->
-    <script src="../public/dist/js/adminlte.min.js"></script>
+    <script src="public/dist/js/adminlte.min.js"></script>
 
     <script>
   $(function () {

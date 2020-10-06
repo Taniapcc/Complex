@@ -1,6 +1,6 @@
 <?php
-    require ("layout/header.php");
-    require ("layout/nav.php"); 
+    require ("layout/headerHome.php");
+    require ("layout/navHome.php"); 
     //echo dep($data);
 ?>
   <!-- Content Wrapper. Contains page content -->
@@ -59,98 +59,41 @@
 
 <!-- END ACCORDION & CAROUSEL-->
 
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Usuarios</h3>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body">
-                <table id="registros" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>  
-                    <th>Opciones</th>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-                    
-                   </tr>
-                  </thead>
-                  <tbody>
+<div class= "col-mde-12" >
 
-                  <?php
+<div class="container">
+ <div class="card-deck">
+  <div class="card">
+    <img src="public//dist/img/Card/card1.jpg" class="card-img-top" alt="Foto Leche">
+    <div class="card-body">
+      <h5 class="card-title">Leche</h5>
+      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="public//dist/img/Card/card2.jpg" class="card-img-top" alt="Foto Leche">
+    <div class="card-body">
+      <h5 class="card-title">Queso</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="public//dist/img/Card/card3.jpg" class="card-img-top" alt="Foto Manjar">
+    <div class="card-body">
+      <h5 class="card-title">Majar</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</section>
 
-                    foreach($matrizPersona as $registro){?>
-                          <tr>
-                            <!-- <td>
-                                <a href="editar-persona.php?id= <?php echo $registro["idusuario"]; ?>" class="btn bg-success btn-flat margin">
-                                <i class="fa fa-pencil-alt"></i>
-                                </a>
-                                <a href="#" data-id="<?php echo $registro["idusuario"]; ?>" data-tipo ="admin" class="btn bg-maroon  btn-flat margin borrar-registro" > 
-                                <i <?Php echo $registro["condicion"] ? 'class= "far fa-check" ': '"fa fa-close"'; ?>>
-                                </i>
-                                </a>
-                              </td>  -->
-
-                              <td>
-                                <?php 
-                                  echo '<button class="btn btn-warning" onclick="mostrar('.$registro["idusuario"].')"><i class="fas fa-pen"></i></button>';
-                                 if ($registro["condicion"]){
-                                     echo '<button class="btn btn-danger" onclick="mostrar('.$registro["idusuario"].')"><i class="fa fa-times"></i></button>';
-                                  }else {
-                                     echo ' <button class="btn btn-primary" onclick="activar('.$registro["idusuario"].')"><i class="fa fa-check"></i></button>';
-                                 }                                  
-                                  
-                                ?>
-                              </td>
-                             
-                              <td><?php echo $registro["login"];  ?></td>
-                              <td><?php echo $registro["nombre"];  ?>  </td> 
-                              <td><?php echo $registro["condicion"] ?'<span class="label bg-green">Activado</span>':
-                              '<span class="label bg-red">Desactivado</span>'
-                              ; ?></td>
-                             
-                          </tr>                          
-                        
-                  <?php   }
-                  ?>
-                  
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>Opciones</th>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-
-
-
-                  </tr>
-                  </tfoot>
-                </table>
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-
-            
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-    </section>
-
-   
     <!-- /.content -->
-
-
-      
-          </div>
+      </div>
           <!-- /.col-md-6 -->
           
           <!-- /.col-md-6 -->
@@ -166,5 +109,5 @@
      //echo base_url()."<br>";
      //echo passGenerador();
      //echo formatMoney(23240);
-    require ("layout/footer.php");
+    require ("layout/footerHome.php");
 ?>
