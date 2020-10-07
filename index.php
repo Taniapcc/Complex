@@ -1,5 +1,4 @@
 <?php
-
     require_once('Config/dirs.php');
     require_once('Config/config.php');
     require_once('Helpers/helpers.php');
