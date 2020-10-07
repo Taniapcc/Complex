@@ -1,5 +1,3 @@
-
-
 <?php
   header_admin($data);
 ?>
@@ -14,8 +12,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Blank Page</li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/dashboard">Home</a></li>
+              <li class="breadcrumb-item active"><?php echo $data["page_title"] ;?></li>
             </ol>
           </div>
         </div>
@@ -24,7 +22,6 @@
 
     <!-- Main content -->
     <section class="content">
-
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
@@ -47,12 +44,10 @@
         <!-- /.card-footer-->
       </div>
       <!-- /.card -->
-
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
   <?php
     footer_admin($data);
   ?>

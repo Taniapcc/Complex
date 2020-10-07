@@ -56,12 +56,10 @@
                   
                     <!-- Notifications Dropdown Menu -->
                     <li class="nav-item dropdown">
-
                         <a class="nav-link" data-toggle="dropdown" href="#">
                             <i class="fas fa-cart-plus fa-lg"></i>
                             <span class="badge badge-warning navbar-badge">2</span>
                         </a>
-
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                             <span class="dropdown-header">2 Notifications</span>
                         </div>
@@ -76,8 +74,6 @@
         <!-- /.navbar -->
  <body class="hold-transition layout-top-nav">
 <div class="wrapper
-
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
             <!-- Content Header (Page header) -->
