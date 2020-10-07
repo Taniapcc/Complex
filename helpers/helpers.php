@@ -1,29 +1,30 @@
 <?php
+    /** cargar directorio origen */
     function base_url(){
         return BASE_URL;
     }
-
+    /** Cargar los plugins y plantillas */
     function media(){
         return BASE_URL."/Assets";
     }
-
+    /* Para cargar cabeceras */
     function header_admin($data=""){
         $view_hearder = VIEWS."Templates/header_admin.php";
         require_once($view_hearder);
     }
-
+    /** Cargar footer */
     function footer_admin($data=""){
         $view_footer = VIEWS."Templates/footer_admin.php";
         require_once($view_footer);
     }
-
+    /** Realizar seguimiento */
     function dep($data){
       $format = print_r('<pre>');
       $format = print_r($data);
       $format = print_r('</pre>');
       return $format;
     }
-
+    /** Eliminar procesos de inyección */
     function strClean($strCadena){
         $string = preg_replace(['/\s+','/^\s|\s$/'],[' ',''],$strCadena );
         $string = trim($string);
@@ -58,10 +59,9 @@
 
     }
 
-
+    /** Generador de password automático */
     function passGenerador($Length = 10)
     {
-      
         $longitudPass = $Length;
         $cadena = "ABCDEFGHIJKLMNOPQRSTUVXYXZabcdefghijklmnopqrstuvxyz1234567890.#%&!$?";
         $longitudCadena = strlen($cadena);
@@ -73,7 +73,7 @@
 
         return $pass;
     }
-
+    /** token para usar en las claves */
     function token (){
         $r1  = bin2hex(random_bytes(10));
         $r2  = bin2hex(random_bytes(10));
@@ -82,12 +82,10 @@
         $token = $r1.'-'.$r2.'-'.$r3.'-'.$r4;
         return $token;
     }
-
+    /** Dar formato a los valores númericos */
     function formatMoney($cantidad){
         $cantidad = SMONEY.number_format($cantidad,2,SPD,SPM);
-
         return $cantidad;
-
     }
 
 

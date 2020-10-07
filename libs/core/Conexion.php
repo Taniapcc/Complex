@@ -24,19 +24,13 @@
       //die("Error".$e->getMessage());
      echo "Linea de error". $e->getLine();
     } 
-
     $this->conexion = $conexion;
    // return $this->$conexion;
   }
-
   public function conexion(){
     return $this->conexion;
   }
-
-
        
    }
-
-   
 
 ?>

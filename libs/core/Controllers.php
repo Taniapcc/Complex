@@ -1,5 +1,6 @@
 <?php
     class Controllers {
+        /** Cargar vistas */
 
         public function __construct()
         {
@@ -7,6 +8,7 @@
             $this->loadModel() ;
         }
 
+        /** Cargar los modelos */
         public function loadModel()
         {
             $model = get_class($this)."Model";
@@ -17,9 +19,6 @@
             }
         }
 
-
     }
-        
-       
-
+ 
 ?>

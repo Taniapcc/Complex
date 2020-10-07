@@ -13,3 +13,6 @@ https://www.youtube.com/user/febel24/playlists
 
 //editor de photos
 https://www.fotor.com/
+
+
+https://www.youtube.com/watch?v=vn4wHWvYEdg&list=PL3b9xmg86NTIy18iJLav8oGyA3c__lw0S&index=14
