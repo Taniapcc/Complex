@@ -12,7 +12,7 @@
   <meta name ="theme-color" content = "#00000"> 
   <link rel="shortcut icon" href="<?php echo media();?>/img/favicon.ico"> 
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo media();?>/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="<?php echo media();?>/plugins/fontawesome-free/css/all.min.css"> 
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
@@ -24,7 +24,7 @@
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
 <div class="wrapper">
-<!--<?php require_once ("nav_admin.php");   ?>-->
+<?php require_once ("nav_admin.php");   ?>
 
 
 

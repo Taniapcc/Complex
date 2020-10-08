@@ -20,6 +20,8 @@
 <script src="<?php echo media(); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo media(); ?>/js/adminlte.min.js"></script>
+<!-- Fontawesome -->
+<!--<script src="<?php echo media(); ?>/js/fontawesome.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo media(); ?>/js/demo.js"></script>
 <!-- Funciones Personalizadas -->

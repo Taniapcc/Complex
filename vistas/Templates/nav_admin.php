@@ -15,7 +15,7 @@
            <i class="fas fa-user"></i>                          
            <span class="hidden-xs"> Admin </span> 
         </a>
-<!--  Cambio -->         
+       
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
            <a href="<?php echo base_url(); ?>/Opciones" class="dropdown-item">
             <i class="fas fa-cog mr-2"></i> Settings            
