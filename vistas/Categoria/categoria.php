@@ -9,7 +9,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-          <h1><i class = "fas fa-user-tag" > </i><?php echo $data["page_title"] ;?>
+          <h1><i class = "fas fa-cog" > </i><?php echo $data["page_title"] ;?>
              <button type = "button" class="btn bg-gradient-primary" name = "btnAgregar" id="btnAgregar" onclick="openModal();" ><i class="fa fa-plus-circle"></i> Agregar</button>  
         </h1>
          </div>

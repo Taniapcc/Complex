@@ -17,13 +17,19 @@
         $view_footer = VIEWS."Templates/footer_admin.php";
         require_once($view_footer);
     }
+    /** LLamar a Modales Con Parámetros */
+    function getModal(string $nameModal,$data){
+        $view_modal = VIEWS."Templates/Modals/{$nameModal}.php";
+        require_once($view_modal);
+    }
     /** Realizar seguimiento */
     function dep($data){
-      $format = print_r('<pre>');
-      $format = print_r($data);
-      $format = print_r('</pre>');
-      return $format;
-    }
+        $format = print_r('<pre>');
+        $format = print_r($data);
+        $format = print_r('</pre>');
+        return $format;
+      }
+
     /** Eliminar procesos de inyección */
     function strClean($strCadena){
         $string = preg_replace(['/\s+','/^\s|\s$/'],[' ',''],$strCadena );

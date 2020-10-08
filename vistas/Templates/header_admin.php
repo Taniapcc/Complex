@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="<?php echo media();?>/plugins/fontawesome-free/css/all.min.css"> 
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="public/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="public/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href= "<?php echo media();?>/css/adminlte.min.css">
   <link rel="stylesheet" href= "<?php echo media();?>/css/style.css">
