@@ -27,31 +27,52 @@
     <section class="content">
       <!-- Default box -->
       <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Title</h3>
-         </div>
+        
         <div class="card-body">
           Roles de usuario !
+          <!-- Inicio Tabla -->
+          <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+             
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="registros" class="table table-bordered table-hover">
+                  <thead>
+                  <tr>  
+                    <th>Opciones</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>                    
+                   </tr>
+                  </thead>
+                  <tbody>
 
-          <div class="panel-body table-responsive" id="listadoregistros">
-                        <table id="tbllistado" class="table table-striped table-bordered table-condensed table-hover">
-                          <thead>
-                            <th>Opciones</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Estado</th>
-                          </thead>
-                          <tbody>                            
-                          </tbody>
-                          <tfoot>
-                            <th>Opciones</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Estado</th>
-                          </tfoot>
-                        </table>
+                                  
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                  <th>Opciones</th>
+                    <th>Nombre</th>
+                    <th>Descripcion</th>
+                    <th>Estado</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /. Tabla card-body -->
+            </div>
+            <!-- /.card -->
+         
+            <!-- /.card -->
           </div>
-                    
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+          
+      <!-- Formulario --->           
           <div class="panel-body" style="height: 400px;" id="formularioregistros">
               <form name="formulario" data-toggle="validator" id="formulario" method="POST" onsubmit="return validateForm()">
                   <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

@@ -26,7 +26,7 @@
                    </tr>
                   </thead>
                   <tbody>
-
+<!--
                   <?php
 
                     foreach($matrizPersona as $registro){?>
@@ -63,7 +63,7 @@
                         
                   <?php   }
                   ?>
-                  
+ -->                 
                   </tbody>
                   <tfoot>
                   <tr>
@@ -78,7 +78,7 @@
                   </tfoot>
                 </table>
               </div>
-              <!-- /.card-body -->
+              <!-- /. Tabla card-body -->
             </div>
             <!-- /.card -->
 
@@ -88,11 +88,9 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-      </div>
-      <!-- /.container-fluid -->
-
-
-</section>
+</div>
+<!-- /.container-fluid -->
+    </section>
 
 
 <?php     
