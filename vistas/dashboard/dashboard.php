@@ -11,8 +11,8 @@
           <h1><i class = "fas fa-tachometer-alt" ></i><?php echo $data["page_title"] ;?></h1>
          </div>
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/dashboard">Home</a></li>
+            <ol class="breadcrumb float-sm-right">         
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/dashboard"><i class= "fa fa-home fa-lg"></i></a></li> 
               <li class="breadcrumb-item active"><?php echo $data["page_title"] ;?></li>
             </ol>
           </div>
@@ -35,7 +35,7 @@
           </div>
         </div>
         <div class="card-body">
-          Start creating your amazing application!
+          Empieza a crear tu dashboard !
         </div>
         <!-- /.card-body -->
         <div class="card-footer">

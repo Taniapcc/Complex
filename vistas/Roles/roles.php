@@ -8,14 +8,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1><i class = "fas fa-user-tag" ></i><?php echo  $data["page_title"] ;?></h1>
-           
-          </div>
+          <h1><i class = "fas fa-user-tag" ></i><?php echo $data["page_title"] ;?></h1>
+         </div>
           <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-             <!-- <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Roles">Home</a></li> -->
-             <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Roles"><i class= "fa fa-home fa-lg"></i></a></li> 
-             <li class="breadcrumb-item active"><?php echo $data["page_title"] ;?></li>
+            <ol class="breadcrumb float-sm-right">         
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/roles"><i class= "fa fa-home fa-lg"></i></a></li> 
+              <li class="breadcrumb-item active"><?php echo $data["page_title"] ;?></li>
             </ol>
           </div>
         </div>
@@ -27,7 +25,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">Title</h4>
+          <h3 class="card-title">Title</h3>
 
           <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -37,7 +35,7 @@
           </div>
         </div>
         <div class="card-body">
-          Roles de usuario
+          Roles de usuario !
         </div>
         <!-- /.card-body -->
         <div class="card-footer">
