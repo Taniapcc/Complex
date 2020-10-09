@@ -16,7 +16,7 @@
         $this->sql = $sql;
         $smt = $this->db->prepare ($sql);
         $smt->execute();
-       // $data = $smt->fetch(PDO::FETCH_ASSOC);
+        //fetch(PDO::FETCH_ASSOC);
        $data = $smt->fetch(PDO::FETCH_OBJ);
         return $data;                    
     }
@@ -28,7 +28,7 @@
         $smt = $this->db->prepare ($sql);
         $smt->execute();
        // $data = $smt->fetchall(PDO::FETCH_ASSOC);
-        $data = $smt->fetchall(PDO::FETCH_OBJ);
+       $data = $smt->fetchall(PDO::FETCH_OBJ);
         
         return $data;                    
     }

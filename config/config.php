@@ -13,7 +13,7 @@
     const  DB_HOST = "localhost";
 
     //Nombre de la base de datos
-    const DB_NAME= "dbtienda";
+    const DB_NAME= "tiendaec";
 
     //Usuario de la base de datos
     const DB_USERNAME= "root";

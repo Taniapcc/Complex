@@ -14,6 +14,13 @@ class Roles extends Controllers{
         //llamado a la vista      
         $this->views->getViews($this,"roles",$data);
     }
+    // Obtener todos los roles
+    public function getRolesAll(){
+        $arrData = $this->model->selectRolesAll();
+        dep($arrData);
+    }
+
+   
 
 
 }
