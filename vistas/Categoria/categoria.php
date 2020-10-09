@@ -17,8 +17,7 @@
               data-toggle="modal" data-target="#modal-lg" >
               <i class="fa fa-plus-circle"></i> 
               Agregar
-            </button> 
-            
+            </button>             
          </h1>
          </div>
           <div class="col-sm-6">
@@ -36,7 +35,8 @@
       <!-- Default box -->
       <div class="card">
       <div class="card-header">
-          <h3 class="card-title">Title</h3>
+          <h3 class="card-title">Title </h3>
+          
          <div class="card-tools">
             <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <i class="fas fa-minus"></i></button>
@@ -53,7 +53,9 @@
             <div class="card">
               <!-- /.card-header -->
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features</h3>
+                <h3 class="card-title">DataTable with default features
+
+                </h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -493,28 +495,14 @@
          
               <!-- /. Tabla card-body -->
             </div>
-            <!-- /.card -->
-         
+            <!-- /.card -->         
             <!-- /.card -->
           </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
     </div>
-
-
-
-
-
-    
-
-
-
-
-    
-
-    <!--Modals -->
-
+     <!--Modals -->
     <div class="modal fade" id="modal-lg">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
@@ -538,7 +526,7 @@
                 </div>
                 <!-- select -->
                 <div class="form-group">
-                  <label for= "listEstado">Estado</label>
+                 <label for= "listEstado">Estado</label>
                   <select class="form-control" id="listEstado" name="listEstado" required ="">
                     <option value="1">Activo</option>
                     <option value="2">Inactivo</option>
@@ -550,16 +538,7 @@
                   <button type="Submit" class="btn btn-primary">Guardar</button>
                 </div>
               </form>  
-
-
-
-
-
-            </div>
-            <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            </div>            
           </div>
           <!-- /.modal-content -->
         </div>
