@@ -19,6 +19,14 @@ class Home extends Controllers{
         //llamar a la vista que queremos ver        
         $this->views->getViews($this,"home",$data);
     }
+    public function Listar(){
+        $data = $this->model->listar();
+        print_r($data);
+   }
+
+
+
+
 }
 
 ?>

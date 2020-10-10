@@ -512,7 +512,7 @@
       </div>
       <!-- /.card -->
     </section>
-    <!-- /.content -->
+   <!-- /.content -->
   </div>
   <?php
     footer_admin($data);

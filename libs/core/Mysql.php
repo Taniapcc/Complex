@@ -23,13 +23,11 @@
 
     //Obtener todos los registros
     public function select_all (string $sql){
-
         $this->sql = $sql;
         $smt = $this->db->prepare ($sql);
         $smt->execute();
        // $data = $smt->fetchall(PDO::FETCH_ASSOC);
        $data = $smt->fetchall(PDO::FETCH_OBJ);
-        
         return $data;                    
     }
 
@@ -69,8 +67,16 @@
            return $id;	
         }
         
-        //Delete
-        public function deletes (string $sql){
+        //Eliminar registro
+        public function eliminar (string $sql){
+            $this->sql = $sql;
+            $smt = $this->db->prepare ($sql);
+            $resSmt = $smt->execute();                     
+         return $resSmt;                    
+        }
+
+        //activar registro
+        public function cambiarEstado (string $sql){
             $this->sql = $sql;
             $smt = $this->db->prepare ($sql);
             $resSmt = $smt->execute();                     

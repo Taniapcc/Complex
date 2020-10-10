@@ -1,7 +1,11 @@
 $(function() {
-    $("#example1").DataTable({
+    $("#exampla1").DataTable({
+        "pageLength": 5,
+        "lengthMenu": [5, 10, 25, 75, 100],
         "responsive": true,
-        "autoWidth": false,
+        "autoWidth": false
+
+
     });
 
     $('#example2').DataTable({

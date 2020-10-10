@@ -1,5 +1,5 @@
 <?php
-    class homeModel extends Mysql
+    class categoriaModel extends Mysql
     {
         public function __construct()
         {
@@ -10,7 +10,7 @@
      
      public function insertar($nombre, $descripcion)
      {
-        $sql = "INSERT INTO usuarios(nombre,edad) VALUES (?,?)";
+        $sql = "INSERT INTO categoria(nombre,edad) VALUES (?,?)";
         $arrData = array($nombre,$descripcion);
         $request = $this->insert($sql, $arrData);
         return $request;		

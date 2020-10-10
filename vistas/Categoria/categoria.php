@@ -1,28 +1,18 @@
 <?php
   header_admin($data);
-  getModal('modalRoles',$data);
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- card Inicial -->
-  <div class="card">
-     <!-- Content Header (Page header) -->
+    <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-          <h1><i class = "fas fa-cog" > </i><?php echo $data["page_title"] ;?>
-             <button type = "button" class="btn bg-gradient-primary" 
-              name = "btnAgregar" id="btnAgregar" 
-              data-toggle="modal" data-target="#modal-lg" >
-              <i class="fa fa-plus-circle"></i> 
-              Agregar
-            </button>             
-         </h1>
+          <h1><i class = "fas fa-cogs" ></i><?php echo $data["page_title"] ;?></h1>
          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">         
-              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Categoria"><i class= "fa fa-home fa-lg"></i></a></li> 
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/categoria"><i class= "fa fa-home fa-lg"></i></a></li> 
               <li class="breadcrumb-item active"><?php echo $data["page_title"] ;?></li>
             </ol>
           </div>
@@ -32,30 +22,12 @@
 
     <!-- Main content -->
     <section class="content">
-      <!-- Default box -->
-      <div class="card">
-      <div class="card-header">
-          <h3 class="card-title">Title </h3>
-          
-         <div class="card-tools">
-            <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <i class="fas fa-minus"></i></button>
-            <button type="button" class="btn btn-tool" data-card-widget="remove" data-toggle="tooltip" title="Remove">
-              <i class="fas fa-times"></i></button>
-          </div>
-        </div>        
-        <div class="card-body">
-       
-          <!-- Inicio Tabla -->
-          <div class="container-fluid">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <!-- /.card-header -->
               <div class="card-header">
-                <h3 class="card-title">DataTable with default features
-
-                </h3>
+                <h3 class="card-title">Listado de  Categorías</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -478,6 +450,7 @@
                     <td>U</td>
                   </tr>
                   </tbody>
+
                   <tfoot>
                   <tr>
                     <th>Rendering engine</th>
@@ -487,107 +460,23 @@
                     <th>CSS grade</th>
                   </tr>
                   </tfoot>
+
                 </table>
               </div>
               <!-- /.card-body -->
             </div>
-
-         
-              <!-- /. Tabla card-body -->
-            </div>
-            <!-- /.card -->         
             <!-- /.card -->
           </div>
           <!-- /.col -->
         </div>
         <!-- /.row -->
-    </div>
-     <!--Modals -->
-    <div class="modal fade" id="modal-lg">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Categoria</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-            <form role="form" id="formRol" name ="formRol">
-                <div class="card-body">
-                  <div class="form-group">
-                    <label for="inputNombre">Nombre</label>
-                    <input type="text" id="txtNombre" name ="txtNombre" class="form-control"  placeholder="Nombre del rol" required>
-                  </div> 
-                  <div class="form-group">
-                    <label for="textareaDescripcion">Descripción</label>
-                    <textarea class ="form-control" id="txtDescripcion" name ="txtDescripcion" rows="2" placeholder="Descripción del rol" required></textarea>                    
-                  </div>                   
-                </div>
-                <!-- select -->
-                <div class="form-group">
-                 <label for= "listEstado">Estado</label>
-                  <select class="form-control" id="listEstado" name="listEstado" required ="">
-                    <option value="1">Activo</option>
-                    <option value="2">Inactivo</option>
-                  </select>
-                </div>
-                <!-- /.card-body -->
-                <div class="card-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                  <button type="Submit" class="btn btn-primary">Guardar</button>
-                </div>
-              </form>  
-            </div>            
-          </div>
-          <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
       </div>
-
-
-    <!-- Fin Modal -->
-          
-      <!-- Formulario --->           
-          <div class="panel-body" style="height: 400px;" id="formularioregistros">
-              <form name="formulario" data-toggle="validator" id="formulario" method="POST" onsubmit="return validateForm()">
-                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                       <label>Nombre(*):</label>
-                              <input type="hidden" name="Tcidcategoria" id="idcategoria" >
-                              <input type="text" class="form-control" name="nombre" id="nombre" maxlength="50" 
-                              placeholder= "Nombre" pattern = "[A-Z ]+" 
-                              data-error = "Solo Mayúsculas"
-                              title="Nombre debe contener  Letras Mayúsculas. Ej. LECHE"
-                              required >
-                            <div id="e-nombre" class = "errores" > </div>
-                            </div>
-                          
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Descripción(*):</label>
-                            <input type="text" class="form-control" name="descripcion" id="descripcion" maxlength="256" placeholder="Descripción">
-                            <div id="e-descripcion" class = "errores" >  </div>
-                          </div>
-                          <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                            <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-                          </div>
-
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                              <ul class="error" id="error"></ul>
-                          </div>
-            </form>
-          </div> 
-        </div>
-        <!-- /.card-body -->
-        <div class="card-footer">
-          Footer
-        </div>
-        <!-- /.card-footer-->
-      </div>
-      <!-- /.card -->
+      <!-- /.container-fluid -->
     </section>
     <!-- /.content -->
-  </div>
-  <?php
+  
+</div>
+ <!-- /.content-wrapper -->
+<?php
     footer_admin($data);
-  ?>
+?>

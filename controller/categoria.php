@@ -15,6 +15,11 @@ class Categoria extends Controllers{
         $this->views->getViews($this,"categoria",$data);
     }
 
+    public function listar(){
+        $data = $this->model->listar();
+        print_r($data);
+   }
+
 
 }
 
