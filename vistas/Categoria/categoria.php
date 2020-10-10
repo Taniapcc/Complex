@@ -1,5 +1,6 @@
 <?php
   header_admin($data);
+  getModal('modalRoles',$data);
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -8,11 +9,22 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-          <h1><i class = "fas fa-cogs" ></i><?php echo $data["page_title"] ;?></h1>
+          <h1><i class = "fas fa-cogs" ></i><?php echo $data["page_title"] ;?>
+
+          <button type = "button" class="btn bg-gradient-primary" 
+              name = "btnAgregar" id="btnAgregar" 
+              data-toggle="modal" data-target="#modalFormRol" onclick = "openModal();" >
+              <i class="fa fa-plus-circle"></i> 
+              Agregar
+          </button>
+              
+        </h1>
+        
+
          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">         
-              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/categoria"><i class= "fa fa-home fa-lg"></i></a></li> 
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Dashboard"><i class= "fa fa-home fa-lg"></i></a></li> 
               <li class="breadcrumb-item active"><?php echo $data["page_title"] ;?></li>
             </ol>
           </div>

@@ -20,8 +20,9 @@
 <script src="<?php echo media(); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo media(); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo media(); ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
 <script src="<?php echo media(); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo media(); ?>/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?php echo media(); ?>/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
 <script src="<?php echo media(); ?>/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="<?php echo media(); ?>/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 <!-- AdminLTE App -->

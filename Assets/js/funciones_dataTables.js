@@ -1,9 +1,10 @@
 $(function() {
-    $("#exampla1").DataTable({
+    $("#example1").DataTable({
+        "responsive": true,
+        "autoWidth": false,
         "pageLength": 5,
         "lengthMenu": [5, 10, 25, 75, 100],
-        "responsive": true,
-        "autoWidth": false
+        buttons: ['excel', 'pdf', 'copy']
 
 
     });
