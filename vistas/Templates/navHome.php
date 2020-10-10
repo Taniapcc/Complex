@@ -18,7 +18,7 @@
                     <a href="<?php echo base_url(); ?>" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url(); ?>productos" class="nav-link">Productos</a>
+                    <a href="<?php echo base_url(); ?>/Productos" class="nav-link">Productos</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" 
@@ -32,7 +32,10 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a href="vista/contacto.php" class="nav-link">Contacto</a>
+                    <a href="<?php echo base_url(); ?>/Login" class="nav-link">Registrarse</a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url(); ?>/Login" class="nav-link">Ingresar</a>
                 </li>
                 
             </ul>

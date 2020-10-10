@@ -1,6 +1,6 @@
 <?php
-    require ("vistas/layout/headerHome.php");
-    require ("vistas/layout/navHome.php"); 
+    require ("Vistas/Templates/headerHome.php");
+    require ("Vistas/Templates/navHome.php"); 
     //echo dep($data);      
 ?>
 <section class="content">
@@ -11,9 +11,8 @@
           <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Página No Encontrada.</h3>
 
           <p>
-            No hemos encontrado la página que busca.
-            
-            Mientras tanto puede <a href="<?php echo base_url(); ?>"> regresar al inicio </a> o tratar de buscar.
+            No hemos encontrado la página que busca.            
+            Mientras tanto puede <a href="<?php echo base_url();?>/home"> regresar al inicio </a> o tratar de buscar.
           </p>
 
           <form class="search-form">

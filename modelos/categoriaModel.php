@@ -10,6 +10,7 @@
      
      public function insertar($nombre, $descripcion)
      {
+         
         $sql = "INSERT INTO categoria(nombre,edad) VALUES (?,?)";
         $arrData = array($nombre,$descripcion);
         $request = $this->insert($sql, $arrData);

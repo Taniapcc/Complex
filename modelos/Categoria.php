@@ -37,8 +37,6 @@ Class Categoria
 	{
 
 	}
-
-
 	 //Implementamos un método para insertar registros
 	 
 	 public function insertar ($nombre,$descripcion)

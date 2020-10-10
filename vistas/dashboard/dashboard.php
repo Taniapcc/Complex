@@ -34,7 +34,7 @@
               <i class="fas fa-times"></i></button>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body">       
           Empieza a crear tu dashboard !
         </div>
         <!-- /.card-body -->

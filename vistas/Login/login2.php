@@ -10,37 +10,13 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+                INGRESA LOGIN
               <div class="card-header">
                 <h3 class="card-title">Productos</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table id="registros" class="table table-bordered table-hover">
-                  <thead>
-                  <tr>  
-                    <th>Opciones</th>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-                    
-                   </tr>
-                  </thead>
-                  <tbody>
-
                
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                  <th>Opciones</th>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Estado</th>
-
-
-
-                  </tr>
-                  </tfoot>
-                </table>
               </div>
               <!-- /. Tabla card-body -->
             </div>

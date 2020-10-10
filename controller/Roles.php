@@ -15,10 +15,16 @@ class Roles extends Controllers{
         $this->views->getViews($this,"roles",$data);
     }
     // Obtener todos los roles
-    public function getRolesAll(){
-        $arrData = $this->model->selectRolesAll();
-        dep($arrData);
-    }
+    
+    public function listar(){
+        $data = $this->model->listar();
+        echo json_encode($data,JSON_UNESCAPED_UNICODE);
+        die();
+        //var_dump(json_encode($data,JSON_UNESCAPED_UNICODE));      
+
+        //dep($data);
+   }
+
 
    
 
