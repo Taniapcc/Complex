@@ -32,14 +32,13 @@
                 </li>
                 
                 <li class="nav-item">
-                    <a href="<?php echo base_url(); ?>/Login" class="nav-link">Registrarse</a>
+                    <a href="<?php echo base_url(); ?>/LoginRegistro" class="nav-link">Registrarse</a>
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url(); ?>/Login" class="nav-link">Ingresar</a>
                 </li>
                 
             </ul>
-
                     <!-- SEARCH FORM -->
                     <form class="form-inline ml-0 ml-md-3">
                         <div class="input-group input-group-sm">
