@@ -16,7 +16,7 @@
      
       <form action="../../index.html" method="post">
         <div class="input-group mb-3">          
-            <input type="text" id= "txtCeddula" name = "txtCedula" class="form-control" size = 10 placeholder="*Cédula" pattern="[0-9]{10} "   required>
+            <input type="text" id= "cedula" name = "cedula" class="form-control" size = 10 placeholder="*Cédula" pattern="[0-9]{10} "   required>
             <div class="input-group-append">
               <div class="input-group-text">
                 <span class="fas fa-address-card"></span>
@@ -24,7 +24,7 @@
             </div>
           </div>
         <div class="input-group mb-3">          
-          <input type="text" id="txtNombre" name = "txtNombre"  class="form-control" placeholder="*Apellidos Nombres" required >
+          <input type="text" id="nombre" name = "nombre" autocapitalize="words"  class="form-control" placeholder="*Apellidos Nombres" required >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="input-group mb-3">          
-          <input type="text" class="form-control" placeholder="*Ciudad">
+          <input type="text" class="form-control" id = "ciudad" name ="ciudad"  placeholder="*Ciudad">
           <div class="input-group-append">
             <div class="input-group-text">
             <span class="fas fa-city"></span>            
@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="input-group mb-3">          
-          <input type="text" id="txtDireccion" name = "txtDireccion" class="form-control" placeholder="*Dirección">
+          <input type="text" id="direccion" name = "direccion" class="form-control" placeholder="*Dirección">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-map-marked"></span>              
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="input-group mb-3">          
-          <input type="tel" class="form-control" placeholder="*Teléfono" required pattern="[0-9]{10} size=10" >
+          <input type="tel" class="form-control" id = "telefono" name = "telefono" placeholder="*Teléfono" required pattern="[0-9]{10} size=10" >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-phone"></span>              
@@ -56,7 +56,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" id="txtEmail" name = "txtEmail" class="form-control" placeholder="*Email" required >
+          <input type="email" id="correo" name = "correo" class="form-control" placeholder="*Email" required >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -64,7 +64,7 @@
           </div>
         </div>
         <div class="input-group mb-3">          
-          <input type="text" class="form-control" id= "txtCodigoPostal" name = "txtCodigoPosta" placeholder="*Código Postal" required>
+          <input type="text" class="form-control" id= "codigoPostal" name = "codigoPostal" placeholder="*Código Postal" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-map-marker"></span>             
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="input-group mb-3">          
-          <input type="text" class="form-control" placeholder="*Nombre Usuario" size = 40 required>
+          <input type="text" class="form-control" id = "usuario"  name = "usuario" placeholder="*Nombre Usuario" size = 40 required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -80,7 +80,7 @@
           </div>
         </div>     
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" size = 8 >
+          <input type="password" class="form-control" id="clave1" name = "clave1" placeholder="Password" size = 8 >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -88,7 +88,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Retype password" size = 8>
+          <input type="password" class="form-control" id= "clave2" name = "clave2" placeholder="Retype password" size = 8>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -112,7 +112,7 @@
         </div>
       </form>
 
-      <a href="login.html" class="text-center">I already have a membership</a>
+      <a href="<?php echo base_url(); ?>/Login" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->
