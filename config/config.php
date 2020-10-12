@@ -35,6 +35,6 @@
     //Definimos una constante como nombre del proyecto
     const PRO_NOMBRE ="ECVentas";
     //Sucursal
-    const  TIENDA=6;
+    const  TIENDA=1;
 
 ?>

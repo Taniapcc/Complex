@@ -8,7 +8,7 @@
 
          //Implementamos un método para insertar registros
      
-     public function insertar($nombre, $descripcion)
+     public function insertar2($nombre, $descripcion)
      {
         $sql = "INSERT INTO rol(nombre,edad) VALUES (?,?)";
         $arrData = array($nombre,$descripcion);

@@ -20,6 +20,8 @@
 <script src="<?php echo media(); ?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo media(); ?>/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="<?php echo media(); ?>/plugins/sweetalert2/sweetalert2.min.js"></script>
 <!-- DataTables -->
 <script src="<?php echo media(); ?>/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo media(); ?>/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>

@@ -15,7 +15,7 @@
               </div>
           <div class="card-body">
 
-          <form action="<?php echo base_url(); ?>/LoginRegistro/loginRegistro" method="post">
+          <form action="<?php echo base_url(); ?>/LoginRegistro/insertar" method="post">
             <div class="input-group mb-3">    
            
             <input class="form-control" type="text" id= "cedula" name = "cedula" 
@@ -32,7 +32,7 @@
         <div class="input-group mb-3">          
           <input type="text" id="nombre" name = "nombre" autocapitalize="words"
           value = '<?php isset($data['nombre'])? print $data['nombre']: "";?>'
-           class="form-control" placeholder="*Apellidos Nombres"  >
+           class="form-control" placeholder="*Apellidos Nombres" size = 60  >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="input-group mb-3">          
-          <input type="text" class="form-control" id = "ciudad" name ="ciudad"
+          <input type="text" class="form-control" id = "ciudad" name ="ciudad" size =100
           value = '<?php isset($data['ciudad'])? print $data['ciudad']: "";?>'
           placeholder="*Ciudad">
           <div class="input-group-append">
@@ -51,7 +51,7 @@
           </div>
         </div>
         <div class="input-group mb-3">          
-          <input type="text" id="direccion" name = "direccion" class="form-control" 
+          <input type="text" id="direccion" name = "direccion" class="form-control" size  =100
           value = '<?php isset($data['direccion'])? print $data['direccion']: "";?>'
           placeholder="*Dirección">
           <div class="input-group-append">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="email" id="email" name = "email" class="form-control" 
+          <input type="email" id="email" name = "email" class="form-control" size= 100
           value = '<?php isset($data['email'])? print $data['email']: "";?>'
           placeholder="*Email" required >
           <div class="input-group-append">
@@ -84,7 +84,7 @@
         <div class="input-group mb-3">          
           <input type="text" class="form-control" id= "codPostal" name = "codPostal"
           value = '<?php isset($data['codPostal'])? print $data['codPostal']: "";?>'
-           placeholder="*Código Postal" required pattern="[0-9]{6}" size= "9" required
+           placeholder="*Código Postal" required pattern="[0-9]{6}" size= "6" required
            title=  "Código Postal debe tener 6 dígitos"
            >
           <div class="input-group-append">
@@ -95,8 +95,8 @@
         </div>
 
         <div class="input-group mb-3">          
-          <input type="text" class="form-control" id = "usuario"  name = "usuario" 
-          value = '<?php isset($data['usuario'])? print $data['usuario']: "";?>'
+          <input type="text" class="form-control" id = "login"  name = "login" 
+          value = '<?php isset($data['login'])? print $data['login']: "";?>'
           placeholder="*Nombre Usuario" size = 40 required>
           <div class="input-group-append">
             <div class="input-group-text">
@@ -106,7 +106,8 @@
         </div>  
 
         <div class="input-group mb-3">
-          <input type="password" class="form-control" id="clave1" name = "clave1" placeholder=" *Password" size = 8 >
+          <input type="password" class="form-control" id="clave1" name = "clave1" 
+          placeholder=" *Password" size = 8 >
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -142,7 +143,7 @@
 
       </form>
 
-      <a href="<?php echo base_url(); ?>/Login" class="text-center">I already have a membership</a>
+      <a href="<?php echo base_url(); ?>/Login" class="text-center">Ya estoy registrado</a>
 
 
        </div>

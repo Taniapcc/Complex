@@ -11,24 +11,59 @@
          $this->db = $this->db->conexion();
     }
 
+    // Numero de filas
+    function queryRows($sql){
+        $this->sql = $sql;
+        $rows= exec($sql);         
+        return $rows;
+      }
+
+    //Query regresa un valor booleano
+  function queryNoSelect($sql){
+    $this->sql = $sql;
+    $r = $this->db->prepare ($sql);
+    $r->execute();    
+    return $r;
+  }
+
+   //Query regresa un solo registro en un arreglo asociado
+   function query($sql){
+    $this->sql = $sql;
+    $rows = exec($sql);
+    $smt = $this->db->prepare ($sql);
+    $smt->execute(); 
+   
+    $r = mysqli_query($this->conn, $sql);
+    if(mysqli_num_rows($r)>0){
+      $data = mysqli_fetch_assoc($r);
+    }
+    return $data;
+  }
+
+    
+
     //buscar
     public function select (string $sql){
         $this->sql = $sql;
-        $smt = $this->db->prepare ($sql);
-        $smt->execute();
-       // $data = $smt->fetch(PDO::FETCH_ASSOC);
-       $data = $smt->fetch(PDO::FETCH_OBJ);
+         /*contar registros */
+        $rows =exec($sql);                
+        if ($rows > 0) {
+            $smt = $this->db->prepare($sql);   
+            $smt->execute();          
+            $data = $smt->fetchall(PDO::FETCH_ASSOC);
+            //$data = $smt->fetch(PDO::FETCH_OBJ);
+        }
+        
         return $data;                    
     }
 
     //Obtener todos los registros
     public function select_all (string $sql){
-
         $this->sql = $sql;
         $smt = $this->db->prepare ($sql);
         $smt->execute();
-       // $data = $smt->fetchall(PDO::FETCH_ASSOC);
-        $data = $smt->fetchall(PDO::FETCH_OBJ);
+        $data = $smt->fetchall(PDO::FETCH_ASSOC);
+        //$data = $smt->fetchall(PDO::FETCH_OBJ);
         
         return $data;                    
     }
