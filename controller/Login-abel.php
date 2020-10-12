@@ -5,13 +5,15 @@ class Login extends Controllers{
     {
         parent::__construct();    
     }
-    
     public function login(){
         //llamar al metodo de la clase View
         $data['page_id'] = 3;
         $data['tag_page'] = "Login -  Tienda Virtual ";
         $data['page_title'] = "Login- <small> Tienda Virtual </small>";
-        $data['page_name'] = "Login";     
+        $data['page_name'] = "Login";
+
+
+      
         //llamado a la vista      
         $this->views->getViews($this,"login",$data);
     }
@@ -75,17 +77,13 @@ class Login extends Controllers{
           } else {
             $data["errores"] = $errores;
             $this->views->getViews($this,"login",$data);
-           }
+            var_dump($errores);
+            dep($errores);
+          }
         } else 
         
         {
-          $data['page_id'] = 3;
-        $data['tag_page'] = "Login -  Tienda Virtual ";
-        $data['page_title'] = "Login- <small> Tienda Virtual </small>";
-        $data['page_name'] = "Login";     
-        //llamado a la vista      
-        $this->views->getViews($this,"login",$data);
-    }
+        
 
          /* $datos = [
           "titulo" => "Registro usuario",

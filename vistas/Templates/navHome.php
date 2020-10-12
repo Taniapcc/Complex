@@ -100,3 +100,18 @@
                 <!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
+
+            <?php
+    if (isset($data['errores'])){
+        dep($data['nombre']);
+            
+         if ( count($data['errores'])>0){
+             print "<div class= 'alert alert-danger mt-3'>";
+             foreach ($data['errores'] as $key => $valor) {
+                 print "<strong> *.$valor. </strong> <br>";
+             }
+             print "</div>";
+         }
+        }//
+
+?>

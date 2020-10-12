@@ -60,9 +60,7 @@
          //Proteger la integridad de datos
 		$string = htmlspecialchars($string);
         $string = htmlentities(addslashes($string));
-        
         return $string;
-
     }
 
     /** Generador de password automático */
@@ -93,6 +91,56 @@
         $cantidad = SMONEY.number_format($cantidad,2,SPD,SPM);
         return $cantidad;
     }
+
+    /** Validar valores Requeridos */
+    function validaRequerido($nombreCampo,$data,&$aErrores){
+        if (trim($data) == '') {
+             $aresultado =  $nombreCampo." es Requerido ";
+             array_push($aErrores, $aresultado);
+            return $aErrores;
+        }
+     }
+     
+     /** Validar Solo Letras */
+     function  validaLetras($nombreCampo,$data,&$aErrores)
+     {
+        
+        $patron_texto = "/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙ\s]+$/";
+		if (preg_match($patron_texto, $data) == FALSE){
+            $aresultado =  $nombreCampo." solo puede ir letras y espacios ";
+            array_push($aErrores, $aresultado);
+			return $aErrores;
+		}
+     } 
+
+     function validaEntero($nombreCampo, $data, &$aErrores)
+     {
+         if (!filter_var($data, FILTER_VALIDATE_INT)) {
+             $aresultado =  $nombreCampo." solo puede ir números ";
+             array_push($aErrores, $aresultado);             
+         }
+         return $aErrores;
+     }
+
+     function validaEmail($nombreCampo, $data, &$aErrores)
+     {
+        if (!filter_var($data, FILTER_VALIDATE_EMAIL)){
+             $aresultado =  $nombreCampo." solo puede ir números ";
+             array_push($aErrores, $aresultado);             
+         }     
+         return $aErrores;
+     }
+
+    function validaFloat($nombreCampo, $data, &$aErrores){
+
+     if(!filter_var($data,FILTER_VALIDATE_FLOAT)){
+        $aresultado =  $nombreCampo." solo puede ir números ";
+        array_push($aErrores, $aresultado);   
+        }
+        return $aErrores;
+    }
+
+    
 
 
 

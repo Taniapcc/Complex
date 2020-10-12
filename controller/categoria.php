@@ -18,6 +18,7 @@ class Categoria extends Controllers{
     public function listar(){
         $data = $this->model->listar();
         print_r($data);
+        return $data;
    }
 
 

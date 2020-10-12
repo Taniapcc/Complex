@@ -7,7 +7,15 @@
         }
       
      //Implementamos un método para insertar registros
+
+
      
+     
+
+
+
+
+
      
     }
 ?>
