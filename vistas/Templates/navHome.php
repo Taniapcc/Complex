@@ -103,7 +103,7 @@
 
             <?php
     if (isset($data['errores'])){
-        dep($data['nombre']);
+       // dep($data['nombre']);
             
          if ( count($data['errores'])>0){
              print "<div class= 'alert alert-danger mt-3'>";

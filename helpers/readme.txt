@@ -70,3 +70,37 @@ https://www.youtube.com/watch?v=vn4wHWvYEdg&list=PL3b9xmg86NTIy18iJLav8oGyA3c__l
                         
                   <?php   }
                   ?>
+
+
+ >>>>> Estructura de tarjetas <<<<<<<<<<<<<
+
+ <!-- Main content -->
+<div class="content">
+      <div class="container">
+        <div class="row">         
+          <!-- /.col-md-6 -->
+          <div class="col-lg-6">
+                <div class="card">
+                
+                    <div class="card-header card bg-primary text-white">
+                          <h5 class="card-title m-0"><?php echo $data["page_title"] ; ?> </h5>
+                    </div>  <!-- card header -->
+                    <div class="card-body">
+                          print "<h2 class='text-center'>".$data["subtitulo"]."</h2>";
+                          print "<div class='alert ".$data["color"]." mt-3'>";
+                          print $data["texto"];
+                          print "</div>";
+                          print "<a href='".BASE_URL.$data["url"]."' class='btn ".$data["colorBoton"]."'/>";
+                          print $datos["textoBoton"]."</a>";
+
+                          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div> <!-- card body -->
+                </div>  <!--card -->
+          </div>  <!-- /.col-md-6 -->
+        </div>  <!-- /.row -->
+        
+      </div><!-- /.container-fluid -->
+</div>   <!--content-->
+
+<!-- fin MAIN CONTENT -->                 

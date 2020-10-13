@@ -30,10 +30,20 @@
         return $format;
       }
 
+
+      function limpiarCadena($data) {
+
+		$data = trim($data);
+		$data = stripslashes($data);
+		$data = htmlspecialchars($data);
+		$data = htmlentities(addslashes($data));
+		return $data;
+     }
+
     /** Eliminar procesos de inyección */
     function strClean($strCadena){
-        $string = preg_replace(['/\s+','/^\s|\s$/'],[' ',''],$strCadena );
-        $string = trim($string);
+        //$string = preg_replace(['/\s+','/^\s|\s$/'],[' ',''],$strCadena );
+        $string = trim($strCadena);
         $string = str_replace("<script>","",$string);
         $string = str_replace("</script>","",$string);
         $string = str_replace("<script scr>","",$string);

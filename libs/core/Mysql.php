@@ -11,10 +11,31 @@
          $this->db = $this->db->conexion();
     }
 
+    // Insertar 
+    public function insert(string $sql, array $arrvalues){
+      /* Ejecutar una sentencia preparada proporcionando un array de valores de inserción */
+          $this->sql = $sql;
+
+          $this->arrvalues = $arrvalues;
+          $insert = $this->db ->prepare ($sql);
+          $resSmt =  $insert ->execute($arrvalues);
+          
+          if ($resSmt) {
+             $lastInsert = $this->db->lastInsertId();
+          }else{
+              $lastInsert = 0;
+          }    
+          $lastInsert = 1;
+
+       return  $lastInsert;                    
+      }
+
+
     // Numero de filas
     function queryRows($sql){
-        $this->sql = $sql;
-        $rows= exec($sql);         
+        $reg = $this->db->prepare($sql);
+        $reg->execute();
+        $rows = $reg->rowCount();               
         return $rows;
       }
 
@@ -46,6 +67,7 @@
     public function select (string $sql){
         $this->sql = $sql;
          /*contar registros */
+
         $rows =exec($sql);                
         if ($rows > 0) {
             $smt = $this->db->prepare($sql);   
@@ -68,23 +90,7 @@
         return $data;                    
     }
 
-    // Insertar 
-    public function insert(string $sql, array $arrvalues){
-        /* Ejecutar una sentencia preparada proporcionando un array de valores de inserción */
-            $this->sql = $sql;
-            $this->arrvalues = $arrvalues;
-            $insert = $this->db ->prepare ($sql);
-            $resSmt =  $insert ->execute($arrvalues);
-            
-            if ($resSmt) {
-               $lastInsert = $this->db->lastInsertId();
-            }else{
-                $lastInsert = 0;
-            }    
-            $lastInsert = 1;
-
-         return  $lastInsert;                    
-        }
+    
 
         //Update
         public function update (string $sql, array $arrvalues){
