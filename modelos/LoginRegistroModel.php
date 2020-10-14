@@ -6,7 +6,7 @@
             parent::__construct();
         }
 
-        public function insertar($data){
+        function insertar($data){
           
           $r = false;
           if ($this->validaCorreo($data["email"])) {
@@ -19,8 +19,9 @@
                 VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
                 $arrData = array($data["nombre"],
-                                  $tienda,
+                            $tienda,
                             $data["cedula"],
+  
                             $data["direccion"],
                             $data["telefono"],
                             $data["email"],
@@ -36,21 +37,39 @@
           return $r;
         }
       
-       public function validaCorreo($email){
+       function validaCorreo($email){
           $sql = "SELECT * FROM usuario WHERE email='".$email."'";
           $rows = $this->queryRows($sql);          
           return ($rows==0)?true:false;
         }
-        
-        //Implementar un método para listar los registros
-         public function listar()
-        {
-              $sql="SELECT * FROM usuario";
-              $request = $this->select_all($sql);
-              dep($sql);
-              return $request;					
-        }
+
+/*
+        function enviarCorreo($email){
+
+          /*
+          $data = $this->getUsuarioCorreo($email);
+          //
+          $id = $data["id"];
+          $nombre = $data["nombre"];
+          $msg = $nombre.", entra al  siguiente link para cambiar tu clave de acceso a la tienda ...<br>";
+          $msg.= "<a href='".RUTA."/login/cambiaclave/".$id."'>Cambia tu clave de acceso</a>";
       
+          $headers = "MIME-Version: 1.0\r\n"; 
+          $headers .= "Content-type:text/html; charset=UTF-8\r\n"; 
+          $headers .= "From: eCommerce\r\n"; 
+          $headers .= "Repaly-to: picapiedra@tiendavirtual.com\r\n";
+      
+          $asunto = "Cambiar clave de acceso";
+      
+          return @mail($email,$asunto, $msg, $headers);
+          */
+        }
+
+
+
+
+        
+            
   
-    }
+    
 ?>

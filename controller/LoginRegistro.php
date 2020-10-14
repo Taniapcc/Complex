@@ -8,7 +8,7 @@ class LoginRegistro extends Controllers{
 
     /** Aqui empieza los métodos */
   
-    public function loginRegistro(){
+    function loginRegistro(){
          //llamar al metodo de la clase View
         $data['page_id'] = 4;
         $data['tag_page'] = "Registro Login -  Tienda Virtual ";
@@ -17,15 +17,8 @@ class LoginRegistro extends Controllers{
         //llamado a la vista
         $this->views->getViews($this, "loginRegistro", $data);
     }
-
-    /* Listar registros */
-    public function listar(){
-        $data = $this->model->listar();
-        //echo json_encode($data,JSON_UNESCAPED_UNICODE);
-        die();
-       }
-
-    public function insertar (){       
+   
+     function insertar (){       
         //llamar al metodo de la clase View
 
         if ($_SERVER['REQUEST_METHOD']=="POST") {
@@ -101,7 +94,7 @@ class LoginRegistro extends Controllers{
                  * Insertar datos 
                  * */    
                 $r = $this -> model->insertar($data);    
-                
+            
                            
                  if($r){
                  /**  
@@ -153,27 +146,11 @@ class LoginRegistro extends Controllers{
             $data['page_name'] = "Registrar Cuenta";
             //llamado a la vista            
             $this->views->getViews($this, "loginRegistro", $data);
-        }
-       
+        }   
                
     }
-
-
-   
-
-
-
     
-    function olvido(){
-        print "Hola desde el olvido";
-      }
-
-
-     
-
-     
-
-
+  
 }
 
 ?>

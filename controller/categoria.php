@@ -21,6 +21,12 @@ class Categoria extends Controllers{
         return $data;
    }
 
+   public function mostrar($id){
+    $data = $this->model->mostrar();
+    print_r($data);
+    return $data;
+}
+
 
 }
 

@@ -15,12 +15,7 @@ class Login extends Controllers{
         //llamado a la vista      
         $this->views->getViews($this,"login",$data);
     }
-/*
-    function olvido(){
-        print "Hola desde el olvido";
-      }
-*/
-   
+
      function registro(){
 
         $errores = array();
@@ -95,6 +90,7 @@ class Login extends Controllers{
           $this->views("loginRegistroVista",$datos);*/
         } 
       }
+
 
    
 

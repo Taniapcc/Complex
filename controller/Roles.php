@@ -1,5 +1,4 @@
 <?php
-
 class Roles extends Controllers{
     public function __construct()
     {
@@ -24,6 +23,12 @@ class Roles extends Controllers{
 
         //dep($data);
    }
+
+   public function mostrar($id){
+     $data = $this->model->mostrar($id);
+    
+    print_r($data);
+}
 
 
    

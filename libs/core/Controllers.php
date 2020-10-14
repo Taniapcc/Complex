@@ -12,7 +12,8 @@
         public function loadModel()
         {
             $model = get_class($this)."Model";
-            $model =ucwords($model);
+            //$model = ucwords($model);
+            $model =$model;
             $routClass = "modelos/".$model.".php";
             if(file_exists($routClass)){
                 require_once($routClass);

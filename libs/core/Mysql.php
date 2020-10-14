@@ -30,7 +30,6 @@
        return  $lastInsert;                    
       }
 
-
     // Numero de filas
     function queryRows($sql){
         $reg = $this->db->prepare($sql);
@@ -48,34 +47,14 @@
   }
 
    //Query regresa un solo registro en un arreglo asociado
-   function query($sql){
-    $this->sql = $sql;
-    $rows = exec($sql);
-    $smt = $this->db->prepare ($sql);
-    $smt->execute(); 
    
-    $r = mysqli_query($this->conn, $sql);
-    if(mysqli_num_rows($r)>0){
-      $data = mysqli_fetch_assoc($r);
-    }
-    return $data;
-  }
-
-    
-
-    //buscar
     public function select (string $sql){
-        $this->sql = $sql;
+          $this->sql = $sql;
          /*contar registros */
-
-        $rows =exec($sql);                
-        if ($rows > 0) {
-            $smt = $this->db->prepare($sql);   
-            $smt->execute();          
-            $data = $smt->fetchall(PDO::FETCH_ASSOC);
-            //$data = $smt->fetch(PDO::FETCH_OBJ);
-        }
-        
+         $smt = $this->db->prepare($sql);   
+         $smt->execute();          
+          $data = $smt->fetch(PDO::FETCH_ASSOC);
+            //$data = $smt->fetch(PDO::FETCH_OBJ);       
         return $data;                    
     }
 
@@ -85,8 +64,6 @@
         $smt = $this->db->prepare ($sql);
         $smt->execute();
         $data = $smt->fetchall(PDO::FETCH_ASSOC);
-        //$data = $smt->fetchall(PDO::FETCH_OBJ);
-        
         return $data;                    
     }
 
