@@ -13,7 +13,7 @@
              <div class="card-header card bg-primary text-white"  ><b class="card-title"><?php echo $data["page_title"] ; ?> </div>
 
             <div class="card-body login-card-body">
-               <form action="<?php echo base_url(); ?>/Login/"  method="POST" id="formLogin" name="formLogin">
+               <form action="<?php echo base_url(); ?>/LoginCambiar/cambiar"  method="POST" id="formLogin" name="formLogin">
       
       <div class="input-group mb-3">
         <input type="email" class="form-control" placeholder="Email">
@@ -51,7 +51,7 @@
     <!-- /.social-auth-links -->
 
     <p class="mb-1">
-  <a href="<?php echo base_url(); ?>/LoginOlvido">Recuperar password</a>
+  <a href="<?php echo base_url(); ?>/LoginCambiar">Recuperar password</a>
 </p>
 <p class="mb-0">
   <a href="<?php echo base_url(); ?>/LoginRegistro" class="text-center">Registrar cuenta de acceso</a>

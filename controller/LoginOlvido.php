@@ -53,8 +53,7 @@ class LoginOlvido extends Controllers{
             /**
              *    Valida Errores
              */
-            $errores = array(); 
-            $email= isset($_POST["email"])? strClean($_POST["email"]) :"";
+           $email= isset($_POST["email"])? strClean($_POST["email"]) :"";
            // rescatar información del formulaio
             $data['email'] = $email;
 
@@ -97,7 +96,9 @@ class LoginOlvido extends Controllers{
                         $data['classbtn'] = "btn btn-primary";
                         $data['name_boton'] = "Regresar";
                         $data['url'] = base_url()."/Login";
-                        $data['texto'] = "Se ha enviado un correo a <b>".$email."</b> para que puedas cambiar tu clave de acceso. Cualquier duda te puedes comunicar con nosotros. No olvides revisar tu bandeja de spam.";
+                        $data['texto'] = "Se ha enviado un correo a <b>".$email."</b> para que
+                         puedas cambiar tu clave de acceso. Cualquier duda te puedes comunicar con nosotros.
+                         No olvides revisar tu bandeja de spam.";
                        
                         $this->views->getViews($this, "mensaje", $data);
 

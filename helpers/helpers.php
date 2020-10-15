@@ -103,51 +103,47 @@
     }
 
     /** Validar valores Requeridos */
-    function validaRequerido($nombreCampo,$data,&$aErrores){
+    function validaRequerido($nombreCampo,$data){
+        $aresultado = "";
         if (trim($data) == '') {
-             $aresultado =  $nombreCampo." es Requerido ";
-             array_push($aErrores, $aresultado);
-            return $aErrores;
+             $aresultado =  $nombreCampo." es Requerido ";            
         }
+        return  $aresultado;
      }
      
      /** Validar Solo Letras */
-     function  validaLetras($nombreCampo,$data,&$aErrores)
-     {
-        
+     function  validaLetras($nombreCampo,$data)
+     {   $aresultado = "";     
         $patron_texto = "/^[a-zA-ZáéíóúÁÉÍÓÚäëïöüÄËÏÖÜàèìòùÀÈÌÒÙ\s]+$/";
 		if (preg_match($patron_texto, $data) == FALSE){
-            $aresultado =  $nombreCampo." solo puede ir letras y espacios ";
-            array_push($aErrores, $aresultado);
-			return $aErrores;
-		}
+            $aresultado =  $nombreCampo." solo puede ir letras y espacios ";            
+        }
+        return $aresultado;
      } 
 
-     function validaEntero($nombreCampo, $data, &$aErrores)
-     {
+     function validaEntero($nombreCampo, $data)
+     {   $aresultado = ""; 
          if (!filter_var($data, FILTER_VALIDATE_INT)) {
-             $aresultado =  $nombreCampo." solo puede ir números ";
-             array_push($aErrores, $aresultado);             
+             $aresultado =  $nombreCampo." solo puede ir números ";                         
          }
-         return $aErrores;
+         return $aresultado;
      }
 
-     function validaEmail($nombreCampo, $data, &$aErrores)
+     function validaEmail($nombreCampo, $data)
      {
+        $aresultado = "";  
         if (!filter_var($data, FILTER_VALIDATE_EMAIL)){
-             $aresultado =  $nombreCampo." solo puede ir números ";
-             array_push($aErrores, $aresultado);             
+             $aresultado =  $nombreCampo." solo puede ir números ";                      
          }     
-         return $aErrores;
+         return $aresultado;
      }
 
     function validaFloat($nombreCampo, $data, &$aErrores){
-
+     $aresultado = ""; 
      if(!filter_var($data,FILTER_VALIDATE_FLOAT)){
-        $aresultado =  $nombreCampo." solo puede ir números ";
-        array_push($aErrores, $aresultado);   
+        $aresultado =  $nombreCampo." solo puede ir números ";         
         }
-        return $aErrores;
+        return $aresultado;
     }
 
     
