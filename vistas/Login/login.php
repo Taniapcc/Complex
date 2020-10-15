@@ -51,7 +51,7 @@
     <!-- /.social-auth-links -->
 
     <p class="mb-1">
-  <a href="<?php echo base_url(); ?>/LoginCambiar">Recuperar password</a>
+  <a href="<?php echo base_url(); ?>/LoginOlvido">Recuperar password</a>
 </p>
 <p class="mb-0">
   <a href="<?php echo base_url(); ?>/LoginRegistro" class="text-center">Registrar cuenta de acceso</a>

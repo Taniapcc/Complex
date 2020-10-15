@@ -2,8 +2,8 @@
     require_once('Config/dirs.php');
     require_once('Config/config.php');
     require_once('Helpers/helpers.php');
-    //require_once('Libs/Validaciones.php');
-
+      
+    
     if (isset($_GET['url'])){
        // eliminar caracteres al final
         $url = rtrim($_GET['url'],"/") ;
