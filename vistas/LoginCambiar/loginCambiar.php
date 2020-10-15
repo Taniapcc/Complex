@@ -1,7 +1,7 @@
 <?php
     require ("Vistas/Templates/headerHome.php");
     require ("Vistas/Templates/navHome.php");  
-    dep($data) ;     
+   // dep($data) ;     
 ?>
 <!-- Main content -->
 <div class="content">
@@ -13,7 +13,7 @@
                 <div class="card-body login-card-body">
       <p class="login-box-msg">Está a solo a un paso de su nueva contraseña, recupere su contraseña ahora.</p>
 
-      <form action="<?php echo base_url();?>/LoginCambiar/cambiar" method="post">
+      <form action="<?php echo base_url();?>/LoginCambiar/cambiar/" method="post">
         <div class="input-group mb-3">
           <input type="password" id= "clave1" name ="clave1" class="form-control" placeholder="Ingrese Password">
           <div class="input-group-append">

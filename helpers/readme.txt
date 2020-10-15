@@ -109,3 +109,55 @@ https://www.youtube.com/watch?v=vn4wHWvYEdg&list=PL3b9xmg86NTIy18iJLav8oGyA3c__l
 <<<<<<<< HTML5  <<<<<<<<<<<<<<<<<<<<
 
  <a href="https://www.w3schools.com">Visit W3Schools</a> 
+
+
+ >>>>>> MySql<<<<<<<<<<<<<<<<<<<
+ <<<<MODELOS<<<<<<<<
+
+
+ function insertar($data){
+          
+          $r = false;
+          if ($this->validaCorreo($data["email"])) {
+                $clave = hash_hmac("sha512", $data["clave1"], "clavesecreta");      
+                $tienda =TIENDA;
+                $cargo = 'Cliente';
+                $tipoUsuario = 'Anonimo';
+
+                $sql= "INSERT INTO usuario (nombre,  idtienda , cedula , direccion , telefono,  email,  cargo,  login,  clave,  codPostal,  tipoUsuario , ciudad  ) 
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+
+                $arrData = array($data["nombre"],
+                            $tienda,
+                            $data["cedula"],
+  
+                            $data["direccion"],
+                            $data["telefono"],
+                            $data["email"],
+                            $cargo,
+                            $data["login"],
+                            $clave,
+                            $data["codPostal"],                            
+                            $tipoUsuario,
+                            $data["ciudad"]);
+                $r = $this->insert($sql, $arrData);     
+                        
+          } 
+          return $r;
+        }
+      
+
+
+      function validaCorreo($email){
+          $sql = "SELECT * FROM usuario WHERE email='".$email."'";
+          $rows = $this->queryRows($sql);          
+          return ($rows==0)?true:false;
+        }
+
+ 
+
+
+
+
+
+ 

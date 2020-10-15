@@ -19,7 +19,7 @@ class LoginOlvido extends Controllers{
 
     public function listar(){
         $data = $this->model->listar();
-        dep($data);
+       // dep($data);
       
     }
     
@@ -42,7 +42,7 @@ class LoginOlvido extends Controllers{
 
   public function enviarCorreo ($email){
     $data = $this->model->enviarCorreo($email);
-     dep($data);
+     //dep($data);
      return $data;
 }
 

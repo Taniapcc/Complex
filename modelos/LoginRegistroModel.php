@@ -43,33 +43,6 @@
           return ($rows==0)?true:false;
         }
 
-/*
-        function enviarCorreo($email){
-
-          /*
-          $data = $this->getUsuarioCorreo($email);
-          //
-          $id = $data["id"];
-          $nombre = $data["nombre"];
-          $msg = $nombre.", entra al  siguiente link para cambiar tu clave de acceso a la tienda ...<br>";
-          $msg.= "<a href='".RUTA."/login/cambiaclave/".$id."'>Cambia tu clave de acceso</a>";
-      
-          $headers = "MIME-Version: 1.0\r\n"; 
-          $headers .= "Content-type:text/html; charset=UTF-8\r\n"; 
-          $headers .= "From: eCommerce\r\n"; 
-          $headers .= "Repaly-to: picapiedra@tiendavirtual.com\r\n";
-      
-          $asunto = "Cambiar clave de acceso";
-      
-          return @mail($email,$asunto, $msg, $headers);
-          */
         }
-
-
-
-
-        
-            
-  
     
 ?>
