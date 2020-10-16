@@ -8,12 +8,12 @@
 
        public function listar()
        {
-        $sql="SELECT * FROM usuario";
+           $sql="SELECT * FROM usuario";
            $request = $this->select_all($sql);
            return $request;
        }
 
-       public function mostrar($id)
+        public function mostrar($id)
        {
            $sql="SELECT * FROM usuario where idusuario = '$id'";
            $request = $this->select($sql);
@@ -31,7 +31,9 @@
        {
            //Si no existe correo pongo verdadero //
            $sql = "SELECT * FROM usuario WHERE email= '$email'";
+           dep($sql);
            $rows = $this->queryRows($sql);
+          
            return $rows;
        }
 

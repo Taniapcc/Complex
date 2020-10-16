@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Controlodar que maneja la plantilla inicial del proyecto
+ */
 class Home extends Controllers{
     public function __construct()
     {
@@ -17,37 +19,13 @@ class Home extends Controllers{
         //llamar a la vista que queremos ver        
         $this->views->getViews($this,"home",$data);
     }
-    
-/* Ejemplo para pasar funciones
-    public function insertar(){
-      
-        $data = $this->model->setUser("Carlos",18);
-         print_r($data);
-    }
-
-    public function verUsuario($id){
-         $data = $this->model->getUser($id);
-         print_r($data);
-    }
-    public function actualizar(){
-         $data = $this->model->updateUser(1,"Roberto",10);
-         print_r($data);
-    }
-   
-    public function verUsuarioAll(){
-         $data = $this->model->getUserAll();
-         print_r($data);
-    }
-    public function deleteUser($id){
-         $data = $this->model->deleteUser($id);
-         print_r($data);
-    }
-
-    public function borradoLogicoUser($id){
-        $data = $this->model->borradoLogico($id);
+    public function listar(){
+        $data = $this->model->listar();
         print_r($data);
    }
-*/
+
+
+
 
 }
 

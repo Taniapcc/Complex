@@ -19,27 +19,31 @@
         return $rows;
       }
 
-      function actualizar($id,$clave){
-        $sql ="UPDATE usuario SET clave = '$clave' WHERE idusuario = '$id'";
-        $rows = $this-> queryNoSelect($sql);          
-        return $rows;
-      }
-
-
        function cambiarClave($id, $clave)
        {
-            $r= false;
-            $claveNueva = hash_hmac("sha512", $clave, "clavesecreta");
-            $r =$this->actualizar($claveNueva,$id);
+           $r= false;
 
-            return $r;
+           if ($this->validar($id) != 0) {
+               $claveNueva = hash_hmac("sha512", $clave, "clavesecreta");
+               $sql = "UPDATE  usuario
+             SET clave = '$claveNueva'
+             where idusuario = '$id'";
+               $resul =$this->queryNoSelect($sql);
+               $r = true;
+           }
+           return $r;
+       }
+            
+
+       
+
 
         }
         
 
 
         
-      }
+
 
 
 

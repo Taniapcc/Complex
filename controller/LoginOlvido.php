@@ -17,15 +17,16 @@ class LoginOlvido extends Controllers{
         $this->views->getViews($this, "loginOlvido", $data);
     }
 
-    public function listar(){
+    function listar(){
         $data = $this->model->listar();
        // dep($data);
       
     }
     
-    public function mostrarOlvido($id){       
+    function mostrarOlvido($id){       
         $data = $this->model->mostrar($id);              
         //dep($data);
+        
    }
 
    public function infoCorreo($email){
@@ -36,7 +37,7 @@ class LoginOlvido extends Controllers{
 
    public function validaCorreo ($email){
        $data = $this->model->validaCorreo($email);
-      //  dep($data);
+      // dep($data);
         return $data;
   }
 

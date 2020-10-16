@@ -22,17 +22,10 @@ class LoginCambiar extends Controllers
 
     public function mostrarCambiar($id){       
         $data = $this->model->mostrar($id);              
-        
+        dep($data);
    }
-
-   public function validaId($id){       
-    $data = $this->model->validaId($id);   
-    }
-
-    public function cambiarClaveAccesso($id,$clave){       
-        $data = $this->model->cambiarClaveAccesso($id,$clave);   
-        }
     
+      
      public function cambiar($datos)
     {
         $errores = array();
@@ -61,17 +54,40 @@ class LoginCambiar extends Controllers
              if (count($errores)==0){
             
                 //dep($errores);
-                print ("Bien dddddd");
+               
+                $r = $this->model->cambiarClave($id,$clave1);
+                //dep($r);
 
+                if ($r) {
+                        
+                        $data['tag_page'] = "Cambio de Clave  ";
+                        $data['page_title'] = "Cambio de clave <small> Tienda Virtual </small>";
+                        $data['page_name'] = "Cambio de clave";
+                        $data['color'] = "bg-primary";
+                        $data['classbtn'] = "btn btn-primary";
+                        $data['name_boton'] = "Regresar";
+                        $data['url'] = base_url()."/Login";
+                        $data['texto'] = "Se ha cambiado su password exitosamente. Bienvenido Nuevamente";
+                       
+                        $this->views->getViews( $this, "mensaje", $data);
+                 }
 
-                if ($this->validaId($id,$clave1) != 0 ){
+                else{
+                    array_push($errores,"El correo electrónico no existe en la base de datos");
+                    $data['tag_page'] = "Error  ";
+                    $data['page_title'] = "Error Registro <small> Tienda Virtual </small>";
+                    $data['page_name'] = "Error";
+                    $data['color'] = "bg-danger";
+                    $data['classbtn'] = "btn btn-danger";
+                    $data['name_boton'] = "regresar";
+                    $data['url'] = base_url()."/LoginRegistro";
+                    $data['texto'] = "Existió un problema en su cambio Password. Prueba por favor más tarde o comuníquese a nuestro servicio de soporte técnico..";
+                    
+                    $this->views->getViews($this, "mensaje", $data);
+                        
 
-                    print "actualizacion exitosa";
-
-                }else{
-
-                    print "hubo un error";
                 }
+
 
 
 
@@ -79,6 +95,8 @@ class LoginCambiar extends Controllers
 
              }else{
                 /* Errorres*/
+
+                print "errores";
                 $data['tag_page'] = "Cambiar Password ";
                 $data['page_title'] = "Cambiar Password- <small> Tienda Virtual </small>";
                 $data['page_name'] = "Cambiar Password";
@@ -88,22 +106,19 @@ class LoginCambiar extends Controllers
                 $this->views->getViews($this, "loginCambiar", $data);
              }
 
-
         }else{
              //llamar al metodo de la clase View
              $data['tag_page'] = "Cambiar Password -  Tienda Virtual ";
              $data['page_title'] = "Cambiar Password - <small> Tienda Virtual </small>";
              $data['page_name'] = "Cambiar Password";
              $data['datos'] = $datos;
+            
              //llamado a la vista
              $this->views->getViews($this, "loginCambiar", $data);
  
         }//server  
-    
-    
+        
     }
-
-
 
 
 }
