@@ -29,19 +29,19 @@ class LoginOlvido extends Controllers{
         
    }
 
-   public function infoCorreo($email){
+   function infoCorreo($email){
         $data = $this->model->infoCorreo($email);
-      // dep($data);
+        dep($data);
        return $data;
    }
 
-   public function validaCorreo ($email){
+   function validaCorreo ($email){
        $data = $this->model->validaCorreo($email);
-      // dep($data);
+        //dep($data);
         return $data;
   }
 
-  public function enviarCorreo ($email){
+  function enviarCorreo ($email){
     $data = $this->model->enviarCorreo($email);
      //dep($data);
      return $data;

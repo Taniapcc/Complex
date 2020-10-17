@@ -17,8 +17,8 @@
                <form action="<?php echo base_url(); ?>/Login/verifica"  method="POST" id="formLogin" name="formLogin">
       
       <div class="input-group mb-3">
-        <input type="email" id = "email" name = "email" class="form-control" placeholder="Email"
-         value = <?php isset($data['email'])? print $data['email']: ""; ?>
+        <input type="email" id = "usuario" name = "usuario" class="form-control" placeholder="Email"
+         value = <?php isset($data['usuario'])? print $data['usuario']: ""; ?>
          >
         <div class="input-group-append">
           <div class="input-group-text">

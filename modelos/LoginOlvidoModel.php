@@ -6,28 +6,28 @@
            parent::__construct();
        }
 
-       public function listar()
+       function listar()
        {
            $sql="SELECT * FROM usuario";
            $request = $this->select_all($sql);
            return $request;
        }
 
-        public function mostrar($id)
+         function mostrar($id)
        {
            $sql="SELECT * FROM usuario where idusuario = '$id'";
            $request = $this->select($sql);
            return $request;
        }
 
-       public function infoCorreo($email)
+       function infoCorreo($email)
        {
            $sql="SELECT * FROM usuario where email = '$email'";
            $request = $this->select($sql);
            return $request;
        }
 
-       public function validaCorreo($email)
+       function validaCorreo($email)
        {
            //Si no existe correo pongo verdadero //
            $sql = "SELECT * FROM usuario WHERE email= '$email'";

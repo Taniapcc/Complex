@@ -12,13 +12,28 @@ class Tienda extends Controllers
 
     public function Tienda()
     {
-        //llamar al metodo de la clase View
-        $data['tag_page'] = "Bienvenido -  Tienda Virtual ";
-        $data['page_title'] = "Bienvenido - <small> Tienda Virtual </small>";
-        $data['page_name'] = "Bienvenido";
-        $data['datos'] = "";        
-        //llamado a la vista
-        $this->views->getViews($this,"tienda", $data);
+        // Iniciar sesion
+        $sesion = new Sesion();
+        //
+
+        if ($sesion->getLogin()) {
+            //llamar al metodo de la clase View
+            //dep($sesion->getUsuario);
+            $data['tag_page'] = "Bienvenido -  Tienda Virtual ";
+            $data['page_title'] = "Bienvenido - <small> Tienda Virtual </small>";
+            $data['page_name'] = "Bienvenido";
+            $data['datos'] = "";        
+            //llamado a la vista
+            $this->views->getViews($this,"tienda", $data);          
+        } else {
+            // regresamos al inicio 
+
+            header("location".base_url());
+
+
+        }
+
+        
     }
 
 
