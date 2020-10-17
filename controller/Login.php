@@ -8,7 +8,19 @@ class Login extends Controllers{
     
     public function login(){
         //llamar al metodo de la clase View
-        $data['page_id'] = 3;
+        if (isset($_COOKIE['datos'])){
+            $datos_array = explode("|",$_COOKIE["datos"]);
+            $email = $datos_array[0];
+            $password = $datos_array[1];
+            $data['email'] = $email;
+            $data['password'] = $password;
+            $data['recordar'] = "on";
+
+        } else {
+            $data = [];
+        }
+
+        
         $data['tag_page'] = "Login -  Tienda Virtual ";
         $data['page_title'] = "Login- <small> Tienda Virtual </small>";
         $data['page_name'] = "Login";     
@@ -23,15 +35,33 @@ class Login extends Controllers{
    }
 
 
-    function verifica(){
+  
+   
+   
+   
+   
+   function verifica(){
         $errores = array();
 
         if ($_SERVER['REQUEST_METHOD']=="POST") {
-            //valido
+            //valido variables del formulario
             $email= isset($_POST["email"])? strClean($_POST["email"]) :"";
             $password= isset($_POST["password"])? strClean($_POST["password"]) :"";
             $recordar = isset($_POST["recordar"])? strClean($_POST["recordar"]) :"";
-            // rescatar variables
+
+            // Recuerdame
+            $valorCookie = $email."|".$password;
+
+            if ($recordar== "on"){
+                $fecha = time() + (60*60*24*7); // semana
+            } else {
+                $fecha = time()-1;
+            }
+
+            setcookie("datos",$valorCookie,$fecha,base_url());
+
+            //////////
+            // Rescatar variables
             $data['email'] = $email;
             $data['password'] = $password;
             $data['recordar'] = $recordar;
@@ -49,29 +79,35 @@ class Login extends Controllers{
 
               if (count($errores)==0) {
 
-                $r = $this->model->ingresarLogin($email,$password);
-
                 
+
+                if($this->model->validaCorreo($email)){
                    
+                    print "Bienvenido";
+                    header("location:".base_url()."/Tienda");
 
-
-
+                }else{
+                    // Si el correo no existe despliega errro
+                    array_push($errores,"El email no existe");
+                    $data['tag_page'] = "Login  ";
+                    $data['page_title'] = "Login- <small> Tienda Virtual </small>";
+                    $data['page_name'] = "Loging Cuenta";
+                    $data['errores'] = $errores;
+                    $data['datos'] = $data;
+                    //llamado a la vista              
+                    $this->views->getViews($this,"login", $data);                    
+                } 
               }else{
-
-                 print "errores";
-                
+                // Si existe Errorees
+                                
                 $data['tag_page'] = "Login  ";
                  $data['page_title'] = "Login- <small> Tienda Virtual </small>";
                  $data['page_name'] = "Loging Cuenta";
                  $data['errores'] = $errores;
                  $data['datos'] = $data;
                  //llamado a la vista              
-                 $this->views->getViews("login", $data);
-                    
-                 
-
-                 
-
+                 $this->views->getViews($this,"login", $data);
+         
 
               }
 

@@ -11,7 +11,7 @@
      function validaCorreo($email){
         $sql = "SELECT * FROM usuario WHERE email= '$email'";          
         $rows = $this->queryRows($sql);          
-        return ($rows==0)?true:false;
+        return ($rows>0)?true:false;
       }
 
       public function listar(){
@@ -25,6 +25,12 @@
         dep($sql);
         $resul = $this->select($sql);
         return $resul; 
+   }
+
+   public funcTion ingresarLogin($email,$password){
+
+
+
    }
 
 

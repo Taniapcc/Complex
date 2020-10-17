@@ -1,6 +1,7 @@
 <?php
     require ("Vistas/Templates/headerHome.php");
-    require ("Vistas/Templates/navHome.php");        
+    require ("Vistas/Templates/navHome.php");  
+    //dep($data);      
 ?>
 
 <!-- Main content -->
@@ -16,7 +17,9 @@
                <form action="<?php echo base_url(); ?>/Login/verifica"  method="POST" id="formLogin" name="formLogin">
       
       <div class="input-group mb-3">
-        <input type="email" id = "email" name = "email" class="form-control" placeholder="Email">
+        <input type="email" id = "email" name = "email" class="form-control" placeholder="Email"
+         value = <?php isset($data['email'])? print $data['email']: ""; ?>
+         >
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-envelope"></span>
@@ -24,7 +27,9 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <input type="password" id="password" name ="password" class="form-control" placeholder="Password">
+        <input type="password" id="password" name ="password" class="form-control" placeholder="Password" 
+        value = <?php isset($data['password'])? print $data['password']: ""; ?>
+        >
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-lock"></span>
@@ -34,7 +39,18 @@
       <div class="row">
         <div class="col-8">
           <div class="icheck-primary">
-            <input type="checkbox" id="recordar" name ="recordar">
+            <input type="checkbox" id="recordar" name ="recordar"
+            
+             <?php  
+                if (isset($data['recordar'])){
+                    if ( $data['recordar'] == "on"){
+                        print "checked";
+                    }
+
+                }
+
+             ?>
+            >
             <label for="remember">
               Rercordar password
             </label>
@@ -42,7 +58,7 @@
         </div>
         <!-- /.col -->
         <div class="col-4">
-          <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <button type="submit" class="btn btn-primary btn-block">Iniciar sesión </button>
         </div>
         <!-- /.col -->
       </div>
