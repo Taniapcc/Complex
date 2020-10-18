@@ -10,11 +10,11 @@
         <div class="row">         
           <!-- /.col-md-6 -->
           <div class="col-lg-6">
-             <div class="card card-primary"  >
-             <div class="card-header "  ><b class="card-title"><?php echo $data["page_title"] ; ?> </div>
+             <div class="card">
+             <div class="card-header card bg-primary text-white"  ><b class="card-title"><?php echo $data["page_title"] ; ?> </div>
 
             <div class="card-body login-card-body">
-               <form action="<?php echo base_url(); ?>/Login/verifica"  method="POST" id="formLogin" name="formLogin">
+               <form action="<?php echo base_url(); ?>/Admon/verifica"  method="POST" id="formLogin" name="formLogin">
       
       <div class="input-group mb-3">
         <input type="email" id = "usuario" name = "usuario" class="form-control" placeholder="Email"
@@ -35,43 +35,18 @@
             <span class="fas fa-lock"></span>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-8">
-          <div class="icheck-primary">
-            <input type="checkbox" id="recordar" name ="recordar"
-            
-             <?php  
-                if (isset($data['recordar'])){
-                    if ( $data['recordar'] == "on"){
-                        print "checked";
-                    }
-
-                }
-
-             ?>
-            >
-            <label for="remember">
-              Rercordar password
-            </label>
-          </div>
-        </div>
         <!-- /.col -->
-        <div class="col-4">
+       
+
+      </div>
+      <div class="col-4">
           <button type="submit" class="btn btn-primary btn-block">Iniciar sesión </button>
         </div>
-        <!-- /.col -->
-      </div>
+    
     </form>
    
     <!-- /.social-auth-links -->
 
-    <p class="mb-1">
-  <a href="<?php echo base_url(); ?>/LoginOlvido">Recuperar password</a>
-</p>
-<p class="mb-0">
-  <a href="<?php echo base_url(); ?>/LoginRegistro" class="text-center">Registrar cuenta de acceso</a>
-                
                     
                   </div> <!-- card body -->
                 </div>  <!--card -->
@@ -82,6 +57,8 @@
 </div>   <!--content-->
 
 <!-- fin MAIN CONTENT -->     
+
+
 
 <?php     
     //require ("Vistas/Templates/footerHome.php");

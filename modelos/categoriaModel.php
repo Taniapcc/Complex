@@ -1,5 +1,5 @@
 <?php
-    class categoriaModel extends Mysql
+    class CategoriaModel extends Mysql
     {
         public function __construct()
         {

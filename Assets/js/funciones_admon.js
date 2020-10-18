@@ -20,12 +20,12 @@ function limpiar() {
 function mostrarform(flag) {
     limpiar();
     if (flag) {
-        $("#listadoRoles").hide();
+        $("#listadoAdmin").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
     } else {
-        $("#listadoRoles").show();
+        $("#listadoAdmin").show();
         $("#formularioregistros").hide();
         $("#btnagregar").show();
     }
@@ -40,7 +40,7 @@ function cancelarform() {
 //Función Listar
 function listar() {
 
-    $("#listadoRoles").DataTable({
+    $("#listadoAdmin").DataTable({
         "aprocessing": true,
         "aServerSide": true, //Paginación y filtrado realizados por el servidor
         "language": {
@@ -126,12 +126,8 @@ function activar(idrol) {
     })
 }
 
-
-
 function openModal() {
     $('modalFormRol').modal('show');
 }
-
-
 
 init();

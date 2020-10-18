@@ -17,6 +17,10 @@ https://www.fotor.com/
 
 https://www.youtube.com/watch?v=vn4wHWvYEdg&list=PL3b9xmg86NTIy18iJLav8oGyA3c__lw0S&index=14
 
+// Acceder a un campo del data generado
+
+ dep($data[0]['idrol']); exit;
+
 
 <<<< Estructura Tabla >>>>
 <!-- Main content -->

@@ -8,21 +8,21 @@
 
        function listar()
        {
-           $sql="SELECT * FROM usuario";
+           $sql = "SELECT * FROM usuario WHERE  tipousuario = 'Anonimo' AND condicion = 1";         
            $request = $this->select_all($sql);
            return $request;
        }
 
          function mostrar($id)
        {
-           $sql="SELECT * FROM usuario where idusuario = '$id'";
+           $sql="SELECT * FROM usuario where tipousuario = 'Anonimo' AND idusuario = '$id'";
            $request = $this->select($sql);
            return $request;
        }
 
        function infoCorreo($email)
        {
-           $sql="SELECT * FROM usuario where email = '$email'";
+           $sql="SELECT * FROM usuario where tipousuario = 'Anonimo' AND email = '$email'";
            $request = $this->select($sql);
            return $request;
        }
@@ -30,7 +30,7 @@
        function validaCorreo($email)
        {
            //Si no existe correo pongo verdadero //
-           $sql = "SELECT * FROM usuario WHERE email= '$email'";
+           $sql = "SELECT * FROM usuario WHERE tipousuario = 'Anonimo' AND email= '$email'";
            dep($sql);
            $rows = $this->queryRows($sql);
           

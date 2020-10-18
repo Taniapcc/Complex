@@ -6,14 +6,34 @@ class Dashboard extends Controllers{
         parent::__construct();    
     }
     public function dashboard(){
-        //llamar al metodo de la clase View
-        $data['page_id'] = 2;
-        $data['tag_page'] = "Dashboard -  Tienda Virtual ";
-        $data['page_title'] = "Dashboard - <small> Tienda Virtual </small>";
-        $data['page_name'] = "dashboard";
-        //llamado a la vista      
-        $this->views->getViews($this,"dashboard",$data);
+        
+       // Iniciar sesion
+       $sesion = new Sesion();
+       
+       //echo $_SESSION['usuario']['nombre'];
+
+
+       //             
+       if ($sesion->getLogin()) {     
+
+                //$data['page_id'] = 2;
+                $data['tag_page'] = "Dashboard -  Tienda Virtual ";
+                $data['page_title'] = "Dashboard - <small> Tienda Virtual </small>";
+                $data['page_name'] = "dashboard";
+                //llamado a la vista    
+                $this->views->getViews($this,"dashboard",$data);
+
+                // destruyo session
+               // session_destroy();
+            }
+
+       else
+       {
+                header("location:".base_url()."/Admon");
+       }         
     }
+
+    
 
 
 }

@@ -30,6 +30,22 @@
         return $format;
       }
 
+     function inactividadSesion(){
+        // Comprobar si $_SESSION["timeout"] está establecida
+        $r = false;
+        if(isset($_SESSION["timeout"])){
+        // Calcular el tiempo de vida de la sesión (TTL = Time To Live)
+            $sessionTTL = time() - $_SESSION["timeout"];
+            if($sessionTTL > INACTIVIDAD){
+                $r = true;
+               // session_destroy();
+                //header("Location: /logout.php");                
+            }
+         }
+      return $r;    
+       
+     }
+
 
       function limpiarCadena($data) {
 

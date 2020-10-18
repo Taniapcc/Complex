@@ -14,8 +14,9 @@ class Tienda extends Controllers
     {
         // Iniciar sesion
         $sesion = new Sesion();
-        //
 
+        //dep($_SESSION);
+        //             
         if ($sesion->getLogin()) {
             //llamar al metodo de la clase View
             //dep($sesion->getUsuario);
@@ -24,18 +25,14 @@ class Tienda extends Controllers
             $data['page_name'] = "Bienvenido";
             $data['datos'] = "";        
             //llamado a la vista
-            $this->views->getViews($this,"tienda", $data);          
+            $this->views->getViews($this,"tienda", $data);  
+            //Destruccion de Sesion
+            // session_destroy();
         } else {
-            // regresamos al inicio 
-
-            header("location".base_url());
-
-
-        }
-
-        
+            
+             header("location:".base_url()."/Login");
+            }        
     }
-
 
 
 }

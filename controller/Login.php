@@ -9,8 +9,7 @@ class Login extends Controllers{
         //llamar al metodo de la clase View
    
         //  $session = new Sesion();
-        //if ($session->getLogin()) {
-           
+                   
             if (isset($_COOKIE['datos'])){
                 $datos_array = explode("|",$_COOKIE["datos"]);
                 $usuario = $datos_array[0];
@@ -42,7 +41,7 @@ class Login extends Controllers{
 
    function infoCorreo($email){
     $data = $this->model->infoCorreo($email);
-    dep($data);
+    //dep($data);
    return $data;
 }
   
@@ -70,7 +69,7 @@ class Login extends Controllers{
             setcookie("datos",$valorCookie,$fecha,base_url());
 
             //////////
-            // Rescatar variables
+            // Rescatar variables en esta caso el usuario es el email
             $data['usuario'] = $usuario;
             $data['password'] = $password;
             $data['recordar'] = $recordar;
@@ -93,31 +92,24 @@ class Login extends Controllers{
 
                     // obtener toda la información del usuario
                     // en este caso es el correo de la vista login
-                          $data ['usuario'] = $usuario;
                           $data = $this->model->infoCorreo($usuario);
-
-                          dep($data)  ;             
+                          $data ['usuario'] = $usuario;
+                          $data ['timeout'] = time();
+                          
+                          //dep($data)  ;             
                           $sesion = new Sesion;
                           $sesion -> iniciarLogin($data);  
-                    //INGRESAR AL PORTAL de ventas de  la tienda
+                            //INGRESAR AL PORTAL de ventas de  la tienda
+                            //print "Bienvenido";
 
-                    
-                            print "Bienvenido";
-
-
-                    
-                    
-
-                            header("location:".base_url()."/Tienda");
-
-
+                         header("location:".base_url()."/Tienda");
 
                 }else{
                     // Si el correo no existe despliega errro
-                    array_push($errores,"El email no existe");
+                    array_push($errores,"El usuario no existe");
                     $data['tag_page'] = "Login  ";
                     $data['page_title'] = "Login- <small> Tienda Virtual </small>";
-                    $data['page_name'] = "Loging Cuenta";
+                    $data['page_name'] = "Login Cuenta";
                     $data['errores'] = $errores;
                     $data['datos'] = $data;
                     //llamado a la vista              
@@ -133,13 +125,12 @@ class Login extends Controllers{
                  $data['datos'] = $data;
                  //llamado a la vista              
                  $this->views->getViews($this,"login", $data);
-         
-
+     
               }
 
         }else {
 
-            echo "else server";
+            //echo "else server";
 
             $data['tag_page'] = "Login  ";
             $data['page_title'] = "Login Cuenta- <small> Tienda Virtual </small>";

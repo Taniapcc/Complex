@@ -27,6 +27,10 @@
                   </thead>
                   <tbody>
 
+                                
+
+
+                 
                
                   </tbody>
                   <tfoot>
@@ -59,5 +63,5 @@
 
 <?php     
     require ("Vistas/Templates/footerHome.php");
-?>   
-    
+
+?>

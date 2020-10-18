@@ -56,7 +56,7 @@
         </div>
         <div class="info">
              <a href="<?php echo base_url(); ?>/dashboard" class="nav-link">
-             <span class="brand-text font-weight-dark">Tania Cueva</span>
+             <span class="brand-text font-weight-dark"><?php echo ($_SESSION['usuario']['nombre']); ?> </span>
           </a>
         </div>
       </div>
@@ -105,7 +105,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>/Usuarios" class="nav-link">
+                <a href="<?php echo base_url(); ?>/UserSistema" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Usuarios</p>
                 </a>

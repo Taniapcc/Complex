@@ -39,4 +39,7 @@
     //Sucursal
     const  TIENDA=1;
 
+    //Inactividad de las sesione
+    const  INACTIVIDAD = 600;
+
 ?>

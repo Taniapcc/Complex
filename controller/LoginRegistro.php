@@ -10,7 +10,6 @@ class LoginRegistro extends Controllers{
   
     function loginRegistro(){
          //llamar al metodo de la clase View
-        $data['page_id'] = 4;
         $data['tag_page'] = "Registro Login -  Tienda Virtual ";
         $data['page_title'] = "Registro Login- <small> Tienda Virtual </small>";
         $data['page_name'] = "Registro Login";
@@ -107,7 +106,7 @@ class LoginRegistro extends Controllers{
                         $data['color'] = "bg-primary";
                         $data['classbtn'] = "btn btn-primary";
                         $data['name_boton'] = "iniciar";
-                        $data['url'] = base_url();
+                        $data['url'] = base_url()."/Login";
                         $data['texto'] = "En nombre de nuestra empresa te damos la más sincera bienvenida a nuestra tienda virtual
                         .<br><br>El objetivo principal de este canal de comunicación es la venta .<br><br>Desde 1999 nuestra empresa inicia sus actividades con idea sencilla la cual se ha desarrollado en el tiempo.<br><br>Sólo nos queda desearles un agradable experiencia en nuestra tienda.<br><br>Atentamente: Gerente General";
 

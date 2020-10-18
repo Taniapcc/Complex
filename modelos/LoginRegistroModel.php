@@ -38,7 +38,7 @@
         }
       
        function validaCorreo($email){
-          $sql = "SELECT * FROM usuario WHERE email='".$email."'";
+          $sql = "SELECT * FROM usuario WHERE tipousuario = 'Anonimo' AND email='".$email."'";
           $rows = $this->queryRows($sql);          
           return ($rows==0)?true:false;
         }

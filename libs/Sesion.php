@@ -2,17 +2,30 @@
     class Sesion{
         private $login = false;
         private $usuario;
-        
+        private $timeout;
+
         function __construct()
         {
           session_start();
-          if (isset($_SESSION["usuario"])) {
-            $this->usuario = $_SESSION["usuario"];
+          // Establecer tiempo de vida de la sesion
+          $inactividad  = 600;
+           
+         
+        // if (isset($_SESSION["usuario"])) {
+          if (isset($_SESSION["usuario"]["usuario"])) {
+            
+            $this->usuario = $_SESSION["usuario"]["usuario"];
             $this->login = true;
+            ///
+
+            
+            ////
           } else {
             unset($this->usuario);
             $this->login = false;
           }
+
+
         }
       
         public function iniciarLogin($usuario){

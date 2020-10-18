@@ -15,7 +15,9 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-
+<script>
+  const base_url = "<?= base_url(); ?>";
+</script>  
 
 <script src="<?php echo media(); ?>/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -38,8 +40,9 @@
 -->
 <!-- AdminLTE App -->
 <script src="<?php echo media(); ?>/js/adminlte.min.js"></script>
+
 <!-- Configurar DataTables -->
-<script src="<?php echo media(); ?>/js/funciones_dataTables.js"></script>
+<!--<script src="<?php echo media(); ?>/js/funciones_dataTables.js"></script> -->
 <!-- Fontawesome -->
 <!--<script src="<?php echo media(); ?>/js/fontawesome.js"></script> -->
 <!-- AdminLTE for demo purposes -->
@@ -47,5 +50,6 @@
 <!-- Funciones Personalizadas -->
 <script src="<?php echo media(); ?>/js/funciones_admin.js"></script>
 <script src="<?php echo media(); ?>/js/funciones_roles.js"></script>
+
 </body>
 </html>

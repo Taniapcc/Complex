@@ -1,5 +1,5 @@
 <?php
-    class rolesModel extends Mysql
+    class RolesModel extends Mysql
     {
         public function __construct()
         {
@@ -8,7 +8,7 @@
 
          //Implementamos un método para insertar registros
      
-     public function insertar2($nombre, $descripcion)
+      function insertar($nombre, $descripcion)
      {
         $sql = "INSERT INTO rol(nombre,edad) VALUES (?,?)";
         $arrData = array($nombre,$descripcion);
@@ -18,7 +18,7 @@
 
 	//Implementamos un método para actualizar
 
-	public function editar($idrol,$nombre,$descripcion)
+	function editar($idrol,$nombre,$descripcion)
 	{     
         $sql = "UPDATE  rol SET nombre = ?, descripcion = ? 
         WHERE idrol ='$idrol'";
@@ -27,7 +27,7 @@
         return $request;
        }
        
-       public function borrar (int $idrol)
+    function borrar (int $idrol)
        {
            $sql = "DELETE FROM  rol  
                    WHERE idrol ='$idrol'";
@@ -37,7 +37,7 @@
 
     //Implementamos un método para desactivar categorías
     	
-	public function desactivar($idrol)
+	function desactivar($idrol)
 	{   
 		$sql="UPDATE rol SET condicion='0' WHERE idrol='$idrol'";
 		$request = $this->cambiarEstado($sql);
@@ -46,7 +46,7 @@
 
 	//Implementamos un método para activar categorías
 	
-	public function activar($idrol)
+	function activar($idrol)
 	{
 		$sql="UPDATE rol SET condicion='1' WHERE idrol='$idrol'";
 		$request = $this->cambiarEstado($sql);
@@ -55,7 +55,7 @@
 	
 	//Implementar un método para mostrar los datos de un registro a modificar
 	
-	public function mostrar($idrol)
+	function mostrar($idrol)
 	{
 		$sql="SELECT * FROM rol WHERE idrol='$idrol'";
 		//$sql= "CALL spMostrarrol ('$idrol')";
@@ -64,7 +64,7 @@
 	}
 	
 	//Implementar un método para listar los registros
-	public function listar()
+	 function listar()
 	{
         $sql="SELECT * FROM rol";
         $request = $this->select_all($sql);
