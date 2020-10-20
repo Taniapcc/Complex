@@ -2,7 +2,7 @@ var tabla;
 
 //Función que se ejecuta al inicio
 function init() {
-    mostrarform(false);
+    //mostrarform(false);
     listar();
     $("#formulario").on("submit", function(e) {
         guardaryeditar(e);
@@ -20,12 +20,12 @@ function limpiar() {
 function mostrarform(flag) {
     limpiar();
     if (flag) {
-        $("#listadoAdmin").hide();
+        $("#listado").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
     } else {
-        $("#listadoAdmin").show();
+        $("#listado").show();
         $("#formularioregistros").hide();
         $("#btnagregar").show();
     }
@@ -40,7 +40,7 @@ function cancelarform() {
 //Función Listar
 function listar() {
 
-    $("#listadoAdmin").DataTable({
+    $("#listado").DataTable({
         "aprocessing": true,
         "aServerSide": true, //Paginación y filtrado realizados por el servidor
         "language": {
@@ -52,13 +52,15 @@ function listar() {
         "lengthMenu": [5, 10, 25, 75, 100],
         "buttons": ['excel', 'pdf', 'copy'],
         "ajax": {
-            "url": base_url + "/Roles/listar",
+            "url": base_url + "/UserSistema/listar",
             "dataSrc": ""
         },
         "columns": [
-            { "data": "idrol" },
+            { "data": "idusuario" },
+            { "data": "cedula" },
             { "data": "nombre" },
-            { "data": "descripcion" },
+            { "data": "direccion" },
+            { "data": "telefono" },
             { "data": "condicion" },
             { "data": "options" }
         ]
@@ -126,8 +128,12 @@ function activar(idrol) {
     })
 }
 
+
+
 function openModal() {
     $('modalFormRol').modal('show');
 }
+
+
 
 init();

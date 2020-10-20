@@ -11,6 +11,67 @@
          $this->db = $this->db->conexion();
     }
 
+    //Query regresa un valor booleano
+    function ejecutarConsulta($sql)
+    {
+       $this->sql = $sql;
+       $consulta = $this->db->prepare ($this->sql);
+       $consulta->execute(); 
+       return $consulta;       
+    }
+
+       
+     function queryNoSelect($sql){
+        $this->sql = $sql;
+        $consulta = $this->db->prepare ($this->sql);
+        $consulta->execute();    
+        return $consulta;
+      }
+
+      //Query regresa un solo registro en un arreglo asociado
+
+     function ejecutarConsultaSimpleFila($sql)
+      {
+         $this->sql = $sql; 
+         $consulta = $this->db->prepare ($this->sql);
+         $consulta->execute();
+         $row = $consulta->fetch(PDO::FETCH_ASSOC);                 
+         return $row;
+
+      }
+
+     function select (string $sql){
+         $this->sql = $sql;
+         $consulta= $this->db->prepare($sql);   
+         $consulta->execute();          
+         $row = $consulta->fetch(PDO::FETCH_ASSOC);
+                  
+        return $row;                    
+    }
+
+    function ejecutarConsultaMatriz($sql)
+      {
+         $this->sql = $sql; 
+         $consulta = $this->db->prepare ($this->sql);
+         $consulta->execute();
+         $row = $consulta->fetchall(PDO::FETCH_ASSOC);                 
+         return $row;
+
+      }
+
+
+    //Obtener todos los registros
+    function select_all (string $sql){
+      $this->sql = $sql;
+      $consulta = $this->db->prepare ($sql);
+      $consulta->execute();
+      $data = $consulta->fetchall(PDO::FETCH_ASSOC);
+      return $data;                    
+  }
+
+
+
+
     // Insertar 
     public function insert(string $sql, array $arrvalues){
       /* Ejecutar una sentencia preparada proporcionando un array de valores de inserción */
@@ -31,40 +92,14 @@
     // Numero de filas
     function queryRows($sql){
         $this->sql = $sql;
-        $reg = $this->db->prepare($this->sql);
-        $reg->execute();
-        $rows = $reg->rowCount();               
+        $consulta = $this->db->prepare($this->sql);
+        $consulta->execute();
+        $rows = $consulta->rowCount();               
         return $rows;
       }
 
-    //Query regresa un valor booleano
-  function queryNoSelect($sql){
-    $this->sql = $sql;
-    $r = $this->db->prepare ($this->sql);
-    $r->execute();    
-    return $r;
-  }
-
-   //Query regresa un solo registro en un arreglo asociado
-   
-    public function select (string $sql){
-          $this->sql = $sql;
-         /*contar registros */
-         $smt = $this->db->prepare($sql);   
-         $smt->execute();          
-          $data = $smt->fetch(PDO::FETCH_ASSOC);
-            //$data = $smt->fetch(PDO::FETCH_OBJ);       
-        return $data;                    
-    }
-
-    //Obtener todos los registros
-    public function select_all (string $sql){
-        $this->sql = $sql;
-        $smt = $this->db->prepare ($sql);
-        $smt->execute();
-        $data = $smt->fetchall(PDO::FETCH_ASSOC);
-        return $data;                    
-    }
+  
+    
     
      //Update
       public function update (string $sql, array $arrvalues){
@@ -87,8 +122,8 @@
         //Delete
         public function eliminar (string $sql){
             $this->sql = $sql;
-            $smt = $this->db->prepare ($this->sql);
-            $resSmt = $smt->execute();                     
+            $consulta = $this->db->prepare ($this->sql);
+            $resSmt = $consulta->execute();                     
          return $resSmt;                    
         }
 
@@ -96,8 +131,8 @@
         //Cambiar estado
         public function cambiarEstado (string $sql){
             $this->sql = $sql;
-            $smt = $this->db->prepare ($this->sql);
-            $resSmt = $smt->execute();                     
+            $consulta = $this->db->prepare ($this->sql);
+            $resSmt = $consulta->execute();                     
          return $resSmt;                    
         }
 

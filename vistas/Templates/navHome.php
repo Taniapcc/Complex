@@ -35,6 +35,9 @@
                     <a href="<?php echo base_url(); ?>/LoginRegistro" class="nav-link">Registrarse</a>
                 </li>
                 <li class="nav-item">
+                    <a href="<?php echo base_url(); ?>/LoginCambiar/cambiar/2" class="nav-link">CambiarPassword</a>
+                </li>
+                <li class="nav-item">
                     <a href="<?php echo base_url(); ?>/Login" class="nav-link">Ingresar</a>
                 </li>
                 

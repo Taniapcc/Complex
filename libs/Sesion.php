@@ -12,9 +12,9 @@
            
          
         // if (isset($_SESSION["usuario"])) {
-          if (isset($_SESSION["usuario"]["usuario"])) {
+          if (isset($_SESSION["usuario"])) {
             
-            $this->usuario = $_SESSION["usuario"]["usuario"];
+            $this->usuario = $_SESSION["usuario"];
             $this->login = true;
             ///
 

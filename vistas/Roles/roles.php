@@ -102,5 +102,8 @@
     footer_admin($data);
   ?>
   <!-- Para dataTables -->
+  <script src="<?php echo media(); ?>/js/funciones_roles.js"></script>
+
+
 
  

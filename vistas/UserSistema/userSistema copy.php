@@ -1,6 +1,5 @@
 <?php
 header_admin($data);
-
 //getModal('modalRoles', $data);
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -59,8 +58,6 @@ header_admin($data);
                           </tr>
                         </thead>
                         <tbody>
-
-
                         </tbody>
                         <tfoot>
                           <tr>
@@ -102,7 +99,8 @@ header_admin($data);
 
        <!--  formulario       -->
        
-     
+
+        
         
 
     </section>

@@ -11,22 +11,34 @@ class LoginCambiar extends Controllers
   
     public function loginCambiar()
     {
+         // Iniciar sesion
+       $sesion = new Sesion();
+
+       if ($sesion->getLogin()) {
+
         //llamar al metodo de la clase View
-        $data['tag_page'] = "Cambiar Password -  Tienda Virtual ";
-        $data['page_title'] = "Cambiar Password - <small> Tienda Virtual </small>";
-        $data['page_name'] = "Cambiar Password";
-        $data['datos'] = "";        
-        //llamado a la vista
-        $this->views->getViews($this, "loginCambiar", $data);
+           $data['tag_page'] = "Cambiar Password -  Tienda Virtual ";
+           $data['page_title'] = "Cambiar Password - <small> Tienda Virtual </small>";
+           $data['page_name'] = "Cambiar Password";
+           $data['datos'] = "";
+           //llamado a la vista
+           if (NO_DEPURADOR) {
+               $this->views->getViews($this, "loginCambiar", $data);
+           }
+       }
+       else{
+            header("location:".base_url()."/Login");
+      
+       }
     }
 
-    public function mostrarCambiar($id){       
+   function mostrarCambiar($id){       
         $data = $this->model->mostrar($id);              
-        dep($data);
+       // dep($data);
    }
     
       
-     public function cambiar($datos)
+     function cambiar($datos)
     {
         $errores = array();
 
@@ -87,11 +99,6 @@ class LoginCambiar extends Controllers
                         
 
                 }
-
-
-
-
-
 
              }else{
                 /* Errorres*/

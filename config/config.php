@@ -4,7 +4,7 @@
     //Zona horaria
     
     date_default_timezone_set('America/Guayaquil');
-    
+      
     
     //FORMATO DE NUMEROS
     const SPD = ".";
@@ -41,5 +41,8 @@
 
     //Inactividad de las sesione
     const  INACTIVIDAD = 600;
+
+    //Inactividad de las sesione
+    const NO_DEPURADOR  = false;
 
 ?>

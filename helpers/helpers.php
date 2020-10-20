@@ -3,6 +3,12 @@
     function base_url(){
         return BASE_URL;
     }
+
+    function llave(){
+        $llave = 'clavesecreta';
+        return $llave;
+    }
+
     /** Cargar los plugins y plantillas */
     function media(){
         return BASE_URL."/Assets";

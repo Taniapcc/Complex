@@ -56,8 +56,11 @@
         </div>
         <div class="info">
              <a href="<?php echo base_url(); ?>/dashboard" class="nav-link">
-             <span class="brand-text font-weight-dark"><?php echo ($_SESSION['usuario']['nombre']); ?> </span>
-          </a>
+             <!--<span class="brand-text font-weight-dark"><?php echo ($_SESSION['usuario']['nombre']); ?> </span>-->
+             
+             
+             <span class="brand-text font-weight-dark"> Tania Cueva </span>
+            </a>
         </div>
       </div>
       <!-- Sidebar Menu -->
@@ -108,6 +111,12 @@
                 <a href="<?php echo base_url(); ?>/UserSistema" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Usuarios</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="<?php echo base_url(); ?>/AdmonUsuario" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Usuarios Alta</p>
                 </a>
               </li>
               <li class="nav-item">

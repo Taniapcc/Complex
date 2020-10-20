@@ -159,9 +159,38 @@ https://www.youtube.com/watch?v=vn4wHWvYEdg&list=PL3b9xmg86NTIy18iJLav8oGyA3c__l
         }
 
  
+>>>>>>>>>>>>>>><<<Mensaje de Error >>>>>>>>>>>>>>>>>>>>>><
+
+$data['tag_page'] = "Registrar Cuenta  ";
+                 $data['page_title'] = "Registrar Cuenta- <small> Tienda Virtual </small>";
+                 $data['page_name'] = "Registrar Cuenta";
+                 $data['errores'] = $errores;
+                 //llamado a la vista              
+                 $this->views->getViews($this, "AdmonUsuario", $data);
+
+
+>>>>>>>>>>>>><<Fin mensaje de error <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
 
+
+
+Prueba
+
+            $camino = base_url()."\editar\metodo\".$data[$i]['idusuario'];
+
+
+            $data[$i]['options'] = '<div class = "text-center"> 
+                        <button  class="btn btn-outline-secondary btn-sm btnPermisoRol" rl="'.$data[$i]['idusuario'].'" title= "Permiso"><i class = "fas fa-key"></i> </button>
+                        <button  class="btn btn-outline-primary btn-sm btnPermisoRol" rl="'.$data[$i]['idusuario'].'" title= "Editar"><i class = "fas fa-pencil-alt"></i> </button>
+                        <button  class="btn btn-outline-danger btn-sm btnPermisoRol" rl="'.$data[$i]['idusuario'].'" title= "Eliminar"><i class = "fas fa-trash-alt"></i> </button>
+                    
+            </div>';        
+
+            }
+
+
+          //  <a href= base_url."\editar.php\". $data[$i]['idusuario']. class="btn btn-outline-secondary btn-sm btnPermisoRol" role="button" aria-disabled="true">Primary link</a>
 
 
  
