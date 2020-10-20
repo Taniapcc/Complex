@@ -70,7 +70,7 @@
 	public function listar()
 	{
         $sql="SELECT * FROM categoria";
-        $request = $this->select_all($sql);
+        $request = $this->ejecutarConsultaMatriz($sql);
         return $request;					
 	}
 
