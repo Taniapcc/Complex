@@ -1,9 +1,4 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["usuario"])) {
-  header("location:" . base_url() . "/Admon");
-}
 
 header_admin($data);
 ?>
@@ -45,7 +40,7 @@ header_admin($data);
             
             <div class="card-body">
             <!-- Llamando al controlador -->
-            <form action="<?php echo base_url(); ?>/Categoria/Cambio/" method="post">
+            <form name = "crear-categoria" id ="crear-categoria" action="<?php echo base_url(); ?>/Categoria/alta/" method="post">
 
            
                 <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -73,8 +68,8 @@ header_admin($data);
    
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Categoria" role="button">
-                          <i class="fa fa-arrow-circle-left"></i> Cancelar </a>    
+                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Dashboard" role="button">
+                          <i class="fa fa-arrow-circle-left"></i> Cancelar </a>                         
                  </div>
 
               

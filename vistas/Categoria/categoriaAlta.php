@@ -1,6 +1,13 @@
 <?php
+ session_start();
+
+ if (!isset($_SESSION["usuario"])) {
+    header("location:" . base_url() . "/Admon");
+ }
+
 
 header_admin($data);
+
 ?>
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
@@ -12,6 +19,7 @@ header_admin($data);
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1><i class="fas fa-users"></i><?php echo $data["page_title"]; ?></h1>
+          
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -68,7 +76,7 @@ header_admin($data);
    
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Dashboard" role="button">
+                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Categoria" role="button">
                           <i class="fa fa-arrow-circle-left"></i> Cancelar </a>                         
                  </div>
 

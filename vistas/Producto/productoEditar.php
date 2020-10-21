@@ -1,10 +1,4 @@
 <?php
-session_start();
-
-if (!isset($_SESSION["usuario"])) {
-  header("location:" . base_url() . "/Admon");
-}
-
 header_admin($data);
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -73,7 +67,7 @@ header_admin($data);
    
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Categoria" role="button">
+                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Dashboard" role="button">
                           <i class="fa fa-arrow-circle-left"></i> Cancelar </a>    
                  </div>
 

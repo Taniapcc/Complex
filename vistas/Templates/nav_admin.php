@@ -56,10 +56,10 @@
         </div>
         <div class="info">
              <a href="<?php echo base_url(); ?>/dashboard" class="nav-link">
-             <!--<span class="brand-text font-weight-dark"><?php echo ($_SESSION['usuario']['nombre']); ?> </span>-->
+            <span class="brand-text font-weight-dark"><?php echo ($_SESSION['usuario']['nombre']); ?> </span>
              
              
-             <span class="brand-text font-weight-dark"> Tania Cueva </span>
+             <!--<span class="brand-text font-weight-dark"> Tania Cueva </span> -->
             </a>
         </div>
       </div>
