@@ -48,11 +48,12 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo media(); ?>/js/demo.js"></script>
 <!-- Funciones Personalizadas -->
+
 <!--
 <script src="<?php echo media(); ?>/js/funciones_admon.js"></script>
 
 -->
 
-<
+
 </body>
 </html>

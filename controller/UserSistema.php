@@ -300,11 +300,7 @@ class UserSistema extends Controllers
 
             $errores = $this->validaData($data, $errores, 'C');
 
-            echo "quiero cambiar";
-            //dep($errores);
-            //dep($idusuario);
-            //dep($data);
-
+            
             if (count($errores) == 0) {
 
                 echo "no tengo errores";

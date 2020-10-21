@@ -22,7 +22,7 @@ header_admin($data);
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Dashboard"><i class="fa fa-home fa-lg"></i></a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/UserSistema"><i class="fa fa-home fa-lg"></i></a></li>
               <li class="breadcrumb-item active"><?php echo $data["page_title"]; ?></li>
             </ol>
           </div>

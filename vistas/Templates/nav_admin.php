@@ -113,12 +113,7 @@
                   <p>Usuarios</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>/AdmonUsuario" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Usuarios Alta</p>
-                </a>
-              </li>
+            
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>/Roles" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

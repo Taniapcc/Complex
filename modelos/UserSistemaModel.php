@@ -80,13 +80,7 @@
         return ($rows==0)?true:false;
       }  
 
-     //Implementar un método para listar los registros
-	 function listar()
-     {
-         $sql="SELECT *  FROM usuario WHERE tipousuario = 'Empleado'";
-         $request = $this->ejecutarConsultaMatriz($sql);
-         return $request;					
-     }
+     
 
      function insertar ($data){
 
@@ -125,6 +119,14 @@
 
 
       }
+
+       //Implementar un método para listar los registros
+	 function listar()
+     {
+         $sql=" SELECT *  FROM usuario ";
+         $request = $this->ejecutarConsultaMatriz($sql);
+         return $request;					
+     }
 
 
 
