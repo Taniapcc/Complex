@@ -1,9 +1,11 @@
 <?php
  if (inactividadSesion()){
-  
   header("location:" . base_url() . "/Admon");  
-}
+  }
 header_admin($data);
+
+ $idauxiliares =$data['id_table'];
+
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -18,15 +20,19 @@ header_admin($data);
 
             <h1><i class="fas fa-user-tag"> </i><?php echo $data["page_title"]; ?>
 
-              <a class="btn btn-primary" href="<?php print base_url(); ?>/Producto/alta" role="button">
+              <a class="btn btn-primary" href="<?php print base_url(); ?>/Tablas/alta" role="button">
                 <i class="fa fa-plus-circle"></i> Agregar</a>
+
+                <input type="text" id="idTable" name="idTable"  value ='<?php isset($data['id_table']) ? print $data['id_table'] : ""; ?>' >                 
+            
+              
 
               <!-- #modal-lg -->
             </h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Producto"><i class="fa fa-home fa-lg"></i></a></li>
+              <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Tablas"><i class="fa fa-home fa-lg"></i></a></li>
               <li class="breadcrumb-item active"><?php echo $data["page_title"]; ?></li>
             </ol>
           </div>
@@ -41,7 +47,7 @@ header_admin($data);
         <!-- <div class="card-header">-->
         <!-- /.card-header -->
         <div class="card-header">
-          <h3 class="card-title">Listado de Producto</h3>
+          <h3 class="card-title">Listado de Tablas</h3>
         </div>
 
         <!-- /.card-header -->
@@ -116,4 +122,4 @@ header_admin($data);
 
   ?>
 
-  <script src="<?php echo media(); ?>/js/funciones_producto.js"></script>
+  <script src="<?php echo media(); ?>/js/funciones_tablasHija.js"></script>

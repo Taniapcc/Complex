@@ -1,27 +1,27 @@
 <?php
 # Controlador generico para 3 campos
-class Tablas extends Controllers
+class TablasHija extends Controllers
 {
     public function __construct()
     {
         parent::__construct();
     }
 
-    function tablas()
+    function tablasHija($id)
     {
         # 
         $sesion = new Sesion();
 
         if ($sesion->getLogin()) {
             # code...
-            $data['tag_page'] = "Tablas -  Tienda Virtual ";
-            $data['page_title'] = "Tablas - <small> Tienda Virtual </small>";            
-            $data['page_name'] = "Tablas";
+            $data['tag_page'] = "TablasHija -  Tienda Virtual ";
+            $data['page_title'] = "TablasHija - <small> Tienda Virtual </small>";            
+            $data['page_name'] = "TablasHija";
 
             # parametrización
-            $data['name_view'] = "tablas"; //vista principal CONTROLLER LISTAR
+            $data['name_view'] = "tablasHija"; //vista principal CONTROLLER LISTAR
             $data['name_table'] = "Auxiliares";
-            $data['id_table']   = "idauxiliares";
+            $data['id_table']   = $id;
 
             //llamado a la vista         
            $this->views->getViews($this, $data['name_view'], $data);
@@ -37,7 +37,7 @@ class Tablas extends Controllers
         $data = $this->model->desactivar($id); 
         
         if ($data){
-           header("location:" . base_url() . "/Tablas");   
+           header("location:" . base_url() . "/TablasHija");   
         }else
         {
             echo "NO se pudo desactivar";
@@ -48,7 +48,7 @@ class Tablas extends Controllers
     function activar($data){
         $data = $this->model->activar($data);
         if ($data){
-           header("location:" . base_url() . "/Tablas");          
+           header("location:" . base_url() . "/TablasHija");          
         }else
         {
             echo "NO se pudo activar";
@@ -58,17 +58,18 @@ class Tablas extends Controllers
     
 
     function buscar($id){
+        
+        $data = $this->model->desactivar($id);
+        
           # parametrización
-          $data['name_control'] = "TablasHija"; 
-          $data['name_view'] = "TablasHija"; //vista principal CONTROLLER LISTAR               
-          $data['id']=$id; 
-          
-           //$this->views->getViews($this, $data['name_vista'] , $data); 
-          header("location:" . base_url() . "/TablasHija/tablasHija/$id");    
-
+          $data['name_vista'] = "tablasHija"; //vista principal Edicion
+          $data['name_table'] = "Auxiliares";
+          $data['id_table']   = $id;
+          $data['card-title']  = "Listado Detalle";
+          $this->views->getViews($this, $data['name_vista'] , $data);   
          //llamar a la vista que queremos ver
         
-         
+         return $data;
     }
 
 
@@ -104,7 +105,7 @@ class Tablas extends Controllers
 
         $r = $this->validaNombre( $data['nombre']);
         if ($r > 0){
-                array_push($errores, "Tablas ya existe");
+                array_push($errores, "TablasHija ya existe");
          }
 
         if (trim($data['descripcion']) == "") {
@@ -136,10 +137,14 @@ class Tablas extends Controllers
     }
 
 
-    function listar()
+    function listar($id)
     {
+        
+        
+        $data = $this->model->listar($id);
 
-        $data = $this->model->listar();
+        dep($data);
+        exit;
         
         for ($i = 0; $i < count($data); $i++) {
 
@@ -150,9 +155,9 @@ class Tablas extends Controllers
                 $data[$i]['condicion'] = '<span class="badge badge-success">Activo</span>';
                 // Añadir Acciones al formulario
                 $data[$i]['options'] = '<div class = "text-center">
-                        <a href="' . base_url() . '/Tablas/cambio/' . $data[$i]['idauxiliares'] . ' " title= "Editar"  " class="btn-outline-primary btn-sm btnTablas"><i class = "fas fa-pencil-alt"></i></a> 
-                        <a href="' . base_url() . '/Tablas/desactivar/' . $data[$i]['idauxiliares'] . ' " title= "Eliminar"  " class="btn-outline-danger btn-sm btnTablas"><i class = " fas fa-trash-alt""></i></a> 
-                        <a href="' . base_url() . '/Tablas/buscar/' . $data[$i]['idauxiliares'] . ' " title= "Buscar"  " class="btn-outline-danger btn-sm btnTablas"><i class = " fas fa-trash-alt""></i></a> 
+                        <a href="' . base_url() . '/TablasHija/cambio/' . $data[$i]['idauxiliares'] . ' " title= "Editar"  " class="btn-outline-primary btn-sm btnTablas"><i class = "fas fa-pencil-alt"></i></a> 
+                        <a href="' . base_url() . '/TablasHija/desactivar/' . $data[$i]['idauxiliares'] . ' " title= "Eliminar"  " class="btn-outline-danger btn-sm btnTablas"><i class = " fas fa-trash-alt""></i></a> 
+                        <a href="' . base_url() . '/TablasHija/buscar/' . $data[$i]['idauxiliares'] . ' " title= "Buscar"  " class="btn-outline-danger btn-sm btnTablas"><i class = " fas fa-trash-alt""></i></a> 
                 </div>';
            
            
@@ -160,9 +165,9 @@ class Tablas extends Controllers
                 $data[$i]['condicion'] = '<span class="badge badge-danger">Inactivo</span>'; 
                  // Añadir Acciones al formulario
                 $data[$i]['options'] = '<div class = "text-center">
-                <a href="' . base_url() . '/Tablas/cambio/' . $data[$i]['idauxiliares'] . ' " title= "Editar"  " class="btn-outline-primary btn-sm btnTablas"><i class = "fas fa-pencil-alt"></i></a> 
-                <a href="' . base_url() . '/Tablas/activar/' . $data[$i]['idauxiliares'] . ' " title= "Activar"  " class="btn-outline-success btn-sm btnTablas"><i class = "fas fa-undo"></i></a> 
-                <a href="' . base_url() . '/Tablas/buscar/' . $data[$i]['idauxiliares'] . ' " title= "Buscar"  " class="btn-outline-danger btn-sm btnTablas"><i class = " fas fa-trash-alt""></i></a> 
+                <a href="' . base_url() . '/TablasHija/cambio/' . $data[$i]['idauxiliares'] . ' " title= "Editar"  " class="btn-outline-primary btn-sm btnTablas"><i class = "fas fa-pencil-alt"></i></a> 
+                <a href="' . base_url() . '/TablasHija/activar/' . $data[$i]['idauxiliares'] . ' " title= "Activar"  " class="btn-outline-success btn-sm btnTablas"><i class = "fas fa-undo"></i></a> 
+                <a href="' . base_url() . '/TablasHija/buscar/' . $data[$i]['idauxiliares'] . ' " title= "Buscar"  " class="btn-outline-danger btn-sm btnTablas"><i class = " fas fa-trash-alt""></i></a> 
              </div>';
             }
            
@@ -202,7 +207,7 @@ class Tablas extends Controllers
                 $r = $this->editar($data);                 
                 
                 if ($r){
-                    header("location:" . base_url() . "/Tablas");
+                    header("location:" . base_url() . "/TablasHija");
                     //header("location:" . base_url() . "/".$data['name_vista']);
                 }else
                 {
@@ -218,10 +223,10 @@ class Tablas extends Controllers
             // Editar  formulario
 
             $data = $this->mostrar($id);  //llamar al metodo de la clase View            
-            $data['tag_page'] = " Tablas";
-            $data['page_title'] = "Tablas";
-            $data['page_name'] = "Tablas";
-            $data['card_title'] = "Edición Tablas";
+            $data['tag_page'] = " TablasHija";
+            $data['page_title'] = "TablasHija";
+            $data['page_name'] = "TablasHija";
+            $data['card_title'] = "Edición TablasHija";
             
             # parametrización
             $data['name_vista'] = "tablasEditar"; //vista principal Edicion
@@ -262,7 +267,7 @@ class Tablas extends Controllers
 
 
                 if ($r) {
-                    header("location:" . base_url() . "/Tablas");
+                    header("location:" . base_url() . "/TablasHija");
                 } else {
                     //actualizar
 
@@ -284,10 +289,10 @@ class Tablas extends Controllers
 
                 /**  Desplegar información de errores  */
                 
-                $data['tag_page'] =    "Tablas Alta";
-                $data['page_title'] = "Tablas ";
-                $data['page_name'] = "Tablas Alta";
-                $data['card_title'] = "Tablas Alta" ;
+                $data['tag_page'] =    "TablasHija Alta";
+                $data['page_title'] = "TablasHija ";
+                $data['page_name'] = "TablasHija Alta";
+                $data['card_title'] = "TablasHija Alta" ;
                 $data['errores'] = $errores;
                 //llamado a la vista 
 
@@ -300,10 +305,10 @@ class Tablas extends Controllers
             }
         } else {
 
-            $data['tag_page'] = "Tablas Alta";
-            $data['page_title'] = "Tablas ";
-            $data['page_name'] = "Tablas Alta";
-            $data['card_title'] = "Tablas Alta" ;
+            $data['tag_page'] = "TablasHija Alta";
+            $data['page_title'] = "TablasHija ";
+            $data['page_name'] = "TablasHija Alta";
+            $data['card_title'] = "TablasHija Alta" ;
             //llamado a la vista  
 
             # parametrización
