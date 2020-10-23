@@ -1,15 +1,17 @@
 <?php
- session_start();
+session_start();
 
- if (!isset($_SESSION["usuario"])) {
-    header("location:" . base_url() . "/Admon");
- }
+if (!isset($_SESSION["usuario"])) {
+  header("location:" . base_url() . "/Admon");
+}
 
+if (inactividadSesion()){
+  header("location:" . base_url() . "/Admon");  
+}
 
 header_admin($data);
 
 ?>
-<!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 
@@ -19,11 +21,10 @@ header_admin($data);
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1><i class="fas fa-users"></i><?php echo $data["page_title"]; ?></h1>
-          
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/auxiliares"><i class="fa fa-home fa-lg"></i></a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/Tablas"><i class="fa fa-home fa-lg"></i></a></li>
             <li class="breadcrumb-item active"><?php echo $data["page_title"]; ?></li>
           </ol>
         </div>
@@ -48,7 +49,7 @@ header_admin($data);
             
             <div class="card-body">
             <!-- Llamando al controlador -->
-            <form name = "crear-auxiliares" id ="crear-auxiliares" action="<?php echo base_url(); ?>/Auxiliares/alta/" method="post">
+            <form action="<?php echo base_url(); ?>/Tablas/cambio/" method="post">
 
            
                 <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -68,7 +69,7 @@ header_admin($data);
                               id = "descripcion"
                               name = "descripcion"                                
                               required                           
-                            placeholder="Descripción categoría">
+                            placeholder="Descripción tabla del Sistema">
                             <?php isset($data['descripcion']) ? print trim($data['descripcion']) : ""; ?> 
                             
                       </textarea>
@@ -76,11 +77,10 @@ header_admin($data);
    
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Auxiliares" role="button">
-                          <i class="fa fa-arrow-circle-left"></i> Cancelar </a>                         
+                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Tablas" role="button">
+                          <i class="fa fa-arrow-circle-left"></i> Cancelar </a>    
                  </div>
-
-              
+            
                 
               </form> <!-- /.Formulario -->
 
@@ -101,7 +101,5 @@ header_admin($data);
 
 <!-- /.content-wrapper -->
 <?php
-
 footer_admin($data);
-
 ?>

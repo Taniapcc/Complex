@@ -2,12 +2,14 @@
  session_start();
 
  if (!isset($_SESSION["usuario"])) {
-    header("location:" . base_url() . "/Admon");
- }
+    header("location:" . base_url() . "/Admon");  
+ } 
 
-
-header_admin($data);
-
+  if (inactividadSesion()){
+    header("location:" . base_url() . "/Admon");  
+  }
+  header_admin($data);
+  
 ?>
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
@@ -19,11 +21,10 @@ header_admin($data);
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1><i class="fas fa-users"></i><?php echo $data["page_title"]; ?></h1>
-          
-        </div>
+          </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/auxiliares"><i class="fa fa-home fa-lg"></i></a></li>
+            <li class="breadcrumb-item"><a href="<?php echo base_url(); ?>/categoria"><i class="fa fa-home fa-lg"></i></a></li>
             <li class="breadcrumb-item active"><?php echo $data["page_title"]; ?></li>
           </ol>
         </div>
@@ -48,12 +49,12 @@ header_admin($data);
             
             <div class="card-body">
             <!-- Llamando al controlador -->
-            <form name = "crear-auxiliares" id ="crear-auxiliares" action="<?php echo base_url(); ?>/Auxiliares/alta/" method="post">
+            <form name = "crear-categoria" id ="crear-categoria" action="<?php echo base_url(); ?>/Categoria/alta/" method="post">
 
            
                 <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <label for="nombre">Nombre(*)</label>
-                    <input type="hidden" id="idauxiliares" name="idauxiliares"  value ='<?php isset($data['idauxiliares']) ? print $data['idauxiliares'] : ""; ?>' > 
+                    <input type="hidden" id="idcategoria" name="idcategoria"  value ='<?php isset($data['idcategoria']) ? print $data['idcategoria'] : ""; ?>' > 
 
                     <input type="text" class="form-control" id="nombre" name = "nombre"
                     value='<?php isset($data['nombre']) ? print $data['nombre'] : ""; ?>'  
@@ -76,7 +77,7 @@ header_admin($data);
    
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                          <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Auxiliares" role="button">
+                         <a class="btn btn-danger" href="<?php print base_url(); ?>/Categoria" role="button">
                           <i class="fa fa-arrow-circle-left"></i> Cancelar </a>                         
                  </div>
 

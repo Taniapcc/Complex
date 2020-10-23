@@ -139,9 +139,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
+                <a href="<?php echo base_url(); ?>/Tablas" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Características Productos</p>
+                  <p>Tablas</p>
                 </a>
               </li>
 
@@ -154,7 +154,7 @@
               <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Configuración del Sistema</p>
+                  <p>Tablas del Sistema</p>
                 </a>
               </li>
               

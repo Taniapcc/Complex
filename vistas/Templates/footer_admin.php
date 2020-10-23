@@ -47,6 +47,10 @@
 <!--<script src="<?php echo media(); ?>/js/fontawesome.js"></script> -->
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo media(); ?>/js/demo.js"></script>
+
+<script src="<?php echo media(); ?>/js/bootstrap-select.min.js"></script> 
+
+
 <!-- Funciones Personalizadas -->
 
 <!--

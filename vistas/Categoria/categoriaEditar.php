@@ -1,8 +1,14 @@
 <?php
 session_start();
+if (inactividadSesion()){
+  header("location:" . base_url() . "/Admon");  
+}
 
 if (!isset($_SESSION["usuario"])) {
   header("location:" . base_url() . "/Admon");
+}
+if (inactividadSesion()){
+  header("location:" . base_url() . "/Admon");  
 }
 
 header_admin($data);

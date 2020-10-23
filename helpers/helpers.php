@@ -44,7 +44,7 @@
             $sessionTTL = time() - $_SESSION["timeout"];
             if($sessionTTL > INACTIVIDAD){
                 $r = true;
-               // session_destroy();
+                session_destroy();
                 //header("Location: /logout.php");                
             }
          }

@@ -4,12 +4,13 @@
  if (!isset($_SESSION["usuario"])) {
     header("location:" . base_url() . "/Admon");
  }
-
+ if (inactividadSesion()){
+  header("location:" . base_url() . "/Admon");  
+}
 
 header_admin($data);
 
 ?>
-<!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
 

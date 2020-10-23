@@ -1,4 +1,7 @@
 <?php
+  if (inactividadSesion()){
+    header("location:" . base_url() . "/Admon");  
+  }
    header_admin($data);    
 ?>
 <!-- Content Wrapper. Contains page content -->

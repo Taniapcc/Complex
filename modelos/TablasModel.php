@@ -1,16 +1,14 @@
 <?php
-    class AuxiliaresModel extends Mysql
+    class TablasModel extends Mysql
     {
         public function __construct()
         {
             parent::__construct();
         }
-
-   
       
      function mostrar( $id)
         {
-           $sql="SELECT * FROM auxiliares   WHERE idauxiliares = '$id'";
+           $sql="SELECT * FROM auxiliares where idauxiliares = '$id'";
            $request = $this->ejecutarConsultaSimpleFila($sql);
            
            return $request;
@@ -44,21 +42,12 @@
 
 
       //Implementar un método para listar los registros
-	 
-     public function listar ()
-	{
-		$sql = "SELECT * from auxiliares 
-        where   idsubtabla = 0";
-        
-        
-        $request = $this->ejecutarConsultaMatriz($sql);
-      
-        
-        return $request;					
-	}
-
-     
-
+	 function listar()
+     {
+         $sql="select * from auxiliares where idsubtabla = 0";
+         $data = $this->ejecutarConsultaMatriz($sql);
+         return $data;					
+     }
 
      function desactivar($id)
      {
