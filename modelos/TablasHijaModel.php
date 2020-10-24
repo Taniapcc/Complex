@@ -46,6 +46,7 @@
      {
        
         $sql="select * from auxiliares where idsubtabla = '$id'";
+
         $data = $this->ejecutarConsultaMatriz($sql);
 
         

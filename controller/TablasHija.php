@@ -11,8 +11,12 @@ class TablasHija extends Controllers
     {
         # 
         $sesion = new Sesion();
+       
+       
 
         if ($sesion->getLogin()) {
+
+           
             # code...
             $data['tag_page'] = "TablasHija -  Tienda Virtual ";
             $data['page_title'] = "TablasHija - <small> Tienda Virtual </small>";            
@@ -25,6 +29,9 @@ class TablasHija extends Controllers
 
             //llamado a la vista         
            $this->views->getViews($this, $data['name_view'], $data);
+
+         
+           
         } else {
             # code...
             header("location:" . base_url() . "/Admon");
@@ -66,7 +73,7 @@ class TablasHija extends Controllers
           $data['name_table'] = "Auxiliares";
           $data['id_table']   = $id;
           $data['card-title']  = "Listado Detalle";
-          $this->views->getViews($this, $data['name_vista'] , $data);   
+         // $this->views->getViews($this, $data['name_vista'] , $data);   
          //llamar a la vista que queremos ver
         
          return $data;
@@ -140,12 +147,11 @@ class TablasHija extends Controllers
     function listar($id)
     {
         
-        
+      
         $data = $this->model->listar($id);
 
-        dep($data);
-        exit;
-        
+    if ($data) {
+        # code...
         for ($i = 0; $i < count($data); $i++) {
 
             // Identifico el estado de categorias
@@ -171,10 +177,23 @@ class TablasHija extends Controllers
              </div>';
             }
            
-        }
-
+           
+        } // For
+        
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         die();
+
+    } else {
+        # code...
+        echo "hubo un error al cargar la data ";
+    }
+    
+                       
+      
+           
+        
+
+      
     }
 
      /**

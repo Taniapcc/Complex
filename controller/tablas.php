@@ -14,6 +14,7 @@ class Tablas extends Controllers
 
         if ($sesion->getLogin()) {
             # code...
+            $ltablas = $this->selectTabla();
             $data['tag_page'] = "Tablas -  Tienda Virtual ";
             $data['page_title'] = "Tablas - <small> Tienda Virtual </small>";            
             $data['page_name'] = "Tablas";
@@ -22,6 +23,7 @@ class Tablas extends Controllers
             $data['name_view'] = "tablas"; //vista principal CONTROLLER LISTAR
             $data['name_table'] = "Auxiliares";
             $data['id_table']   = "idauxiliares";
+            $data['ltablas']   = $ltablas;
 
             //llamado a la vista         
            $this->views->getViews($this, $data['name_view'], $data);
@@ -56,6 +58,20 @@ class Tablas extends Controllers
         return $data;
     }
     
+    function selectTabla(){
+        $datos = $this->model->selectTabla();
+
+      /* 
+        for ($i=0; $i < count($datos) ; $i++) { 
+            # code...
+            echo '<option value=' . $datos["idtabla"][$i]. '>' . $datos["nombre"][$i] .'</option>';
+                    
+        }*/
+
+       return $datos;
+           
+       
+    }
 
     function buscar($id){
           # parametrización
@@ -138,8 +154,10 @@ class Tablas extends Controllers
 
     function listar()
     {
+        $ltablas = $_REQUEST["ltablas"];
+       
 
-        $data = $this->model->listar();
+        $data = $this->model->listar1($ltablas);
         
         for ($i = 0; $i < count($data); $i++) {
 

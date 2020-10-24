@@ -3,6 +3,7 @@ var tabla;
 function init() {
 
     listar();
+    $("#idTable").change(listar);
 
 }
 
@@ -10,10 +11,8 @@ function init() {
 function listar() {
     var idTable = $("#idTable").val();
 
-    alert(idTable);
-
-
-    $("#listado").DataTable({
+    $tabla = $("#listado").DataTable({
+        "destroy": true,
         "aprocessing": true,
         "aServerSide": true, //Paginación y filtrado realizados por el servidor
         "language": {
@@ -24,13 +23,11 @@ function listar() {
         "pageLength": 5,
         "lengthMenu": [5, 10, 25, 75, 100],
         "buttons": ['excel', 'pdf', 'copy'],
+
         "ajax": {
             "url": base_url + "/TablasHija/listar",
-            "data": { 'idTable': idTable },
-            "type": "get",
-            "dataType": "json"
-
-
+            "data": { "idTable": idTable },
+            "dataSrc": ""
         },
         "columns": [
             { "data": "idauxiliares" },
@@ -38,8 +35,11 @@ function listar() {
             { "data": "descripcion" },
             { "data": "condicion" },
             { "data": "options" }
-        ]
+        ],
+        "bDestroy": true,
     });
+
+
 }
 //Función para guardar o editar
 

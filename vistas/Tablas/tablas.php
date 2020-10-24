@@ -1,6 +1,8 @@
 <?php
  if (inactividadSesion()){
   header("location:" . base_url() . "/Admon");  
+  
+
 }
 header_admin($data);
 ?>
@@ -19,6 +21,8 @@ header_admin($data);
 
               <a class="btn btn-primary" href="<?php print base_url(); ?>/Tablas/alta" role="button">
                 <i class="fa fa-plus-circle"></i> Agregar</a>
+
+                        
 
               <!-- #modal-lg -->
             </h1>
@@ -41,7 +45,20 @@ header_admin($data);
         <!-- /.card-header -->
         <div class="card-header">
           <h3 class="card-title">Listado de Tablas</h3>
-        </div>
+
+       
+    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <label for="ltablas">Selecciona un ltablas</label>
+      <select class="form-control " name="ltablas" id="ltablas"  data-live-search="true" >
+        <?php
+        for ($i=0; $i < count($data["ltablas"]); $i++) { 
+          echo '<option value=' . $data["ltablas"][$i]["idtabla"]. '>' . $data["ltablas"][$i]["nombre"] .'</option>';
+                    
+        }
+        ?>
+      </select>
+    </div>
+
 
         <!-- /.card-header -->
 
@@ -56,7 +73,7 @@ header_admin($data);
 
                   <!-- /.card-header -->
                   <div class="card-body">
-                    <table id="listado" class="table table-bordered table-striped">
+                    <table id="listado" name = "listado"   class="table table-bordered table-striped">
                       <thead>
                         <tr>
                           <th>ID</th>

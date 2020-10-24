@@ -5,6 +5,16 @@
         {
             parent::__construct();
         }
+    
+       function selectTabla()
+	{		
+		$sql="SELECT * FROM auxiliares
+         where 	 idsubtabla = 0 and condicion = 1";
+          $request = $this->ejecutarConsultaMatriz($sql);
+           
+          return $request;
+			
+	}
       
      function mostrar( $id)
         {
@@ -48,6 +58,16 @@
          $data = $this->ejecutarConsultaMatriz($sql);
          return $data;					
      }
+
+     function listar1($id)
+     {
+         $sql="select * from auxiliares where idtabla = $id";
+         $data = $this->ejecutarConsultaMatriz($sql);
+         return $data;					
+     }
+
+
+
 
      function desactivar($id)
      {
