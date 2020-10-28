@@ -43,12 +43,9 @@
 <script src="<?php echo media(); ?>/plugins/datatables/vfs_fonts.js"></script>
 -->
 
+
 <!-- SweetAlert2 -->
-<script src="<?php echo media(); ?>/plugins/sweetalert2/sweetalert2.min.js"></script>
-
-
-
-
+<script src="<?php echo media(); ?>/plugins/sweetalert2.all.min.js"></script>
 
 <!-- AdminLTE App -->
 <script src="<?php echo media(); ?>/js/adminlte.min.js"></script>
@@ -60,7 +57,8 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo media(); ?>/js/demo.js"></script>
 
-<script src="<?php echo media(); ?>/js/bootstrap-select.min.js"></script> 
+<script src="<?php echo media(); ?>/js/bootbox.min.js"></script> 
+
 
 
 <!-- Funciones Personalizadas -->
@@ -69,7 +67,5 @@
 <script src="<?php echo media(); ?>/js/funciones_admon.js"></script>
 
 -->
-
-
 </body>
 </html>

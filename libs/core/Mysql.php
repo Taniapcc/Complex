@@ -32,6 +32,7 @@
 
      function ejecutarConsultaSimpleFila($sql)
       {
+         
          $this->sql = $sql; 
          $consulta = $this->db->prepare ($this->sql);
          $consulta->execute();
@@ -70,8 +71,6 @@
   }
 
 
-
-
     // Insertar 
     public function insert(string $sql, array $arrvalues){
       /* Ejecutar una sentencia preparada proporcionando un array de valores de inserción */
@@ -89,13 +88,36 @@
        return  $lastInsert;                    
       }
 
+
+      public function queryInsert(string $sql, array $arrvalues){
+         /* Ejecutar una sentencia preparada proporcionando un array de valores de inserción */
+          try {
+              $this->sql = $sql;
+              $this->arrvalues = $arrvalues;
+              $insert = $this->db ->prepare($this->sql);
+              $resSmt =  $insert ->execute($this->arrvalues);
+             
+              if ($resSmt) {
+                  $lastInsert = $this->db->lastInsertId();
+              } else {
+                  $lastInsert = 0;
+              }
+            
+              return  $lastInsert;
+          } catch (PDOException $e){
+            echo "PDOException Linea de error". $e->getLine(). "Linea: " .$e->getMessage();
+          }                  
+         }
+
     // Numero de filas
     function queryRows($sql){
-        $this->sql = $sql;
-        $consulta = $this->db->prepare($this->sql);
-        $consulta->execute();
-        $rows = $consulta->rowCount();               
-        return $rows;
+    
+          $this->sql = $sql;
+          $consulta = $this->db->prepare($this->sql);
+          $consulta->execute();
+          $rows = $consulta->rowCount();
+          return $rows;
+      
       }
 
   

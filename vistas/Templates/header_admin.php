@@ -16,7 +16,7 @@
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
    <!-- SweetAlert2 -->
-   <link rel="stylesheet" href="<?php echo media();?>/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+   <link rel="stylesheet" href="<?php echo media();?>/css/sweetalert2.min.css">
  
   
   <!-- DataTables -->

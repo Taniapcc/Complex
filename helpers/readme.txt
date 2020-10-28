@@ -505,3 +505,12 @@ Prueba
             <!-- /.card -->
 
           </div>
+
+
+          // HELPERS AJAX
+
+          https://www.baulphp.com/usando-ajax-con-php-mysql-ejemplos/
+
+
+          // cambiar texto
+          http://mialtoweb.es/modificar-html-con-javascript/

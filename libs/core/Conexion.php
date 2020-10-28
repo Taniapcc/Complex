@@ -21,7 +21,7 @@
      // echo "conexion realizada";
     } catch (Exception $e) {
       //die("Error".$e->getMessage());
-     echo "Linea de error". $e->getLine();
+     echo "Linea de error". $e->getLine(). "Linea: " .$e->getMessage();
     } 
     $this->conexion = $conexion;
    // return $this->$conexion;
