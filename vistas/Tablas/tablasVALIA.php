@@ -37,8 +37,6 @@ header_admin($data);
     <!-- Main content -->
     <section class="content">
 
-  
-
         <!-- Default box -->
         <div class="card" id="listadoregistros" name="listadoregistros" >
             <div class="card-header">

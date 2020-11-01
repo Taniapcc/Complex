@@ -123,11 +123,30 @@
        //Implementar un método para listar los registros
 	 function listar()
      {
-         $sql=" SELECT *  FROM usuario ";
+         $sql="SELECT idusuario,cedula,nombre,direccion,telefono,tipoUsuario,condicion FROM v_usuario";
          $request = $this->ejecutarConsultaMatriz($sql);
          return $request;					
      }
 
+
+     function desactivar($id)
+     {
+       
+        $sql=" UPDATE usuario SET condicion = 0
+        WHERE idusuario = '$id' ";
+
+         $request = $this->ejecutarConsulta($sql);
+         return $request;					
+     }
+
+     function activar($id)
+     {
+               
+        $sql=" UPDATE usuario SET condicion = 1
+        WHERE idusuario = '$id' ";
+         $request = $this->ejecutarConsulta($sql);
+         return $request;					
+     }
 
 
        

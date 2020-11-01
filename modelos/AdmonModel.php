@@ -8,13 +8,21 @@
 
         function infoCorreo($email)
         {
-           $sql="SELECT * FROM usuario WHERE tipousuario = 'Empleado' AND email = '$email'  ";
-           $request = $this->select($sql);
+         
+          $sql="SELECT nombre,email,idusuario FROM usuario WHERE tipousuario = 'Empleado' AND email = ?  ";
+          $arrData = array($email);
+           $request = $this->select($sql,$arrData);
            return $request;
         }
 
-       function validaCorreo($email){
-        $sql = "SELECT * FROM usuario WHERE tipousuario = 'Empleado' AND email= '$email'";          
+       function validaCorreo($data){
+
+        $email = strClean($data['usuario']);
+        $clave = $data['pass'];
+
+        $clave = hash_hmac("sha512", $clave, llave()); 
+
+        $sql = "SELECT email FROM usuario WHERE tipousuario = 'Empleado' AND email= '$email' and clave = '$clave'";         
         $rows = $this->queryRows($sql);                  
         return ($rows>0)?true:false;
          }

@@ -18,7 +18,7 @@ class Categoria extends Controllers
             $data['page_title'] = "Categoria - <small> Tienda Virtual </small>";
             $data['page_name'] = "categoria";
             //llamado a la vista
-            $this->views->getViews($this, "categoria", $data);
+            $this->views->getViews($this, "Categoria", $data);
         } else {
             # code...
             header("location:" . base_url() . "/Admon");

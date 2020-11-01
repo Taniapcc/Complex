@@ -19,13 +19,12 @@ class Admon extends Controllers{
 
     function validaCorreo ($email){
      $data = $this->model->validaCorreo($email);
-   // dep($data);
+     
      return $data;
     }
 
    function infoCorreo($email){
     $data = $this->model->infoCorreo($email);
-    //dep($data);
     return $data;
     }
 
@@ -35,29 +34,37 @@ class Admon extends Controllers{
       if ($_SERVER['REQUEST_METHOD']=="POST") {
           //valido variables del formulario
           $usuario= isset($_POST["usuario"])? strClean($_POST["usuario"]) :"";
-          $password= isset($_POST["password"])? strClean($_POST["password"]) :"";
+          $pass= isset($_POST["password"])? strClean($_POST["password"]) :"";
          // Rescatar variables
           $data['usuario'] = $usuario;
-          $data['password'] = $password;  
+          //$data['password'] = $password;  
          // Validar informacion
+
          if ($usuario=="") {
                 array_push($errores,"El email es requerido");
             }
         if (!filter_var($usuario, FILTER_VALIDATE_EMAIL)) {
                 array_push($errores,"El email electrónico no es válido");
             }
-        if ($password=="") {
+        if ($pass=="") {
                 array_push($errores,"El password es requerido");
             } 
          
          if (count($errores)==0) {
 
-             if ($this->model->validaCorreo($usuario) ) {
+            $r= false;
+
+            $arrData['usuario'] = $usuario;
+            $arrData['pass'] = $pass;
+            $r = $this->model->validaCorreo($arrData);
+
+            // if ($this->model->validaCorreo($usuario) ) {
+            if($r){    
                  # code...
                 // obtener toda la información del usuario
                 // en este caso es el correo de la vista login
                 //$data = $this->model->infoCorreo($usuario);
-               
+
                 $data = $this->model->infoCorreo($usuario);
                 $data ['usuario'] = $usuario;
                 $data ['timeout'] = time();
@@ -70,7 +77,7 @@ class Admon extends Controllers{
 
              } else {
                  //No Existe usuario regresa al logearse
-                array_push($errores,"El usuario no existe");
+                array_push($errores  ,"El usuario no existe");
                 $data['tag_page'] = "Administrador ";
                 $data['page_title'] = "Administrador - <small> Tienda Virtual </small>";
                 $data['page_name'] = "Administrador Cuenta";

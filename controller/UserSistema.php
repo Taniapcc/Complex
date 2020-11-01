@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Controlodar que maneja la plantilla de administradores
  */
@@ -18,7 +17,7 @@ class UserSistema extends Controllers
             # code...
 
             //llamar al metodo de la clase View
-            $data['tag_page'] = "Usuario Sistema";
+            $data['tag_page'] = "Usuarios Sistema";
             $data['page_title'] = "Usuarios Sistema";
             $data['page_name'] = "Usuarios Sistema";
 
@@ -60,41 +59,76 @@ class UserSistema extends Controllers
     }
 
 
+    function desactivar($id){
+        
+        $data = $this->model->desactivar($id); 
+        
+        if ($data){
+            header("location:" . base_url() . "/UserSistema");
+
+        }else
+        {
+            echo "NO se pudo desactivar";
+        }
 
 
-    // Listar Usuario
+        return $data;
+    }
+    
+    function activar($data){
+        $data = $this->model->activar($data);
+        if ($data){
+            header("location:" . base_url() . "/UserSistema");
+
+        }else
+        {
+            echo "NO se pudo activar";
+        }
+
+
+
+        return $data;
+	}
+
+
+
+
     function listar()
     {
 
         $data = $this->model->listar();
-        // dep($data);
-        // exit;
-
         for ($i = 0; $i < count($data); $i++) {
 
-            // Identifico el estado del rol
+            // Identifico el estado de categorias
             $camino = base_url();
 
             if ($data[$i]['condicion'] == 1) {
                 $data[$i]['condicion'] = '<span class="badge badge-success">Activo</span>';
-            } else {
-                $data[$i]['condicion'] = '<span class="badge badge-danger">Inactivo</span>';
-            }
-            // Añadir Acciones al formulario
-            $data[$i]['options'] = '<div class = "text-center">
-                        <a href="' . base_url() . '/userSistema/cambio/' . $data[$i]['idusuario'] . '  " class="btn btn-info">Modif.</a> 
-                        <a href="" class="btn btn-danger">Borrar</a> 
-                        <button  class="btn btn-outline-secondary btn-sm btnPermisoRol" rl="' . $data[$i]['idusuario'] . '" title= "Permiso"><i class = "fas fa-key"></i> </button>
-                        <button  class="btn btn-outline-primary btn-sm btnPermisoRol" rl="' . $data[$i]['idusuario'] . '" title= "Editar"><i class = "fas fa-pencil-alt"></i> </button>
-                        <button  class="btn btn-outline-danger btn-sm btnPermisoRol" rl="' . $data[$i]['idusuario'] . '" title= "Eliminar"><i class = "fas fa-trash-alt"></i> </button>
-                    
+                // Añadir Acciones al formulario
+                $data[$i]['options'] = '<div class = "text-center">
+                        <a href="' . base_url() . '/UserSistema/cambio/' . $data[$i]['idusuario'] . ' " title= "Editar"  " class="btn-outline-primary btn-sm btnCategoria"><i class = "fas fa-pencil-alt"></i></a> 
+                        <a href="' . base_url() . '/UserSistema/desactivar/' . $data[$i]['idusuario'] . ' " title= "Eliminar"  " class="btn-outline-danger btn-sm btnCategoria"><i class = " fas fa-trash-alt""></i></a> 
+                       
             </div>';
+           
+            } else {
+                $data[$i]['condicion'] = '<span class="badge badge-danger">Inactivo</span>'; 
+                 // Añadir Acciones al formulario
+                $data[$i]['options'] = '<div class = "text-center">
+                <a href="' . base_url() . '/UserSistema/cambio/' . $data[$i]['idusuario'] . ' " title= "Editar"  " class="btn-outline-primary btn-sm btnCategoria"><i class = "fas fa-pencil-alt"></i></a> 
+                <a href="' . base_url() . '/UserSistema/activar/' . $data[$i]['idusuario'] . ' " title= "Activar"  " class="btn-outline-success btn-sm btnCategoria"><i class = "fas fa-undo"></i></a> 
+                
+             </div>';
+            }
+           
         }
 
         echo json_encode($data, JSON_UNESCAPED_UNICODE);
         die();
     }
 
+
+  
     function validaData($data, $errores, $abc)
     {
         if (trim($data['cedula'] == "")) {
@@ -231,9 +265,9 @@ class UserSistema extends Controllers
                     $data['url'] = base_url();
                     $data['texto'] = "Existió un error en el registro, posiblemente el correo ya existe.";
 
-                    if (NO_DEPURADOR) {
-                        //$this->views->getViews($this, "mensaje", $data);
-                    }
+                    
+                    //$this->views->getViews($this, "mensaje", $data);
+                
                 }
             } else {
 
@@ -303,17 +337,25 @@ class UserSistema extends Controllers
             
             if (count($errores) == 0) {
 
-                echo "no tengo errores";
-                
-
                 $r = $this->editar($data);
 
+                if ($r) {
+                    header("location:" . base_url() . "/userSistema");
+                } else{
 
-                echo "cambi56 mar";
+                    $data['tag_page'] = "Error  ";
+                    $data['page_title'] = "Error Registro <small> Tienda Virtual </small>";
+                    $data['page_name'] = "Error";
+                    $data['color'] = "bg-danger";
+                    $data['classbtn'] = "btn btn-danger";
+                    $data['name_boton'] = "regresar";
+                    $data['url'] = base_url();
+                    $data['texto'] = "Existió un error en el registro, posiblemente el correo ya existe.";
+                }          
+                
             }else {
-                echo "tengo errores";
-               
-                 
+                echo "Existe  Errores";
+                                
             }
         } else {
 

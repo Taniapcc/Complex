@@ -15,7 +15,9 @@
     $charset = DB_ENCODE;
     
     try {
-      $conexion = new PDO("$motor:host=$host;dbname=$dbname;port= $port", $user, $contrasena);       
+      $conexion = new PDO("$motor:host=$host;dbname=$dbname;port= $port", $user, $contrasena);  
+      // Seguridad     
+      $conexion -> setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
       $conexion -> setAttribute (PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
       $conexion -> exec("SET CHARACTER SET $charset");      
      // echo "conexion realizada";

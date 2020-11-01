@@ -41,12 +41,25 @@ function listar() {
             "dataType": "json",
             "dataSrc": ""
         },
-        "columns": [{ "data": "idtabla" },
-            { "data": "idauxiliares" },
-            { "data": "nombre" },
-            { "data": "descripcion" },
-            { "data": "condicion" },
-            { "data": "options" }
+        "columns": [{
+                "data": "options"
+            },
+            {
+                "data": "idtabla"
+            },
+            {
+                "data": "idauxiliares"
+            },
+            {
+                "data": "nombre"
+            },
+            {
+                "data": "descripcion"
+            },
+            {
+                "data": "condicion"
+            }
+
         ]
     });
 }
@@ -58,16 +71,19 @@ function mostrarform(flag) {
     valTitulo = obj.options[obj.selectedIndex].text;
     val = obj.options[obj.selectedIndex].value;
     document.getElementById("idtabla").value = val;
-
     document.getElementById("tituloForm").innerHTML = valTitulo;
 
-    limpiar();
+
     if (flag) {
+        // 
+        //document.getElementById("tituloForm").innerHTML = "Actualizar " + valTitulo; 
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
+
     } else {
+        //limpiar();
 
         $("#listadoregistros").show();
         $("#formularioregistros").hide();
@@ -97,13 +113,15 @@ function guardaryeditar(e) {
 
     var nombre = document.querySelector('#nombre').value;
     var descripcion = document.querySelector('#descripcion').value;
+    var idauxiliares = document.querySelector('#idauxiliares').value;
+    var idtabla = document.querySelector('#idtabla').value;
+    var idsubtabla = document.querySelector('#idsubtabla').value;
 
     if (nombre == '' || descripcion == '') {
         //alert("faltan llenar datos");
         bootbox.alert("Los datos son requeridos");
         return false;
     }
-
 
     $("#btnGuardar").prop("disabled", true);
 
@@ -115,10 +133,9 @@ function guardaryeditar(e) {
         data: formData,
         contentType: false,
         processData: false,
-        success: function($datos) {
-            alert($datos);
+        success: function(data, status) {
             var tabla = $('#listado').DataTable(); // accede de nuevo a la DataTable.
-            bootbox.alert("Datos guardados con éxito");
+            bootbox.alert(data);
             mostrarform(false);
             tabla.ajax.reload();
         }
@@ -126,70 +143,75 @@ function guardaryeditar(e) {
     limpiar();
 }
 
+function fnEditar() {
+    var btnTablas = document.querySelectorAll(".btnTablas");
 
-function validaForm() {
-    // Campos de texto
-    if ($("#nombre").val() == "") {
-        alert("El campo Nombre no puede estar vacío.");
-        $("#nombre").focus(); // Esta función coloca el foco de escritura del usuario en el campo Nombre directamente.
-        return false;
-    }
-    if ($("#descripcion").val() == "") {
-        alert("El campo Apellidos no puede estar vacío.");
-        $("#apellidos").focus();
-        return false;
-    }
-    return true; // Si todo está correcto
+    btnTablas.forEach(function(btnTablas) {
+        btnTablas.addEventListener('click', function() {
+            var id = this.getAttribute("rl");
+            var formData = new FormData($("#formulario")[0]);
+
+            var jqxhr = $.post(base_url + "/Tablas/getTabla/" + id, function(data, status) {
+                mostrarform(true);
+                // alert("success");
+                $("#nombre").val(data.nombre);
+                $("#descripcion").val(data.descripcion);
+                $("#idauxiliares").val(data.idauxiliares);
+                $("#idtabla").val(data.idtabla);
+                $("#idsubtabla").val(data.idsubtabla);
+
+            }, "json")
+        });
+    });
 }
 
-function mostrar(idauxiliares) {
 
-    $.post(base_url + "/Tablas/mostrar", {
-        idauxiliares: idauxiliares
-    }, function(data, status) {
-        bootbox.alert("mostrar");
-        data = JSON.parse(data);
-        mostrarform(true);
 
-        $("#idtabla").val(data.idtabla);
-        //$('#idtabla').selectpicker('refresh');
-
-        $("#nombre").val(data.nombre);
-        $("#descripcion").val(data.descripcion);
-        $("#idauxiliares").val(data.idauxiliares);
-        $("#idtabla").val(data.idtabla);
-        $("#idsubtabla").val(data.idsubtabla);
-
-    })
-}
-
-//Función para desactivar registros
-function desactivar(idauxiliares) {
-    bootbox.confirm("¿Está Seguro de desactivar la Presentación?", function(result) {
-        if (result) {
-            $.post(base_url + "/Tablas/desactivar", {
-                idauxiliares: idauxiliares
-            }, function(e) {
-                bootbox.alert(e);
+function desactivar() {
+    var btnEliminar = document.querySelectorAll(".btnEliminar");
+    btnEliminar.forEach(function(btnEliminar) {
+        btnEliminar.addEventListener('click', function() {
+            var id = btnEliminar.getAttribute("rle");
+            var jqxhr = $.post(base_url + "/Tablas/desactivar/" + id, function(data, status) {
+                //bootbox.alert(data);
+                alert(data);
+                var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
             });
-        }
-    })
+        });
+    });
+
 }
 
-//Función para activar registros
-function activar(idauxiliares) {
-    bootbox.confirm("¿Está Seguro de activar la Presentación?", function(result) {
-        if (result) {
-            $.post(base_url + "/Tablas/activar", {
-                idauxiliares: idauxiliares
-            }, function(e) {
-                bootbox.alert(e);
+
+function activar() {
+
+    var btnActivar = document.querySelectorAll(".btnActivar");
+
+    btnActivar.forEach(function(btnActivar) {
+        btnActivar.addEventListener('click', function() {
+            var id = btnActivar.getAttribute("rla");
+            var jqxhr = $.post(base_url + "/Tablas/activar/" + id, function(e) {
+                // bootbox.alert(data);
+                var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
             });
-        }
-    })
+        });
+    });
+
+
+
+
+
+
+
+
+
 }
+
+
+
+
 
 
 init();

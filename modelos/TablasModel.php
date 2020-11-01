@@ -23,9 +23,9 @@ class TablasModel extends Mysql
 
     function mostrar($id)
     {
-        $sql = "SELECT * FROM auxiliares where idauxiliares = '$id'";
+        $this->idauxiliares = $id;
+        $sql = "SELECT * FROM auxiliares where idauxiliares = $this->idauxiliares";
         $request = $this->ejecutarConsultaSimpleFila($sql);
-
         return $request;
     }
 
@@ -33,38 +33,41 @@ class TablasModel extends Mysql
     {
         $nombre = strtoupper($nombre);
         $sql = "SELECT * FROM auxiliares WHERE nombre = '$nombre'";
-
         $rows = $this->queryRows($sql);
         return $rows;
-        //return ($rows>0)?true:false;
     }
 
    
-
-
     //Implementar un método para listar los registros
 
     function listar1($id)
     {
-        $sql = "select * from auxiliares where idtabla = $id and idsubtabla <> 0";
+        $idClean = StrClean($id);
+        $this->idtabla = $idClean;        
+
+        $sql = "select * from auxiliares where idtabla = '$idClean' and idsubtabla <> 0";
         $data = $this->ejecutarConsultaMatriz($sql);
         return $data;
     }
 
     function desactivar($id)
     {
-       
-        $sql = " UPDATE auxiliares SET condicion = 0
-        WHERE idauxiliares = '$id' ";
+        $idClean = StrClean($id);
+        $this->idauxiliares = $idClean;
 
+        $sql = " UPDATE auxiliares SET condicion = 0
+        WHERE idauxiliares = '{$this->idauxiliares}' ";
         $request = $this->ejecutarConsulta($sql);
         return $request;
     }
 
     function activar($id)
     {
+        $idClean = StrClean($id);
+        $this->idauxiliares = $idClean;
+
         $sql = " UPDATE auxiliares SET condicion = 1
-        WHERE idauxiliares = '$id' ";
+        WHERE idauxiliares = '{$this->idauxiliares}' ";
         $request = $this->ejecutarConsulta($sql);
         return $request;
     }
@@ -90,7 +93,7 @@ class TablasModel extends Mysql
         $this->nombre = strtoupper($data['nombre']);
         $this->descripcion = $data['descripcion'];
 
-        $sql = "SELECT * FROM auxiliares WHERE nombre = '{$this->nombre}'" ;   
+        $sql = "SELECT * FROM auxiliares WHERE nombre = '{$this->nombre}' and idtabla ='{this->idtabla}' " ;   
         $rspta = $this->ejecutarConsultaMatriz($sql);
 
         if(empty($rspta)){
@@ -104,9 +107,7 @@ class TablasModel extends Mysql
             // ingresa datos
             $sql="INSERT into  auxiliares (idtabla,idsubtabla,nombre,descripcion) VALUES (?,?,?,?)";
             $arrData = array ($this->idtabla, $this->idsubtabla, $this->nombre, $this->descripcion);
-
             $r = $this->queryInsert($sql,$arrData);
-
            }
         else{
             $r = "Existe";
@@ -118,18 +119,25 @@ class TablasModel extends Mysql
     function editar($data)
     {
         $r = false;
-
-        $idauxiliares = $data["idauxiliares"];
-        $nombre =  strtoupper($data["nombre"]);
-        $descripcion = $data["descripcion"];
+        $this->idauxiliares = $data["idauxiliares"];
+        $this->nombre =  strtoupper($data["nombre"]);
+        $this->descripcion = $data["descripcion"];
+        $this->idtabla = $data["idtabla"];
+        
+        $sql = "SELECT nombre FROM auxiliares WHERE nombre = '{$this->nombre}' and idtabla ='{$this->idtabla}' " ; 
        
-        $sql = "UPDATE auxiliares SET  
-                          nombre = '$nombre', 
-                          descripcion = '$descripcion'                           
-                     WHERE idauxiliares = '$idauxiliares'";
+        $rspta = $this->ejecutarConsultaMatriz($sql);
 
-        $r = $this->ejecutarConsulta($sql);
+        if ($rspta)
+        {
+        $sql = "UPDATE auxiliares SET  nombre = ?, descripcion = ? WHERE idauxiliares = '{$this->idauxiliares}'";
+            $arrData = array ($this->nombre, $this->descripcion);  
+            $r = $this->queryUpdate($sql,$arrData);
 
+        }else {
+
+            $r = "No Existe";
+        }
         return $r;
     }
 

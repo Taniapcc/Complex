@@ -1,5 +1,11 @@
 <?php
-  header_admin($data);
+ob_start();
+
+if (inactividadSesion()) {
+    header("location:" . base_url() . "/Admon");
+
+  }
+header_admin($data);
 ?>
 <!-- Content Wrapper. Contains page content -->
 <!-- Content Wrapper. Contains page content -->
@@ -38,6 +44,8 @@
     </div>
     <div class="card-body">       
       Empieza a crear tu dashboard !
+
+     <?php  dep($_SESSION); ?>
     </div>
     <!-- /.card-body -->
     <div class="card-footer">
