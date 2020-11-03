@@ -7,8 +7,7 @@ class Login extends Controllers{
     
     public function login(){
         //llamar al metodo de la clase View
-   
-                          
+                            
             if (isset($_COOKIE['datos'])){
                 $datos_array = explode("|",$_COOKIE["datos"]);
                 $usuario = $datos_array[0];

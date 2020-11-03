@@ -1,8 +1,8 @@
 var tabla;
 //Función que se ejecuta al inicio
 function init() {
-
     listar();
+
     $("#ltablas").change(listar);
     mostrarform(false);
     $("#formulario").on("submit", function(e) {
@@ -10,8 +10,16 @@ function init() {
     })
 }
 
+function fileInput() {
+    $(document).ready(function() {
+        bsCustomFileInput.init();
+    });
+}
+
 function listar() {
     var ltablas = $("#ltablas").val();
+
+    //alert(ltablas);
 
     var tabla = $('#listado').DataTable({
         retrieve: true,
@@ -23,16 +31,13 @@ function listar() {
         "aprocessing": true,
         "aServerSide": true, //Paginación y filtrado realizados por el servidor
 
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json"
-        },
         "responsive": true,
         "autoWidth": false,
         "pageLength": 5,
         "lengthMenu": [5, 10, 25, 75, 100],
         "buttons": ['excel', 'pdf', 'copy'],
         "ajax": {
-            "url": base_url + "/Tablas/listar",
+            "url": base_url + "/Productos/listar",
             "data": {
                 "ltablas": ltablas
             },
@@ -44,32 +49,49 @@ function listar() {
                 "data": "options"
             },
             {
-                "data": "idtabla"
-            },
-            {
-                "data": "idauxiliares"
+                "data": "idproducto"
             },
             {
                 "data": "nombre"
             },
             {
-                "data": "descripcion"
+                "data": "presentacion"
+            },
+            {
+                "data": "tamanio"
+            },
+            {
+                "data": "medida"
+            },
+
+            {
+                "data": "precio"
+            },
+            {
+                "data": "stock"
+            },
+            {
+                "data": "imagen"
             },
             {
                 "data": "condicion"
             }
+
+
 
         ]
     });
 }
 
 
+//https: / / datatables.net / extensions / buttons /
+
 //Función mostrar formulario
 function mostrarform(flag) {
     var obj = document.getElementById("ltablas");
     valTitulo = obj.options[obj.selectedIndex].text;
     val = obj.options[obj.selectedIndex].value;
-    document.getElementById("idtabla").value = val;
+    document.getElementById("idcategoria").value = val;
     document.getElementById("tituloForm").innerHTML = valTitulo;
 
 
@@ -94,8 +116,15 @@ function mostrarform(flag) {
 function limpiar() {
     $("#nombre").val("");
     $("#descripcion").val("");
-    $("#idauxiliares").val("");
-    $("#idsubtabla").val("");
+    $("#idproducto").val("");
+    $("#idcategoria").val("");
+    $("#precio").val(0);
+    $("#descuento").val(0);
+    $("#iva").val(0);
+
+    $("#imagenmuestra").attr("src", "");
+    $("#imagenactual").val("");
+
 }
 
 //Función cancelarform
@@ -107,27 +136,44 @@ function cancelarform() {
 
 function guardaryeditar(e) {
 
+
     var ltablas = $("#ltablas").val();
     e.preventDefault(); //No se activará la acción predeterminada del evento
 
+    var idproducto = document.querySelector('#idproducto').value;
+    var idcategoria = document.querySelector('#idcategoria').value;
+    var idpresentacion = document.querySelector('#lpresentacion').value;
+    var idmedida = document.querySelector('#lmedidas').value;
+    var tamanio = document.querySelector('#tamanio').value;
     var nombre = document.querySelector('#nombre').value;
+    var precio = document.querySelector('#precio').value;
+    var descuento = document.querySelector('#descuento').value;
+    var costoe = document.querySelector('#costoe').value;
+    var iva = document.querySelector('#iva').value;
+    var stock = document.querySelector('#stock').value;
     var descripcion = document.querySelector('#descripcion').value;
-    var idauxiliares = document.querySelector('#idauxiliares').value;
-    var idtabla = document.querySelector('#idtabla').value;
-    var idsubtabla = document.querySelector('#idsubtabla').value;
+    var imagen = document.querySelector('#imagen').value;
+
 
     if (nombre == '' || descripcion == '') {
         //alert("faltan llenar datos");
-        bootbox.alert("Los datos son requeridos");
+        bootbox.alert("Nombre y Descripcion son requeridos");
         return false;
     }
+
+    if (precio < 0 || descuento < 0 || costoe < 0 || iva < 0) {
+        //alert("faltan llenar datos");
+        bootbox.alert("Precio, descuento, costo envio e IVA deben ser mayor que cero");
+        return false;
+    }
+
 
     $("#btnGuardar").prop("disabled", true);
 
     var formData = new FormData($("#formulario")[0]);
 
     $.ajax({
-        "url": base_url + "/Tablas/setTablas",
+        "url": base_url + "/Productos/setProductos",
         type: "POST",
         data: formData,
         contentType: false,
@@ -150,14 +196,26 @@ function fnEditar() {
             var id = this.getAttribute("rl");
             var formData = new FormData($("#formulario")[0]);
 
-            var jqxhr = $.post(base_url + "/Tablas/getTabla/" + id, function(data, status) {
+            var jqxhr = $.post(base_url + "/Productos/getTabla/" + id, function(data, status) {
                 mostrarform(true);
                 // alert("success");
+                $("#idproducto").val(data.idproducto);
+                $("#idcategoria").val(data.idcategoria)
+                $("#idpresentacion").val(data.idpresentacion);
+                $("#idmedida").val(data.idmedida);
+                $("#tamanio").val(data.tamanio);
                 $("#nombre").val(data.nombre);
+                $("#precio").val(data.precio);
+                $("#descuento").val(data.descuento);
+                $("#costoe").val(data.costoEnvio);
+                $("#iva").val(data.IVA);
+                $("#stock").val(data.stock);
                 $("#descripcion").val(data.descripcion);
-                $("#idauxiliares").val(data.idauxiliares);
-                $("#idtabla").val(data.idtabla);
-                $("#idsubtabla").val(data.idsubtabla);
+                //$("#imagen").val(data.imagen);
+
+                $("#imagenmuestra").show();
+                $("#imagenmuestra").attr("src", "./Assets/img/upload/productos/" + data.imagen);
+                $("#imagenactual").val(data.imagen);
 
             }, "json")
         });
@@ -171,7 +229,10 @@ function desactivar() {
     btnEliminar.forEach(function(btnEliminar) {
         btnEliminar.addEventListener('click', function() {
             var id = btnEliminar.getAttribute("rle");
-            var jqxhr = $.post(base_url + "/Tablas/desactivar/" + id, function(data, status) {
+
+
+
+            var jqxhr = $.post(base_url + "/Productos/desactivar/" + id, function(data, status) {
                 //bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
@@ -187,7 +248,7 @@ function activar() {
     btnActivar.forEach(function(btnActivar) {
         btnActivar.addEventListener('click', function() {
             var id = btnActivar.getAttribute("rla");
-            var jqxhr = $.post(base_url + "/Tablas/activar/" + id, function(e) {
+            var jqxhr = $.post(base_url + "/Productos/activar/" + id, function(e) {
                 // bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
@@ -197,5 +258,18 @@ function activar() {
 
 
 }
+
+
+function generarbarcode() {
+    codigo = $("#codigo").val();
+    JsBarcode("#barcode", codigo);
+    $("#print").show();
+}
+
+//Función para imprimir el Código de barras
+function imprimir() {
+    $("#print").printArea();
+}
+
 
 init();

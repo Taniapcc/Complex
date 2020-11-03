@@ -1,5 +1,5 @@
 <?php
-class ProductosModel extends Mysql
+class CatalogoModel extends Mysql
 {
     public $idproducto;
     public $idcategoria;
@@ -62,6 +62,13 @@ class ProductosModel extends Mysql
 
    
     //Implementar un método para listar los registros
+    function listarp()
+    {
+        $sql = "SELECT * FROM v_productos  ";
+        $data = $this->ejecutarConsultaMatriz($sql);        
+        return $data;
+    }
+
 
     function listar($id)
     {

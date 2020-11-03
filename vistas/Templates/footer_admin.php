@@ -47,6 +47,9 @@
 <!-- SweetAlert2 -->
 <script src="<?php echo media(); ?>/plugins/sweetalert2.all.min.js"></script>
 
+<!-- bs-custom-file-input -->
+<script src="<?php echo media(); ?>/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="<?php echo media(); ?>/js/adminlte.min.js"></script>
 

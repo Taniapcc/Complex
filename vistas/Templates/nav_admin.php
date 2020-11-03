@@ -83,18 +83,6 @@
                   <p>Dashboard v1</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v2</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Dashboard v3</p>
-                </a>
-              </li>
             </ul>
           </li>
           <!--Admin -->        
@@ -114,24 +102,14 @@
                 </a>
               </li>
             
-              <li class="nav-item">
-                <a href="<?php echo base_url(); ?>/Roles" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Roles</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>/Permisos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Permisos</p>
                 </a>
               </li> 
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tienda</p>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>/Categoria" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -140,19 +118,6 @@
               </li>
               <li class="nav-item">
                 <a href="<?php echo base_url(); ?>/Tablas" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Tablas</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Productos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tablas del Sistema</p>
                 </a>
@@ -171,17 +136,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="<?php echo base_url(); ?>/dashboard" class="nav-link">
+                <a href="<?php echo base_url(); ?>/Productos" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Productos</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Bodega</p>
-                </a>
-              </li>            
+                      
             </ul>
           </li>
           <!--Ventas -->

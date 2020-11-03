@@ -124,13 +124,13 @@ class TablasModel extends Mysql
         $this->descripcion = $data["descripcion"];
         $this->idtabla = $data["idtabla"];
         
-        $sql = "SELECT nombre FROM auxiliares WHERE nombre = '{$this->nombre}' and idtabla ='{$this->idtabla}' " ; 
+        $sql = "SELECT nombre FROM auxiliares WHERE  idtabla ='{$this->idtabla}' " ; 
        
         $rspta = $this->ejecutarConsultaMatriz($sql);
 
         if ($rspta)
         {
-        $sql = "UPDATE auxiliares SET  nombre = ?, descripcion = ? WHERE idauxiliares = '{$this->idauxiliares}'";
+             $sql = "UPDATE auxiliares SET  nombre = ?, descripcion = ? WHERE idauxiliares = '{$this->idauxiliares}'";
             $arrData = array ($this->nombre, $this->descripcion);  
             $r = $this->queryUpdate($sql,$arrData);
 

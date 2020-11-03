@@ -77,10 +77,11 @@ if ($_SESSION['administrador']==1) {
                             <input type="text" class="form-control" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
                           </div>
 
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Presentacion(*):</label>
-                            <select id="idpresentacion" name="idpresentacion" class="form-control selectpicker" data-live-search="true" required></select> 
-                          </div>
+                          <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                            <label>Seleccione una Presentacion(*):</label>
+                            <select id="lpresentacion" name="lpresentacion" class="form-control selectpicker" data-live-search="true" required></select> 
+                        </div>
+
 
                           <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label>Unidad(*):</label>
@@ -109,17 +110,11 @@ if ($_SESSION['administrador']==1) {
                             <label>Imagen:</label>
                             <input type="file" class="form-control" name="imagen" id="imagen">
                             <input type="hidden" name="imagenactual" id="imagenactual">
-                            <img src="" width="150px" height="120px" id="imagenmuestra">
+                            <img scrc = "" width = "150px" heigth = "150px" id = "imagenmuestra" >  
                           </div>
-                          <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label>Código(*) :</label>
-                            <input type="text" class="form-control" name="codigo" id="codigo" placeholder="Código Barras" required>
-                            <button class="btn btn-success" type="button" onclick="generarbarcode()">Generar</button>
-                            <button class="btn btn-info" type="button" onclick="imprimir()">Imprimir</button>
-                            <div id="print">
-                              <svg id="barcode"></svg>
-                            </div>
-                          </div>
+                          
+
+                            
                           <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
 

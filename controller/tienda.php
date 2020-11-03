@@ -15,8 +15,7 @@ class Tienda extends Controllers
         // Iniciar sesion
         $sesion = new Sesion();
 
-        //dep($_SESSION);
-        //             
+            
         if ($sesion->getLogin()) {
             //llamar al metodo de la clase View
             //dep($sesion->getUsuario);
@@ -33,6 +32,13 @@ class Tienda extends Controllers
              header("location:".base_url()."/Login");
             }        
     }
+
+
+
+
+
+
+    
 
 
 }

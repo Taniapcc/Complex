@@ -1,6 +1,7 @@
 <?php
     const BASE_URL = "http://localhost/complex";
 
+    const BASE_IMG = "complex/Assets/img/productos";
     //Zona horaria
     
     date_default_timezone_set('America/Guayaquil');

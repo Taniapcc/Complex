@@ -18,19 +18,9 @@
                     <a href="<?php echo base_url(); ?>" class="nav-link">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a href="<?php echo base_url(); ?>/Productos" class="nav-link">Productos</a>
+                    <a href="<?php echo base_url(); ?>/Catalogo" class="nav-link">Productos</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" 
-                    aria-expanded="false" class="nav-link dropdown-toggle">Categorias</a>
-                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                        <li><a href="#" class="dropdown-item">Leche </a></li>
-                        <li><a href="#" class="dropdown-item">Queso</a></li>
-                        <li><a href="#" class="dropdown-item">Manjar</a></li>
-                        <li><a href="#" class="dropdown-item">Yogur</a></li>                        
-                    </ul>
-                </li>
-                
+                                
                 <li class="nav-item">
                     <a href="<?php echo base_url(); ?>/LoginRegistro" class="nav-link">Registrarse</a>
                 </li>
@@ -39,6 +29,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="<?php echo base_url(); ?>/Login" class="nav-link">Ingresar</a>
+                </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url(); ?>/Admon" class="nav-link">Admin</a>
                 </li>
                 
             </ul>
