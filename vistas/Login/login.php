@@ -1,7 +1,6 @@
 <?php
-    require ("Vistas/Templates/headerHome.php");
-    require ("Vistas/Templates/navHome.php");  
-    //dep($data);      
+    headerHome($data);
+         
 ?>
 
 <!-- Main content -->

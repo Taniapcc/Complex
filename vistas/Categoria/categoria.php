@@ -16,7 +16,6 @@
 
           
             <h1><i class="fas fa-user-tag"> </i><?php echo $data["page_title"]; ?>
-
             <a class="btn btn-primary" href="<?php print base_url(); ?>/Categoria/alta" role="button">
             <i class="fa fa-plus-circle"></i> Agregar</a>
                                       

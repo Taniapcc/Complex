@@ -514,3 +514,22 @@ Prueba
 
           // cambiar texto
           http://mialtoweb.es/modificar-html-con-javascript/
+
+
+
+          /// javascript
+
+          BOTON PARA ACTIVAR
+
+          function fnVer() {
+    alert("Ver");
+    var btnVer = document.querySelectorAll(".btnVer");
+
+    btnVer.forEach(function(btnTablas) {
+        btnTablas.addEventListener('click', function() {
+
+
+        });
+
+    });
+}

@@ -29,5 +29,7 @@
 
 <body class="hold-transition layout-top-nav">
 <div class="wrapper">
+<?php require_once ("navHome.php"); ?>
+   
 
 

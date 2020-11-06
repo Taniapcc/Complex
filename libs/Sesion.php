@@ -2,6 +2,7 @@
     class Sesion{
         private $login = false;
         private $usuario;
+       
         private $timeout;
 
         function __construct()
@@ -16,12 +17,10 @@
             
             $this->usuario = $_SESSION["usuario"];
             $this->login = true;
-            ///
-
-            
-            ////
+           
           } else {
             unset($this->usuario);
+         
             $this->login = false;
           }
 
@@ -31,12 +30,14 @@
         public function iniciarLogin($usuario){
           if ($usuario) {
             $this->usuario = $_SESSION["usuario"] = $usuario;
+            
             $this->login = true;
           }
         }
       
         public function finalizarLogin(){
           unset($_SESSION["usuario"]);
+         
           unset($this->usuario);
           $this->login = false;
         }

@@ -10,7 +10,7 @@
      //usuario
      public function infoCorreo($email)
      {
-         $sql="SELECT nombre,email,idusuario FROM usuario where email = '$email' AND tipousuario = 'Anonimo'  AND condicion = 1";
+         $sql="SELECT * FROM v_cliente where email = '$email' AND condicion = 1";
          $arrData = array($email);
          $request = $this->select($sql,$arrData);
          return $request;
@@ -24,7 +24,7 @@
       }
 
       function listar(){
-           $sql = "SELECT * FROM usuario WHERE  tipousuario = 'Anonimo' AND condicion = 1";
+           $sql = "SELECT * FROM v_cliente WHERE   AND condicion = 1";
            $resul = $this->select_all($sql);
            return $resul; 
       }

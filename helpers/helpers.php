@@ -14,6 +14,12 @@
         return BASE_URL."/Assets";
     }
     /* Para cargar cabeceras */
+
+    function headerHome($data=""){
+        $view_hearder = VIEWS."Templates/headerHome.php";
+        require_once($view_hearder);
+    }
+
     function header_admin($data=""){
         $view_hearder = VIEWS."Templates/header_admin.php";
         require_once($view_hearder);
@@ -21,6 +27,11 @@
     /** Cargar footer */
     function footer_admin($data=""){
         $view_footer = VIEWS."Templates/footer_admin.php";
+        require_once($view_footer);
+    }
+
+    function footerHome($data=""){
+        $view_footer = VIEWS."Templates/footerHome.php";
         require_once($view_footer);
     }
     /** LLamar a Modales Con Parámetros */

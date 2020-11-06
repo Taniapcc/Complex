@@ -8,7 +8,7 @@
 
         function infoCorreo($email)
        {
-           $sql="SELECT * FROM usuario where email = '$email'";
+           $sql="SELECT * FROM v_empleado where email = '$email'";
            //$request = $this->select($sql);
            $request = $this->ejecutarConsultaSimpleFila($sql);
            return $request;
@@ -73,9 +73,16 @@
         return ($rows>0)?true:false;
      }
 
+     function existeCorreo($email){
+        $sql = "SELECT * FROM v_empleado WHERE email= '$email'";          
+        $rows = $this->queryRows($sql);   
+                      
+         return ($rows!=0)?true:false;
+     }
+
      
      function validaLogin($login){
-        $sql = "SELECT * FROM usuario WHERE tipousuario = 'Empleado' AND login ='".$login."'";
+        $sql = "SELECT * FROM v_empleado WHERE tipousuario = 'Empleado' AND login ='".$login."'";
         $rows = $this->queryRows($sql);  
         return ($rows==0)?true:false;
       }  
@@ -85,7 +92,8 @@
      function insertar ($data){
 
         $r = false;
-        if ($this->validaCorreo($data["email"])) {         
+
+        if ($this->existeCorreo($data["email"]) == false) {         
 
               $clave = hash_hmac("sha512", $data["clave1"], llave());      
               $tienda =TIENDA;
@@ -93,8 +101,24 @@
               $tipoUsuario = 'Empleado';
               $fecha = date("Y-m-d H:i:s");
 
+              //idusuario  idrol  nombre            idtienda  cedula      direccion               telefono   email                  cargo     login    clave codPostal  tipoUsuario  ciudad  imagen        login_dt         baja_dt        cambio_dt              creado_dt        condicion
              
-              $sql= "INSERT INTO usuario (nombre,  idtienda , cedula , direccion , telefono,  email,  cargo,  login,  clave,  codPostal,  tipoUsuario , ciudad, creado_dt,login_dt  ) 
+             
+              $sql= "INSERT INTO usuario (
+                  nombre,
+                idtienda , 
+               cedula ,
+                direccion ,
+                 telefono, 
+                  email, 
+                   cargo,  
+                   login, 
+                    clave,  
+                    codPostal,  
+                    tipoUsuario , 
+                    ciudad, 
+                    creado_dt,
+                    login_dt  ) 
               VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
               $arrData = array($data["nombre"],
@@ -123,7 +147,7 @@
        //Implementar un método para listar los registros
 	 function listar()
      {
-         $sql="SELECT idusuario,cedula,nombre,direccion,telefono,tipoUsuario,condicion FROM v_usuario";
+         $sql="SELECT idusuario,cedula,nombre,direccion,telefono,tipoUsuario,condicion FROM v_empleado";
          $request = $this->ejecutarConsultaMatriz($sql);
          return $request;					
      }

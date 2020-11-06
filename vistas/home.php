@@ -1,6 +1,6 @@
 <?php
-require("Templates/headerHome.php");
-require("Templates/navHome.php");
+headerHome($data);
+
 //echo dep($data);
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -109,5 +109,5 @@ require("Templates/navHome.php");
 //echo base_url()."<br>";
 //echo passGenerador();
 //echo formatMoney(23240);
-require("Templates/footerHome.php");
+footerHome($data);
 ?>

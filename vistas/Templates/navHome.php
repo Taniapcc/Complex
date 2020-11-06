@@ -33,6 +33,9 @@
                 <li class="nav-item">
                     <a href="<?php echo base_url(); ?>/Admon" class="nav-link">Admin</a>
                 </li>
+                <li class="nav-item">
+                    <a href="<?php echo base_url(); ?>/Logout " class="nav-link">Salir</a>
+                </li>
                 
             </ul>
                     <!-- SEARCH FORM -->

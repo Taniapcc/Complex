@@ -1,5 +1,5 @@
 <?php
-class CatalogoModel extends Mysql
+class CarritoModel extends Mysql
 {
     public $idproducto;
     public $idcategoria;
@@ -26,8 +26,6 @@ class CatalogoModel extends Mysql
         $sql = "SELECT idcategoria, nombre FROM categoria
          where 	condicion = 1";
         $request = $this->ejecutarConsultaMatriz($sql);
-
-        
         return $request;
     }
 
@@ -64,21 +62,6 @@ class CatalogoModel extends Mysql
 
    
     //Implementar un método para listar los registros
-    function listarp()
-    {
-        $sql = "SELECT * FROM v_productos order by categoria ";
-        $data = $this->ejecutarConsultaMatriz($sql);        
-        return $data;
-    }
-
-    function getMasVendido(){
-        $sql = "SELECT * FROM v_productos  ";
-        $data = $this->ejecutarConsultaMatriz($sql);
-        return $data;
-
-
-    }
-
 
     function listar($id)
     {

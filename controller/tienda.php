@@ -22,6 +22,19 @@ class Tienda extends Controllers
             $data['tag_page'] = "Bienvenido -  Tienda Virtual ";
             $data['page_title'] = "Bienvenido - <small> Tienda Virtual </small>";
             $data['page_name'] = "Bienvenido";
+
+           
+            $data['card_title'] = "Listado de Productos";
+
+            # parametrización
+            $data['name_view'] = "productos"; //vista principal CONTROLLER LISTAR
+            $data['name_table'] = "Producto";
+            $data['id_table']   = "idproducto";
+           
+
+
+
+
             $data['datos'] = "";        
             //llamado a la vista
             $this->views->getViews($this,"tienda", $data);  

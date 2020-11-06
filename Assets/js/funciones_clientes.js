@@ -3,7 +3,6 @@ var tabla;
 function init() {
     listar();
 
-    $("#ltablas").change(listar);
     mostrarform(false);
     $("#formulario").on("submit", function(e) {
         guardaryeditar(e);
@@ -17,7 +16,7 @@ function fileInput() {
 }
 
 function listar() {
-    var ltablas = $("#ltablas").val();
+
 
     //alert(ltablas);
 
@@ -37,10 +36,7 @@ function listar() {
         "lengthMenu": [5, 10, 25, 75, 100],
         "buttons": ['excel', 'pdf', 'copy'],
         "ajax": {
-            "url": base_url + "/Productos/listar",
-            "data": {
-                "ltablas": ltablas
-            },
+            "url": base_url + "/Clientes/listar",
             "type": "get",
             "dataType": "json",
             "dataSrc": ""
@@ -49,29 +45,19 @@ function listar() {
                 "data": "options"
             },
             {
-                "data": "idproducto"
+                "data": "idusuario"
+            },
+            {
+                "data": "cedula"
             },
             {
                 "data": "nombre"
             },
             {
-                "data": "presentacion"
+                "data": "direccion"
             },
             {
-                "data": "tamanio"
-            },
-            {
-                "data": "medida"
-            },
-
-            {
-                "data": "precio"
-            },
-            {
-                "data": "stock"
-            },
-            {
-                "data": "imagen"
+                "data": "telefono"
             },
             {
                 "data": "condicion"
@@ -88,16 +74,9 @@ function listar() {
 
 //Función mostrar formulario
 function mostrarform(flag) {
-    var obj = document.getElementById("ltablas");
-    valTitulo = obj.options[obj.selectedIndex].text;
-    val = obj.options[obj.selectedIndex].value;
-    document.getElementById("idcategoria").value = val;
-    document.getElementById("tituloForm").innerHTML = valTitulo;
-
 
     if (flag) {
         // 
-        //document.getElementById("tituloForm").innerHTML = "Actualizar " + valTitulo; 
         $("#listadoregistros").hide();
         $("#formularioregistros").show();
         $("#btnGuardar").prop("disabled", false);
@@ -116,7 +95,7 @@ function mostrarform(flag) {
 function limpiar() {
     $("#nombre").val("");
     $("#descripcion").val("");
-    $("#idproducto").val("");
+    $("#idusuario").val("");
     $("#idcategoria").val("");
     $("#precio").val(0);
     $("#descuento").val(0);
@@ -140,7 +119,7 @@ function guardaryeditar(e) {
     var ltablas = $("#ltablas").val();
     e.preventDefault(); //No se activará la acción predeterminada del evento
 
-    var idproducto = document.querySelector('#idproducto').value;
+    var idusuario = document.querySelector('#idusuario').value;
     var idcategoria = document.querySelector('#idcategoria').value;
     var idpresentacion = document.querySelector('#lpresentacion').value;
     var idmedida = document.querySelector('#lmedidas').value;
@@ -173,7 +152,7 @@ function guardaryeditar(e) {
     var formData = new FormData($("#formulario")[0]);
 
     $.ajax({
-        "url": base_url + "/Productos/setProductos",
+        "url": base_url + "/Clientes/setProductos",
         type: "POST",
         data: formData,
         contentType: false,
@@ -196,10 +175,10 @@ function fnEditar() {
             var id = this.getAttribute("rl");
             var formData = new FormData($("#formulario")[0]);
 
-            var jqxhr = $.post(base_url + "/Productos/getTabla/" + id, function(data, status) {
+            var jqxhr = $.post(base_url + "/Clientes/getTabla/" + id, function(data, status) {
                 mostrarform(true);
                 // alert("success");
-                $("#idproducto").val(data.idproducto);
+                $("#idusuario").val(data.idusuario);
                 $("#idcategoria").val(data.idcategoria)
                 $("#idpresentacion").val(data.idpresentacion);
                 $("#idmedida").val(data.idmedida);
@@ -214,12 +193,10 @@ function fnEditar() {
                 //$("#imagen").val(data.imagen);
 
                 $("#imagenmuestra").show();
-                $("#imagenmuestra").attr("src", "./Assets/img/upload/productos/" + data.imagen);
+                $("#imagenmuestra").attr("src", "./Assets/img/upload/clientes/" + data.imagen);
                 $("#imagenactual").val(data.imagen);
 
-            }, "json");
-
-
+            }, "json")
         });
     });
 }
@@ -234,7 +211,7 @@ function desactivar() {
 
 
 
-            var jqxhr = $.post(base_url + "/Productos/desactivar/" + id, function(data, status) {
+            var jqxhr = $.post(base_url + "/Clientes/desactivar/" + id, function(data, status) {
                 //bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
@@ -250,7 +227,7 @@ function activar() {
     btnActivar.forEach(function(btnActivar) {
         btnActivar.addEventListener('click', function() {
             var id = btnActivar.getAttribute("rla");
-            var jqxhr = $.post(base_url + "/Productos/activar/" + id, function(e) {
+            var jqxhr = $.post(base_url + "/Clientes/activar/" + id, function(e) {
                 // bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
@@ -262,16 +239,6 @@ function activar() {
 }
 
 
-function generarbarcode() {
-    codigo = $("#codigo").val();
-    JsBarcode("#barcode", codigo);
-    $("#print").show();
-}
-
-//Función para imprimir el Código de barras
-function imprimir() {
-    $("#print").printArea();
-}
 
 
 init();

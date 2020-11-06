@@ -37,7 +37,7 @@ function listar() {
         "lengthMenu": [5, 10, 25, 75, 100],
         "buttons": ['excel', 'pdf', 'copy'],
         "ajax": {
-            "url": base_url + "/Productos/listar",
+            "url": base_url + "/Carrito/listar",
             "data": {
                 "ltablas": ltablas
             },
@@ -173,7 +173,7 @@ function guardaryeditar(e) {
     var formData = new FormData($("#formulario")[0]);
 
     $.ajax({
-        "url": base_url + "/Productos/setProductos",
+        "url": base_url + "/Carrito/setCarrito",
         type: "POST",
         data: formData,
         contentType: false,
@@ -196,7 +196,7 @@ function fnEditar() {
             var id = this.getAttribute("rl");
             var formData = new FormData($("#formulario")[0]);
 
-            var jqxhr = $.post(base_url + "/Productos/getTabla/" + id, function(data, status) {
+            var jqxhr = $.post(base_url + "/Carrito/getTabla/" + id, function(data, status) {
                 mostrarform(true);
                 // alert("success");
                 $("#idproducto").val(data.idproducto);
@@ -217,9 +217,7 @@ function fnEditar() {
                 $("#imagenmuestra").attr("src", "./Assets/img/upload/productos/" + data.imagen);
                 $("#imagenactual").val(data.imagen);
 
-            }, "json");
-
-
+            }, "json")
         });
     });
 }
@@ -234,7 +232,7 @@ function desactivar() {
 
 
 
-            var jqxhr = $.post(base_url + "/Productos/desactivar/" + id, function(data, status) {
+            var jqxhr = $.post(base_url + "/Carrito/desactivar/" + id, function(data, status) {
                 //bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
@@ -250,7 +248,7 @@ function activar() {
     btnActivar.forEach(function(btnActivar) {
         btnActivar.addEventListener('click', function() {
             var id = btnActivar.getAttribute("rla");
-            var jqxhr = $.post(base_url + "/Productos/activar/" + id, function(e) {
+            var jqxhr = $.post(base_url + "/Carrito/activar/" + id, function(e) {
                 // bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();

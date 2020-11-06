@@ -62,9 +62,11 @@
 
 <script src="<?php echo media(); ?>/js/bootbox.min.js"></script> 
 
-
+<!-- ChartJS -->
+<script src="<?php echo media(); ?>/plugins/chart.js/Chart.min.js"></script>
 
 <!-- Funciones Personalizadas -->
+
 
 <!--
 <script src="<?php echo media(); ?>/js/funciones_admon.js"></script>

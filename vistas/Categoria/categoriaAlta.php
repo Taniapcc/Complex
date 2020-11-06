@@ -10,6 +10,9 @@
 
 header_admin($data);
 
+
+
+
 ?>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -46,7 +49,8 @@ header_admin($data);
               <div class="card-header"> 
                 <h3 class="card-title"><?php echo $data['card_title'];  ?>   </h3>
               </div>
-            
+
+                      
             <div class="card-body">
             <!-- Llamando al controlador -->
             <form name = "crear-categoria" id ="crear-categoria" action="<?php echo base_url(); ?>/Categoria/alta/" method="post">

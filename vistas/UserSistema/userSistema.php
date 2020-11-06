@@ -1,6 +1,8 @@
 <?php
-header_admin($data);
-
+if (inactividadSesion()){
+  header("location:" . base_url() . "/Admon");  
+}
+ header_admin($data); 
 //getModal('modalRoles', $data);
 ?>
 <!-- Content Wrapper. Contains page content -->
@@ -13,10 +15,13 @@ header_admin($data);
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1><i class="fas fa-user-tag"> </i><?php echo $data["page_title"]; ?>
-              <button type="button" class="btn bg-gradient-primary" name="btnAgregar" id="btnAgregar" data-toggle="modal" data-target="#modalFormRol" onclick="openModal();">
+           <!--   <button type="button" class="btn bg-gradient-primary" name="btnAgregar" id="btnAgregar" data-toggle="modal" data-target="#modalFormRol" onclick="openModal();">
                 <i class="fa fa-plus-circle"></i>
                 Agregar
-              </button>
+              </button> -->
+
+              <a class="btn btn-primary" href="<?php print base_url(); ?>/UserSistema/alta" role="button">
+              <i class="fa fa-plus-circle"></i> Agregar</a>
               <!-- #modal-lg -->
             </h1>
           </div>

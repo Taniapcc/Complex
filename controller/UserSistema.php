@@ -8,6 +8,7 @@ class UserSistema extends Controllers
     {
         parent::__construct();
     }
+
     public function userSistema()
     {
         // Iniciar sesion
@@ -58,6 +59,12 @@ class UserSistema extends Controllers
         return $data;
     }
 
+    function ExisteCorreo($email)
+    {
+        $data = $this->model->existeCorreo($email);
+        return $data;
+    }
+
 
     function desactivar($id){
         
@@ -90,7 +97,7 @@ class UserSistema extends Controllers
         return $data;
 	}
 
-
+  
 
 
     function listar()
@@ -129,8 +136,11 @@ class UserSistema extends Controllers
 
 
   
-    function validaData($data, $errores, $abc)
+    function validaData($data)
     {
+        $abc = $data['abc'];
+        $errores = array();
+        
         if (trim($data['cedula'] == "")) {
             array_push($errores, "Cédula  es requerido");
         }
@@ -160,7 +170,7 @@ class UserSistema extends Controllers
             array_push($errores, "El correo electrónico no es válido");
         }
 
-        if (!($this->validaCorreo($data['email']))) {
+        if (($this->ExisteCorreo($data['email']))) {
             array_push($errores, "Correo ya existe");
         }
 
@@ -209,6 +219,7 @@ class UserSistema extends Controllers
     }
 
     //Alta
+    
     function alta()
     {
         $errores = array();
@@ -240,19 +251,21 @@ class UserSistema extends Controllers
             $data['clave2'] = $clave2;
             $data['login'] = $login;
             $data['codPostal'] = $codPostal;
+            $data['abc'] = 'A';
 
-
-            $errores = $this->validaData($data, $errores, 'A');
-
+            
+            $errores = $this->validaData($data);
 
             if (count($errores) == 0) {
 
-                $r = $this->model->alta($data);
+                $r = $this->model->insertar($data);
 
                 if ($r) {
 
-                    header("location:" . base_url() . "/userSistemaAlta");
-                } else {
+                    header("location:" . base_url() . "/userSistema");
+                }
+                
+                    else {
                     //actualizar
 
                     // Hubo algún error
@@ -265,11 +278,12 @@ class UserSistema extends Controllers
                     $data['url'] = base_url();
                     $data['texto'] = "Existió un error en el registro, posiblemente el correo ya existe.";
 
-                    
+                    echo  "error";
                     //$this->views->getViews($this, "mensaje", $data);
                 
                 }
-            } else {
+            } 
+            else {
 
                 /**  Desplegar información de errores  */
                 // dep($errores);
@@ -289,7 +303,7 @@ class UserSistema extends Controllers
             $data['page_name'] = "Alta Empleado";
             //llamado a la vista  
 
-            $this->views->getViews($this, "", $data);
+            $this->views->getViews($this, "UserSistemaAlta", $data);
         } // else SERVER
     }  // Fin alta
 
@@ -331,8 +345,9 @@ class UserSistema extends Controllers
             $data['login'] = $login;
             $data['codPostal'] = $codPostal;
             $data['idusuario'] = $idusuario;
+            $data['abc'] = 'C';
 
-            $errores = $this->validaData($data, $errores, 'C');
+            $errores = $this->validaData($data);
 
             
             if (count($errores) == 0) {

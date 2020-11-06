@@ -173,16 +173,15 @@ class AdmonUsuario extends Controllers
               else {
 
                  /**  Desplegar información de errores  */
-                 dep($errores);
-                             
+                                             
                  $data['tag_page'] = "Empleado Alta";
                  $data['page_title'] = "Alta Empleado";
                  $data['page_name'] = "Alta Empleado";
                  $data['errores'] = $errores;
                  //llamado a la vista
-                 if (NO_DEPURADOR) {
-                     $this->views->getViews($this, "AdmonUsuario", $data);
-                 }
+                
+                 $this->views->getViews($this, "AdmonUsuario", $data);
+                 
               } 
 
 

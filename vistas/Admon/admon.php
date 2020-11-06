@@ -1,7 +1,6 @@
 <?php
-    require ("Vistas/Templates/headerHome.php");
-    require ("Vistas/Templates/navHome.php");  
-    //dep($data);      
+    headerHome($data);
+    
 ?>
 
 <!-- Main content -->
@@ -20,6 +19,10 @@
         <input type="email" id = "usuario" name = "usuario" class="form-control" placeholder="Email"
          value = <?php isset($data['usuario'])? print $data['usuario']: ""; ?>
          >
+         <input hidden="text" id = "tipousuario" name = "tipousuario" class="form-control" 
+         value = "Empleado" >
+         
+
         <div class="input-group-append">
           <div class="input-group-text">
             <span class="fas fa-envelope"></span>
@@ -61,7 +64,7 @@
 
 
 <?php     
-    //require ("Vistas/Templates/footerHome.php");
+    footerHome($data);
 ?>   
     
 

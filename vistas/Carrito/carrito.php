@@ -4,7 +4,10 @@ ob_start();
 if (inactividadSesion()) {
     header("location:" . base_url() . "/Login");
 }
-header_admin($data);
+
+
+headerHome($data);
+
 ?>
 <!--Contenido-->
 <!-- Content Wrapper. Contains page content -->
@@ -261,12 +264,10 @@ header_admin($data);
 
 <?php
 // echo ($_SESSION['usuario']['nombre']);
-footer_admin($data);
+require("Vistas/Templates/footerHome.php");
 
 ?>
-<script src="<?php echo media(); ?>/js/funciones_productos.js"></script>
-<script type="text/javascript" src="<?php echo media(); ?>/js/JsBarcode.all.min.js"></script>
-<script type="text/javascript" src="<?php echo media(); ?>/js/jquery.PrintArea.js"></script>
+<script src="<?php echo media(); ?>/js/funciones_carrito.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {

@@ -1,7 +1,7 @@
 <?php
-class CatalogoModel extends Mysql
+class ClientesModel extends Mysql
 {
-    public $idproducto;
+    public $idusuario;
     public $idcategoria;
     public $idpresentacion;
     public $idmedida;
@@ -26,8 +26,6 @@ class CatalogoModel extends Mysql
         $sql = "SELECT idcategoria, nombre FROM categoria
          where 	condicion = 1";
         $request = $this->ejecutarConsultaMatriz($sql);
-
-        
         return $request;
     }
 
@@ -48,8 +46,8 @@ class CatalogoModel extends Mysql
 
     function mostrar($id)
     {
-        $this->idproducto = $id;
-        $sql = "SELECT * FROM v_productos where idproducto = $this->idproducto";
+        $this->idusuario = $id;
+        $sql = "SELECT * FROM v_productos where idusuario = $this->idusuario";
         $request = $this->ejecutarConsultaSimpleFila($sql);
         return $request;
     }
@@ -57,35 +55,17 @@ class CatalogoModel extends Mysql
     function validaNombre($nombre)
     {
         $nombre = strtoupper($nombre);
-        $sql = "SELECT * FROM producto WHERE nombre = '$nombre'";
+        $sql = "SELECT * FROM usuario WHERE nombre = '$nombre'";
         $rows = $this->queryRows($sql);
         return $rows;
     }
 
    
     //Implementar un método para listar los registros
-    function listarp()
+   
+    function listar()
     {
-        $sql = "SELECT * FROM v_productos order by categoria ";
-        $data = $this->ejecutarConsultaMatriz($sql);        
-        return $data;
-    }
-
-    function getMasVendido(){
-        $sql = "SELECT * FROM v_productos  ";
-        $data = $this->ejecutarConsultaMatriz($sql);
-        return $data;
-
-
-    }
-
-
-    function listar($id)
-    {
-        $idClean = StrClean($id);
-        $this->idcategoria = $idClean;        
-
-        $sql = "SELECT * FROM v_productos WHERE idcategoria = '{$this->idcategoria}' ";
+        $sql = "SELECT idusuario,cedula,nombre,direccion, telefono,condicion FROM v_cliente ";
         $data = $this->ejecutarConsultaMatriz($sql);
         return $data;
     }
@@ -93,10 +73,10 @@ class CatalogoModel extends Mysql
     function desactivar($id)
     {
         $idClean = StrClean($id);
-        $this->idproducto = $idClean;
+        $this->idusuario = $idClean;
 
-        $sql = " UPDATE producto SET condicion = 0
-        WHERE idproducto = '{$this->idproducto}' ";
+        $sql = " UPDATE usuario SET condicion = 0
+        WHERE idusuario = '{$this->idusuario}' ";
         $request = $this->ejecutarConsulta($sql);
         return $request;
     }
@@ -104,16 +84,16 @@ class CatalogoModel extends Mysql
     function activar($id)
     {
         $idClean = StrClean($id);
-        $this->idproducto = $idClean;
+        $this->idusuario = $idClean;
 
-        $sql = " UPDATE producto SET condicion = 1
-        WHERE idproducto = '{$this->idproducto}' ";
+        $sql = " UPDATE usuario SET condicion = 1
+        WHERE idusuario = '{$this->idusuario}' ";
         $request = $this->ejecutarConsulta($sql);
         return $request;
     }
 
     function indice(){
-        $sql = "SELECT max(idsubtabla) as id FROM producto WHERE idcategoria = 1" ; 
+        $sql = "SELECT max(idsubtabla) as id FROM usuario WHERE idcategoria = 1" ; 
         $request = $this->ejecutarConsultaSimpleFila($sql);        
         return $request;
     }
@@ -143,10 +123,10 @@ class CatalogoModel extends Mysql
         $this->imagen = $data['imagen'];
 
         
-       // idproducto  idcategoria  idpresentacion  idmedida  tamanio  codigo  nombre  precio  descuento  costoEnvio  IVA  stock  descripcion     imagen  condicion
+       // idusuario  idcategoria  idpresentacion  idmedida  tamanio  codigo  nombre  precio  descuento  costoEnvio  IVA  stock  descripcion     imagen  condicion
 
 
-        $sql = "SELECT * FROM producto WHERE nombre = '{$this->nombre}' and idcategoria ='{$this->idcategoria}' " ;   
+        $sql = "SELECT * FROM usuario WHERE nombre = '{$this->nombre}' and idcategoria ='{$this->idcategoria}' " ;   
         $rspta = $this->ejecutarConsultaMatriz($sql);
 
         if(empty($rspta)){
@@ -154,7 +134,7 @@ class CatalogoModel extends Mysql
                       
              
             // ingresa datos
-            $sql="INSERT into  producto (idcategoria,  idpresentacion , idmedida , tamanio,  nombre , precio,  descuento , costoEnvio,  IVA , stock , descripcion, imagen ) 
+            $sql="INSERT into  usuario (idcategoria,  idpresentacion , idmedida , tamanio,  nombre , precio,  descuento , costoEnvio,  IVA , stock , descripcion, imagen ) 
             VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
            
             $arrData = array (
@@ -184,7 +164,7 @@ class CatalogoModel extends Mysql
     function editar($data)
     {
         $r = false;
-        $this->idproducto = $data["idproducto"];
+        $this->idusuario = $data["idusuario"];
         $this->idcategoria = $data['idcategoria'];
         $this->idpresentacion = $data['idpresentacion'];
         $this->idmedida = $data['idmedida'];
@@ -202,13 +182,13 @@ class CatalogoModel extends Mysql
 
         
         $sql = "SELECT nombre FROM v_productos 
-        WHERE idproducto ='{$this->idproducto}' " ; 
+        WHERE idusuario ='{$this->idusuario}' " ; 
        
         $rspta = $this->ejecutarConsultaMatriz($sql);
 
         if ($rspta)
         {
-        $sql = "UPDATE producto 
+        $sql = "UPDATE usuario 
                 SET  
                      idpresentacion =?,
                      idmedida =?,
@@ -221,7 +201,7 @@ class CatalogoModel extends Mysql
                      stock = ?,
                      descripcion = ?,
                      imagen = ?
-                WHERE idproducto = '{$this->idproducto}'";
+                WHERE idusuario = '{$this->idusuario}'";
 
             $arrData = array (
                 $this->idpresentacion,

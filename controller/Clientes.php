@@ -1,46 +1,39 @@
 <?php
 # Controlador generico para 3 campos
-class Catalogo extends Controllers
+class Clientes extends Controllers
 {
     public function __construct()
     {
         parent::__construct();
     }
 
-    public function catalogo()
+    public function clientes()
     {
         #
         $sesion = new Sesion();
 
-        //if ($sesion->getLogin()) {
+        if ($sesion->getLogin()) {
             # code...
 
-            $ltablas = $this->selectTabla();
-            $lProductos = $this->listarProductos();
-            $data['tag_page'] = "Catalogo -  Tienda Virtual ";
-            $data['page_title'] = "Catalogo - <small> Tienda Virtual </small>";
-            $data['page_name'] = "Catalogo";
-            $data['card_title'] = "Listado de Catalogo";
+           
+            $data['tag_page'] = "Clientes -  Tienda Virtual ";
+            $data['page_title'] = "Clientes - <small> Tienda Virtual </small>";
+            $data['page_name'] = "Clientes";
+            $data['card_title'] = "Listado de Clientes";
 
             # parametrización
-            $data['name_view'] = "catalogo"; //vista principal CONTROLLER LISTAR
-            $data['name_table'] = "Producto";
-            $data['id_table']   = "idproducto";
-            $data['ltablas']   = $ltablas;
-            $data['lproductos'] = $lProductos;
+            $data['name_view'] = "clientes"; //vista principal CONTROLLER LISTAR
+            $data['name_table'] = "Usuario";
+            $data['id_table']   = "idusuario";
+            
+            //llamado a la vista
             $this->views->getViews($this, $data['name_view'], $data);
-        /*} else {
+        } else {
             # code...
-            header("location:" . base_url() . "/Login");
-        }*/
-    }// catalogo
+            header("location:" . base_url() . "/Admon");
+        }
+    }// productos
 
-    function getMasVendido() {
-        $data = $this -> model -> getMasVendido();
-    }
-    
-
-   
 
     function selectTabla()
     {
@@ -48,6 +41,7 @@ class Catalogo extends Controllers
         return $data;
     } // select Tabla
 
+  
     function indice() {
        $data = $this->model->indice();
        return $data;
@@ -79,7 +73,7 @@ class Catalogo extends Controllers
 
     function setProductos(){
 
-        $imagenes =  media()."/upload/catalogo/";
+        $imagenes =  media()."/upload/clientes/";
 
         if (!file_exists($_FILES['imagen']['tmp_name']) || !is_uploaded_file($_FILES['imagen']['tmp_name']))
 		{
@@ -91,14 +85,14 @@ class Catalogo extends Controllers
 			if ($_FILES['imagen']['type'] == "image/jpg" || $_FILES['imagen']['type'] == "image/jpeg" || $_FILES['imagen']['type'] == "image/png")
 			{
 				$imagen = round(microtime(true)) . '.' . end($ext);
-                move_uploaded_file($_FILES["imagen"]["tmp_name"], "./Assets/img/upload/catalogo/" . $imagen);
-               // move_uploaded_file($_FILES["imagen"]["tmp_name"], media()."/upload/catalogo/" . $imagen);
+                move_uploaded_file($_FILES["imagen"]["tmp_name"], "./Assets/img/upload/productos/" . $imagen);
+               // move_uploaded_file($_FILES["imagen"]["tmp_name"], media()."/upload/productos/" . $imagen);
 			}
 		}
 
         
        // Extraigo valores del formulario
-       $idproducto = intval(strclean($_POST["idproducto"])) ;
+       $idusuario = intval(strclean($_POST["idusuario"])) ;
        $idcategoria = strclean($_POST["idcategoria"]) ;
        $idpresentacion = strclean($_POST["lpresentacion"]) ;
        $idmedida = strclean($_POST["lmedidas"]) ;
@@ -112,11 +106,11 @@ class Catalogo extends Controllers
        $descripcion = strClean($_POST["descripcion"]); 
       // $imagen =  strClean($_POST["imagen"]);
        
-     //  idproducto  idcategoria  idpresentacion  idmedida  tamanio  codigo  nombre  precio  descuento  costoEnvio  IVA  stock  descripcion     imagen  condicion
+     //  idusuario  idcategoria  idpresentacion  idmedida  tamanio  codigo  nombre  precio  descuento  costoEnvio  IVA  stock  descripcion     imagen  condicion
 
 
        // Rescato variables
-       $datos['idproducto'] =  $idproducto;
+       $datos['idusuario'] =  $idusuario;
        $datos['idcategoria'] =      $idcategoria;
        $datos['idpresentacion'] =   $idpresentacion;
        $datos['idmedida'] =   $idmedida;
@@ -131,7 +125,7 @@ class Catalogo extends Controllers
        $datos['imagen'] =  $imagen; 
       
                   
-        if ($datos['idproducto'] == 0){
+        if ($datos['idusuario'] == 0){
             $datos['ABC'] = 'A'; //alta
         }else{
             $datos['ABC'] = 'C'; //cambio
@@ -181,7 +175,8 @@ class Catalogo extends Controllers
     function insertar($datos)
 
     {
-       
+
+         
         
         $rspta = $this->model->insertar($datos);
 
@@ -269,28 +264,27 @@ class Catalogo extends Controllers
         return $errores;
     }
 
-    function listarProductos()
+    function listarprueba()
     {
-        $data = $this->model->listarp();
-        return $data;
+        $data = $this->model->listarClientes();
+        dep($data);
+        exit;
     }
-
 
 
     function listar()
     {
         //$indice = array();
        
-        $ltablas = $_REQUEST["ltablas"];
+       // $ltablas = $_REQUEST["ltablas"];
 
         
-        if ( strClean($ltablas) ) 
-        {
-            $data = $this->model->listar($ltablas);
+        
+         $data = $this->model->listar();
 
             for ($i = 0; $i < count($data); $i++) {
 
-                $data[$i]['imagen'] = "<img src='./Assets/img/upload/catalogo/".$data[$i]["imagen"]."' height='50px' width='50px' >";
+              //  $data[$i]['imagen'] = "<img src='./Assets/img/upload/productos/".$data[$i]["imagen"]."' height='50px' width='50px' >";
 
                 if ($data[$i]['condicion'] == 1) {
 
@@ -300,8 +294,8 @@ class Catalogo extends Controllers
                         // Añadir Acciones al formulario
                         $data[$i]['options'] = '<div class = "text-center"> 
                             <div class="btn-group">
-                                <button type="button" class="btn-outline-primary btn-sm btnTablas" tabindex ="0"  rl="'.$data[$i]["idproducto"].'" title = "Editar" onclick="fnEditar()"   ><i class = "fas fa-pencil-alt"></i></button>
-                                <button type="button" class="btn-outline-danger btn-sm btnEliminar" tabindex ="0" rle = "'.$data[$i]["idproducto"].'" title = "Eliminar" onclick="desactivar()" ><i class = " fas fa-trash-alt""></i></button>                        
+                                <button type="button" class="btn-outline-primary btn-sm btnTablas" tabindex ="0"  rl="'.$data[$i]["idusuario"].'" title = "Editar" onclick="fnEditar()"   ><i class = "fas fa-pencil-alt"></i></button>
+                                <button type="button" class="btn-outline-danger btn-sm btnEliminar" tabindex ="0" rle = "'.$data[$i]["idusuario"].'" title = "Eliminar" onclick="desactivar()" ><i class = " fas fa-trash-alt""></i></button>                        
                         </div>
                             
                         </div>';  
@@ -311,8 +305,8 @@ class Catalogo extends Controllers
                         // Añadir Acciones al formulario
                         $data[$i]['options'] = '<div class = "text-center"> 
                             <div class="btn-group">
-                            <button type="button" class="btn-outline-primary btn-sm btnTablas" tabindex ="0"  rl="'.$data[$i]["idproducto"].'" title = "Editar" onclick="fnEditar()"  ><i class = "fas fa-pencil-alt"></i></button>
-                            <button type="button" class="btn-outline-warning btn-sm btnActivar" tabindex ="0" rla="'.$data[$i]["idproducto"].'" title = "Recuperar" onclick="activar()"><i class = "fas fa-undo"></i></button>                        
+                            <button type="button" class="btn-outline-primary btn-sm btnTablas" tabindex ="0"  rl="'.$data[$i]["idusuario"].'" title = "Editar" onclick="fnEditar()"  ><i class = "fas fa-pencil-alt"></i></button>
+                            <button type="button" class="btn-outline-warning btn-sm btnActivar" tabindex ="0" rla="'.$data[$i]["idusuario"].'" title = "Recuperar" onclick="activar()"><i class = "fas fa-undo"></i></button>                        
                         </div>                            
                         </div>';                                
                 }       
@@ -321,7 +315,7 @@ class Catalogo extends Controllers
 
            echo json_encode($data, JSON_UNESCAPED_UNICODE);
             die();            
-        } // if listas    
+           
     }// LISTAR
 
 

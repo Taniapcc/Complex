@@ -33,8 +33,7 @@ class Login extends Controllers{
 
     function validaCorreo ($email){
         $data = $this->model->validaCorreo($email);
-       // dep($data);
-         return $data;
+        return $data;
    }
 
    function infoCorreo($email){
@@ -49,11 +48,11 @@ class Login extends Controllers{
 
         if ($_SERVER['REQUEST_METHOD']=="POST") {
 
-            //echo "if server verifica";
-            //valido variables del formulario
+            
             $usuario= isset($_POST["usuario"])? strClean($_POST["usuario"]) :"";
             $password= isset($_POST["password"])? strClean($_POST["password"]) :"";
             $recordar = isset($_POST["recordar"])? strClean($_POST["recordar"]) :"";
+            $tipousuario = isset($_POST["tipousuario"])? strClean($_POST["tipousuario"]) :"";
 
             // Recuerdame
             $valorCookie = $usuario."|".$password;
@@ -93,6 +92,7 @@ class Login extends Controllers{
                           $data = $this->model->infoCorreo($usuario);
                           $data ['usuario'] = $usuario;
                           $data ['timeout'] = time();
+                          $data ['tipousuario'] = $tipousuario;
                           
                           //dep($data)  ;             
                           $sesion = new Sesion;
@@ -100,7 +100,7 @@ class Login extends Controllers{
                             //INGRESAR AL PORTAL de ventas de  la tienda
                             //print "Bienvenido";
 
-                         header("location:".base_url()."/Tienda");
+                         header("location:".base_url()."/Catalogo");
 
                 }else{
                     // Si el correo no existe despliega errro

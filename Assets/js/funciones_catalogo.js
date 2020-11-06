@@ -10,11 +10,8 @@ function init() {
     })
 }
 
-function fileInput() {
-    $(document).ready(function() {
-        bsCustomFileInput.init();
-    });
-}
+
+
 
 function listar() {
     var ltablas = $("#ltablas").val();
@@ -37,7 +34,7 @@ function listar() {
         "lengthMenu": [5, 10, 25, 75, 100],
         "buttons": ['excel', 'pdf', 'copy'],
         "ajax": {
-            "url": base_url + "/Productos/listar",
+            "url": base_url + "/Catalogo/listar",
             "data": {
                 "ltablas": ltablas
             },
@@ -46,54 +43,20 @@ function listar() {
             "dataSrc": ""
         },
         "columns": [{
-                "data": "options"
-            },
-            {
                 "data": "idproducto"
             },
-            {
-                "data": "nombre"
-            },
-            {
-                "data": "presentacion"
-            },
-            {
-                "data": "tamanio"
-            },
-            {
-                "data": "medida"
-            },
 
-            {
-                "data": "precio"
-            },
-            {
-                "data": "stock"
-            },
             {
                 "data": "imagen"
-            },
-            {
-                "data": "condicion"
             }
-
-
-
         ]
     });
 }
-
 
 //https: / / datatables.net / extensions / buttons /
 
 //Función mostrar formulario
 function mostrarform(flag) {
-    var obj = document.getElementById("ltablas");
-    valTitulo = obj.options[obj.selectedIndex].text;
-    val = obj.options[obj.selectedIndex].value;
-    document.getElementById("idcategoria").value = val;
-    document.getElementById("tituloForm").innerHTML = valTitulo;
-
 
     if (flag) {
         // 
@@ -173,7 +136,7 @@ function guardaryeditar(e) {
     var formData = new FormData($("#formulario")[0]);
 
     $.ajax({
-        "url": base_url + "/Productos/setProductos",
+        "url": base_url + "/Catalogo/setCatalogo",
         type: "POST",
         data: formData,
         contentType: false,
@@ -188,6 +151,27 @@ function guardaryeditar(e) {
     limpiar();
 }
 
+function fnVer() {
+
+    var btnVer = document.querySelectorAll(".btnVer");
+
+    btnVer.forEach(function(btnVer) {
+        btnVer.addEventListener('click', function() {
+            var id = this.getAttribute("rl");
+            var jqxhr = $.post(base_url + "Catalogo/carrito", function(e) {
+
+
+
+            });
+
+
+        });
+
+    });
+}
+
+
+
 function fnEditar() {
     var btnTablas = document.querySelectorAll(".btnTablas");
 
@@ -196,7 +180,7 @@ function fnEditar() {
             var id = this.getAttribute("rl");
             var formData = new FormData($("#formulario")[0]);
 
-            var jqxhr = $.post(base_url + "/Productos/getTabla/" + id, function(data, status) {
+            var jqxhr = $.post(base_url + "/Catalogo/getTabla/" + id, function(data, status) {
                 mostrarform(true);
                 // alert("success");
                 $("#idproducto").val(data.idproducto);
@@ -230,9 +214,7 @@ function desactivar() {
         btnEliminar.addEventListener('click', function() {
             var id = btnEliminar.getAttribute("rle");
 
-
-
-            var jqxhr = $.post(base_url + "/Productos/desactivar/" + id, function(data, status) {
+            var jqxhr = $.post(base_url + "/Catalogo/desactivar/" + id, function(e) {
                 //bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
@@ -248,7 +230,7 @@ function activar() {
     btnActivar.forEach(function(btnActivar) {
         btnActivar.addEventListener('click', function() {
             var id = btnActivar.getAttribute("rla");
-            var jqxhr = $.post(base_url + "/Productos/activar/" + id, function(e) {
+            var jqxhr = $.post(base_url + "/Catalogo/activar/" + id, function(e) {
                 // bootbox.alert(data);
                 var tabla = $('#listado').DataTable();
                 tabla.ajax.reload();
@@ -260,16 +242,9 @@ function activar() {
 }
 
 
-function generarbarcode() {
-    codigo = $("#codigo").val();
-    JsBarcode("#barcode", codigo);
-    $("#print").show();
-}
 
-//Función para imprimir el Código de barras
-function imprimir() {
-    $("#print").printArea();
-}
 
+
+init();
 
 init();
