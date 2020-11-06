@@ -35,18 +35,18 @@ class Catalogo extends Controllers
         }*/
     }// catalogo
 
-    function getMasVendido() {
-        $data = $this -> model -> getMasVendido();
-    }
-    
-
-   
-
+     
     function selectTabla()
     {
         $data = $this->model->selectTabla();
         return $data;
     } // select Tabla
+
+    function listarProductos()
+    {
+       $data = $this->model->listarp();
+       return $data;
+    }
 
     function indice() {
        $data = $this->model->indice();
@@ -269,12 +269,7 @@ class Catalogo extends Controllers
         return $errores;
     }
 
-    function listarProductos()
-    {
-        $data = $this->model->listarp();
-        return $data;
-    }
-
+  
 
 
     function listar()

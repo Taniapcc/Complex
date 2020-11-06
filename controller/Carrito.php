@@ -15,9 +15,7 @@ class Carrito extends Controllers
         if ($sesion->getLogin()) {
             # code...
 
-            
-            dep($_SESSION);
-           
+        
             $data['tag_page'] = "Carrito -  Tienda Virtual ";
             $data['page_title'] = "Carrito - <small> Tienda Virtual </small>";
             $data['page_name'] = "Carrito";

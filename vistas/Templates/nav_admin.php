@@ -99,6 +99,15 @@
                  <p>Categoría</p>
                </a>
              </li>
+
+             <li class="nav-item">
+               <a href="<?php echo base_url(); ?>/Proveedor" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Proveedor</p>
+               </a>
+             </li>
+
+
              <li class="nav-item">
                <a href="<?php echo base_url(); ?>/Tablas" class="nav-link">
                  <i class="far fa-circle nav-icon"></i>
@@ -133,6 +142,47 @@
 
            </ul>
          </li>
+
+
+         <!--Proveedor-->
+         <li class="nav-item has-treeview">
+           <a href="#" class="nav-link">
+             <i class="nav-icon fas fa-laptop"></i>
+             <p>
+               Proveedores
+               <i class="right fas fa-angle-left"></i>
+             </p>
+           </a>
+           <ul class="nav nav-treeview">
+
+
+           <li class="nav-item">
+               <a href="<?php echo base_url(); ?>/Tablas" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Materia Prima</p>
+               </a>
+             </li>
+
+                       
+
+             <li class="nav-item">
+               <a href="<?php echo base_url(); ?>/Proveedor" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Proveedor</p>
+               </a>
+             </li>
+
+             <li class="nav-item">
+               <a href="<?php echo base_url(); ?>/Productos2" class="nav-link">
+                 <i class="far fa-circle nav-icon"></i>
+                 <p>Detalle Materia</p>
+               </a>
+             </li>
+
+
+           </ul>
+         </li>
+
          <!--Ventas -->
          <li class="nav-item has-treeview">
            <a href="#" class="nav-link">

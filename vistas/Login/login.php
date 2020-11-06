@@ -1,4 +1,4 @@
-<?php
+ñp{<?php
     headerHome($data);
          
 ?>
